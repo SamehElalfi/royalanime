@@ -1,3 +1,9 @@
+# 0.16.2
+## Changed
+- removed comments from css/app.css and minified it.
+- removed nucleo icons.
+- fixed the background image in anime details page.
+
 # 0.16.1
 ## Changed 
 - optimized images by convert JPGs to WEBPs

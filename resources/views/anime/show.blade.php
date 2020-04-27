@@ -1,17 +1,12 @@
 @extends('layouts.app')
-
 @section('content')
-
-    @section('style')
-    .modal-backdrop{z-index:0;}
-    @endsection
 
     @section('header')
         <div class="position-relative">
             <section class="section section-lg section-hero section-shaped">
                 
                 <!-- Background Circles and Image -->
-                <div class="shape shape-style-1 shape-primary" style="background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(20,0,100,0.8)), url('/{{ $anime->cover_url ?? $anime->image_url }}'); background-size: cover;background-position:center;">
+                <div class="shape shape-style-1 shape-primary" style="background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(20,0,100,0.8)), url('{{ $anime->cover_url != '' ? $anime->cover_url : $anime->image_url }}'); background-size: cover;background-position:center;">
                     <span class="span-150"></span>
                     <span class="span-50"></span>
                     <span class="span-50"></span>
@@ -30,7 +25,7 @@
                         <div class="row align-items-center justify-content-center">
                             <div class="text-center">
                                 <!-- Header Brand -->
-                                {{-- <img alt="image" src="{{ cdn('img/brand/white.png') }}" style="width: 200px;" class="img-fluid"> --}}
+                                {{-- <img alt="image" src="{{ cdn('img/brand/white.webp') }}" style="width: 200px;" class="img-fluid"> --}}
 
                                 <!-- Main Sentence -->
                                 <a href="/animes/{{ $anime->id }}">

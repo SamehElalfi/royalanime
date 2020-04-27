@@ -57,7 +57,7 @@
             <!-- Post in the slideshow -->
             <div class="blog-slider__item swiper-slide">
                 <div class="blog-slider__img">
-                    <img src="{{ cdn('img/5.png') }}" alt="">
+                    <img src="{{ cdn('img/5.webp') }}" alt="">
                 </div>
                 <div class="blog-slider__content">
                     <span class="blog-slider__code">20 ديسمبر 2019</span>

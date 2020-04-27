@@ -1,8 +1,3 @@
-{{-- @php
-    $links = $episode->link;
-    $watch_links = $links->where('type', '=', 'watch');
-    $download_links = $links->where('type', '=', 'download');
-@endphp --}}
 @extends('layouts.app')
 @section('content')
 
@@ -30,7 +25,7 @@
                         <div class="row align-items-center justify-content-center">
                             <div class="text-center">
                                 <!-- Header Brand -->
-                                {{-- <img alt="image" src="{{ cdn('img/brand/white.png') }}" style="width: 200px;" class="img-fluid"> --}}
+                                {{-- <img alt="image" src="{{ cdn('img/brand/white.webp') }}" style="width: 200px;" class="img-fluid"> --}}
 
                                 <!-- Main Sentence -->
                                 <a href="/animes/{{ $anime->id }}">
@@ -105,7 +100,7 @@
                                                 </ul>
                                             </div>
                                             <div class="card shadow">
-                                                <div class="card-body">
+                                                <div class="card-body bg-dark">
                                                 <div class="tab-content" id="myTabContent">
                                                     @foreach($watch_links as $key => $item)
                                                         <div class="tab-pane fade {{ $loop->first ? 'active show' : '' }}" id="tabs-text-{{$key}}" role="tabpane{{$key}}" aria-labelledby="tabs-text-{{$key}}-tab">
@@ -113,7 +108,7 @@
                                                             width="100%"
                                                             height="460"
                                                             src="{{$item->link}}"
-                                                            srcdoc="<style>*{padding:0;margin:0;overflow:hidden}html,body{height:100%}img,span{position:absolute;width:100%;top:0;bottom:0;margin:auto}span{height:1.5em;text-align:center;font:48px/1.5 sans-serif;color:white;text-shadow:0 0 0.5em black}</style><a href={{$item->link}}><img src=/img/loading.jpg alt='الحلقة رقم {{ $episode->episode_number }}'><span>▶</span></a>"
+                                                            srcdoc="<style>*{padding:0;margin:0;overflow:hidden}html,body{height:100%}img,span{position:absolute;width:100%;top:0;bottom:0;margin:auto}span{height:1.5em;text-align:center;font:48px/1.5 sans-serif;color:white;text-shadow:0 0 0.5em black}</style><a href={{$item->link}}><span>▶</span></a>"
                                                             frameborder="0"
                                                             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                                                             allowfullscreen
@@ -246,7 +241,7 @@
                         </div>
 
                         <div class="text-center my-5 floating-sm">
-                            <span class="text-">أخبر العالم عن هذه الحلقة </span>
+                            <span class="col col-12 col-md-4">أخبر العالم عن هذه الحلقة </span>
                             <div class="my-3 d-inline mx-3">
                                 <a href="#" class="btn btn-primary btn-icon-only rounded-circle">
                                     <i class="fa fa-twitter"></i>

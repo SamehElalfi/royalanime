@@ -13,7 +13,7 @@ class WelcomeController extends Controller
      */
      public function index()
      {
-        // return cdn('/css/app.css');
+        return cdsdn('/css/app.css');
         // Display best animes
         $animes = \App\Anime::find(4)->orderBy('score', 'desc')
         ->take(4)

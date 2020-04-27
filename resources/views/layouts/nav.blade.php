@@ -3,7 +3,7 @@
     <div class="container">
         <!-- Brand on Desktop ONLY -->
         <a class="navbar-brand mr-lg-5" href="/">
-            <img alt="image" src="{{ cdn('img/brand/white.png') }}">
+            <img alt="image" src="{{ cdn('img/brand/white.webp') }}">
         </a>
 
         <!-- Hamberger Menu -->
@@ -23,7 +23,7 @@
                     <!-- Note: This is not visible on Desktop -->
                     <div class="col-6 collapse-brand">
                         <a href="/">
-                            <img alt="image" src="{{ cdn('img/brand/blue.png') }}">
+                            <img alt="image" src="{{ cdn('img/brand/blue.webp') }}">
                         </a>
                     </div>
 

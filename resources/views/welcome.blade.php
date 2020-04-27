@@ -25,7 +25,7 @@
                         <div class="row align-items-center justify-content-center">
                             <div class="col-lg-6 text-center">
                                 <!-- Header Brand -->
-                                <img alt="image" src="img/brand/white.png" style="width: 200px;" class="img-fluid">
+                                <img alt="image" src="img/brand/white.webp" style="width: 200px;" class="img-fluid">
 
                                 <!-- Main Sentence -->
                                 <p class="lead text-white">المنزل الملكي لكل الأنمي.<br/>كل ما يحتاجه الأوتاكو في مكان واحد.</p>
@@ -134,7 +134,7 @@
     </section>
 
     <!-- Thaousands of Episodes -->
-    <section class="section section-lg section-nucleo-icons pb-250">
+    <section class="section section-lg section-nucleo-icons">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">
@@ -150,34 +150,6 @@
                         <a href="https://nucleoapp.com/?ref=1712" target="_blank" class="btn btn-default mt-3 mt-md-0">مشاهدة كل الأستديوهات</a>
                     </div>
                 </div>
-            </div>
-
-            <!-- Hover Icons -->
-            <div class="blur--hover">
-                <a href="#">
-                    <div class="icons-container blur-item mt-5" data-toggle="on-screen">
-                        <!-- Center -->
-                        <i class="icon ni ni-diamond"></i>
-                        <!-- Right 1 -->
-                        <i class="icon icon-sm ni ni-album-2"></i>
-                        <i class="icon icon-sm ni ni-app"></i>
-                        <i class="icon icon-sm ni ni-atom"></i>
-                        <!-- Right 2 -->
-                        <i class="icon ni ni-bag-17"></i>
-                        <i class="icon ni ni-bell-55"></i>
-                        <i class="icon ni ni-credit-card"></i>
-                        <!-- Left 1 -->
-                        <i class="icon icon-sm ni ni-briefcase-24"></i>
-                        <i class="icon icon-sm ni ni-building"></i>
-                        <i class="icon icon-sm ni ni-button-play"></i>
-                        <!-- Left 2 -->
-                        <i class="icon ni ni-calendar-grid-58"></i>
-                        <i class="icon ni ni-camera-compact"></i>
-                        <i class="icon ni ni-chart-bar-32"></i>
-                    </div>
-                    <!-- Main Sentence -->
-                    <span class="blur-hidden h5 text-success">شاهد أكثر من 21.000 حلقة أنمي.</span>
-                </a>
             </div>
         </div>
     </section>

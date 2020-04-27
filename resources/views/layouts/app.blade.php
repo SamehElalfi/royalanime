@@ -15,10 +15,10 @@
     <title>{{ isset($title) ? $title . ' - رويال أنمي' : 'رويال أنمي' }}</title>
 
     <!-- Favicon -->
-    <link href="{{ cdn('favicon.png') }}" rel="icon" type="image/png">
+    <link href="{{ cdn('favicon.webp') }}" rel="icon" type="image/png">
 
     <!-- Fonts -->
-    <link href="{{ cdn('vendor/nucleo/css/nucleo.css') }}" rel="stylesheet">
+    {{-- <link href="{{ cdn('vendor/nucleo/css/nucleo.css') }}" rel="stylesheet"> --}}
     <link href="{{ cdn('vendor/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
     {{-- <link href="https://fonts.googleapis.com/css?family=Tajawal&display=swap" rel="stylesheet"> --}}
     
