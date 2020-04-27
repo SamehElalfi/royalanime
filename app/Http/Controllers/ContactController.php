@@ -14,7 +14,8 @@ class ContactController extends Controller
      */
     public function index()
     {
-        //
+        $title = 'تواصل معنا';
+        return view('legal.contact', compact('title'));
     }
 
     /**
@@ -35,7 +36,22 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'email' => 'required|max:255|email',
+            'name' => 'required|min:2|max:255',
+            'previous_url' => 'url',
+            'message' => 'required',
+        ]);
+
+        $msg = new Contact;
+        $msg->name = $validatedData['name'];
+        $msg->email = $validatedData['email'];
+        $msg->previous_url = $validatedData['previous_url'];
+        $msg->message = $validatedData['message'];
+        $msg->save();
+
+        $title = 'تم إرسال الرسالة بنجاح';
+        return view('/legal/thanks', compact('title'));
     }
 
     /**

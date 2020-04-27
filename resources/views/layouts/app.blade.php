@@ -15,15 +15,15 @@
     <title>{{ isset($title) ? $title . ' - رويال أنمي' : 'رويال أنمي' }}</title>
 
     <!-- Favicon -->
-    <link href="{{ asset('favicon.png') }}" rel="icon" type="image/png">
+    <link href="{{ cdn('favicon.png') }}" rel="icon" type="image/png">
 
     <!-- Fonts -->
-    <link href="{{ asset('vendor/nucleo/css/nucleo.css') }}" rel="stylesheet">
-    <link href="{{ asset('vendor/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
+    <link href="{{ cdn('vendor/nucleo/css/nucleo.css') }}" rel="stylesheet">
+    <link href="{{ cdn('vendor/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
     {{-- <link href="https://fonts.googleapis.com/css?family=Tajawal&display=swap" rel="stylesheet"> --}}
     
     <!-- Styles -->
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ cdn('css/app.css') }}">
 
     @hasSection ('style')
         <style>
@@ -50,8 +50,8 @@
     @include('layouts.footer')
 
     <!-- JS -->
-    <script src='{{ asset('js/jquery.min.js') }}'></script>
-    <script src='{{ asset('js/app.js') }}'></script>
+    <script src='{{ cdn('js/jquery.min.js') }}'></script>
+    <script src='{{ cdn('js/app.js') }}'></script>
 
     <!-- Blog Posts Swiper -->
     <script>

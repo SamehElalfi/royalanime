@@ -18,7 +18,7 @@
             <!-- Post in the slideshow -->
             <div class="blog-slider__item swiper-slide">
                 <div class="blog-slider__img">
-                    <img src="{{ asset('img/1.webp') }}" alt="">
+                    <img src="{{ cdn('img/1.webp') }}" alt="">
                 </div>
                 <div class="blog-slider__content">
                     <span class="blog-slider__code">06 أكتوبر 2019</span>
@@ -31,7 +31,7 @@
             <!-- Post in the slideshow -->
             <div class="blog-slider__item swiper-slide">
                 <div class="blog-slider__img">
-                    <img src="{{ asset('img/2.webp') }}" alt="">
+                    <img src="{{ cdn('img/2.webp') }}" alt="">
                 </div>
                 <div class="blog-slider__content">
                     <span class="blog-slider__code">16 نوفمبر 2019</span>
@@ -44,7 +44,7 @@
             <!-- Post in the slideshow -->
             <div class="blog-slider__item swiper-slide">
                 <div class="blog-slider__img">
-                    <img src="{{ asset('img/6.jpg') }}" alt="">
+                    <img src="{{ cdn('img/6.jpg') }}" alt="">
                 </div>
                 <div class="blog-slider__content">
                     <span class="blog-slider__code">26 ديسمبر 2019</span>
@@ -57,7 +57,7 @@
             <!-- Post in the slideshow -->
             <div class="blog-slider__item swiper-slide">
                 <div class="blog-slider__img">
-                    <img src="{{ asset('img/5.png') }}" alt="">
+                    <img src="{{ cdn('img/5.png') }}" alt="">
                 </div>
                 <div class="blog-slider__content">
                     <span class="blog-slider__code">20 ديسمبر 2019</span>

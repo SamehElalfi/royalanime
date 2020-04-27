@@ -10,10 +10,10 @@
                 </ol>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <a href="http://www.google.com"><img class="img-fluid" src="/img/11.jpg" alt="First slide"></a>
+                        <a href="http://www.google.com"><img class="img-fluid" src="{{ cdn(/img/11.webp) ?? '' }}" alt="First slide"></a>
                     </div>
                     <div class="carousel-item">
-                        <a href="http://www.facebook.com"><img class="img-fluid" src="/img/12.jpg" alt="First slide"></a>
+                        <a href="http://www.facebook.com"><img class="img-fluid" src="{{ cdn(/img/12.webp) ?? '' }}" alt="First slide"></a>
                     </div>
                 </div>
                 <a class="carousel-control-prev" href="#carousel_example" role="button" data-slide="prev">

@@ -229,4 +229,15 @@ return [
 
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Application KeyCDN domains
+    |--------------------------------------------------------------------------
+    |
+    | Specify different domains for your assets.
+    |
+    */
+    'cdn' => array(
+        "cdn.royalanime.com" => "css|js|eot|woff|ttfjpg|jpeg|png|gif|svg"
+    ),
 ];

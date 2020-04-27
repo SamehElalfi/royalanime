@@ -6,7 +6,7 @@
             <section class="section section-lg section-hero section-shaped">
                 
                 <!-- Background Circles and Image -->
-                <div class="shape shape-style-1 shape-primary" style="background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url('img/backgrounds/bg-1.jpg'); background-size: cover;">
+                <div class="shape shape-style-1 shape-primary" style="background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url('img/backgrounds/bg-1.webp'); background-size: cover;">
                     <span class="span-150"></span>
                     <span class="span-50"></span>
                     <span class="span-50"></span>
@@ -119,8 +119,8 @@
                 <!-- SlideShow -->
                 @include('layouts.slideshow', [
                     'images' => [
-                        ['link' => "http://www.google.com", 'src' => "img/11.jpg", 'alt' => "First slide"],
-                        ['link' => "http://www.facebook.com", 'src' => "img/12.jpg", 'alt' => "First slide"]
+                        ['link' => "http://www.google.com", 'src' => "img/11.webp", 'alt' => "First slide"],
+                        ['link' => "http://www.facebook.com", 'src' => "img/12.webp", 'alt' => "First slide"]
                     ]
                 ])
             </div>

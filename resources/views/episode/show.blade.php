@@ -30,7 +30,7 @@
                         <div class="row align-items-center justify-content-center">
                             <div class="text-center">
                                 <!-- Header Brand -->
-                                {{-- <img alt="image" src="{{ asset('img/brand/white.png') }}" style="width: 200px;" class="img-fluid"> --}}
+                                {{-- <img alt="image" src="{{ cdn('img/brand/white.png') }}" style="width: 200px;" class="img-fluid"> --}}
 
                                 <!-- Main Sentence -->
                                 <a href="/animes/{{ $anime->id }}">

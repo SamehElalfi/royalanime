@@ -1,3 +1,13 @@
+# 0.16.1
+## Changed 
+- optimized images by convert JPGs to WEBPs
+- fixed /contact page links
+- Created Helper function to use cdn.royalanime.com
+
+## Added
+- Contect page "/contact"
+- changed all assets links to CDN
+
 # 0.16.0
 ## Changed
 - Stopped slideshow in /animes page
