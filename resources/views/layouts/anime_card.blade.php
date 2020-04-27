@@ -40,12 +40,12 @@
                             <p
                             class="p-4"
                             style="background: rgba(23, 43, 77, 0.5);border-radius: 15px;">
-                            {{substr ($anime->synopsis, 0, 500)}}
+                            {{$anime->arabic_synopsis}}
                             </p>
                         </div>
                         <div class="col-md-3 mt-md-5 d-md-none d-lg-block d-sm-none">
                             <a href="animes/{{$anime->id}}">
-                                <img src="{{$anime->image_url}}" class="img-fluid rounded shadow">
+                                <img src="{{$anime->image_url}}" class="img-fluid rounded shadow" alt="{{$anime->title}}">
                             </a>
                         </div>
                     </div>

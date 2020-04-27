@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\anime;
+use App\Anime;
 use Illuminate\Http\Request;
 
 class AnimeController extends Controller

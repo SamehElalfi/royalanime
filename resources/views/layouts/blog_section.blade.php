@@ -1,4 +1,4 @@
-<!-- Blog Posts Slide Show -->
+{{-- <!-- Blog Posts Slide Show -->
 <section class="section section-lg">
 
     <!-- Section Title and Description -->
@@ -78,4 +78,4 @@
             </div>
         </div>
     </div>
-</section>
+</section> --}}

@@ -143,7 +143,7 @@
 
 
     @section('scripts')
-        // Re-order Episodes Button
+        /* Re-order Episodes Button */
         function reverseChildren() {
             parent = document.getElementById("eps");
             for (var i = 1; i < parent.childNodes.length; i++){

@@ -97,7 +97,7 @@
                                         <div class="col-md-8">
                                             <h2>قصة الأنمي</h2>
                                             <p class="text-justify">
-                                                {{$anime->synopsis}}
+                                                {{$anime->arabic_synopsis}}
                                             </p>
                                             <a href="/animes/{{ $anime->id }}/episodes" class="btn btn-success col-10 my-2">مشاهدة وتحميل الأنمي</a>
                                             {{-- <a href="#" class="btn btn-secondary col-5 my-2">تحميل الأنمي</a> --}}
@@ -105,7 +105,7 @@
                                         <div class="col-md-4 col-sm-12 text-center mt-md-5 mt-sm-4">
                                             {{-- <img src="{{ $anime -> Cover_url }}"> --}}
                                             <img src="{{$anime->image_url}}" class="mb-2">
-                                                <button type="button" class="btn btn-block btn-primary mr-1 mt-4 col-lg-10 ml-lg-4" data-toggle="modal" data-target="#modal-notification">الإعلان التشويقي</button>
+                                                {{-- <button type="button" class="btn btn-block btn-primary mr-1 mt-4 col-lg-10 ml-lg-4" data-toggle="modal" data-target="#modal-notification">الإعلان التشويقي</button> --}}
                                                 <div class="modal fade" id="modal-notification" tabindex="-1" role="dialog" aria-labelledby="modal-notification" aria-hidden="true" style="display: none;">
                                                     <div class="modal-dialog modal-danger modal-dialog-centered modal-" role="document" style="max-width: fit-content;">
                                                     <div class="modal-content bg-gradient-danger">

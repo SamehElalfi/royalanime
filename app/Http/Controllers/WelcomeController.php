@@ -13,6 +13,7 @@ class WelcomeController extends Controller
      */
      public function index()
      {
+      //   return url()->current();
         // Display best animes
         $animes = \App\Anime::find(4)->orderBy('score', 'desc')
         ->take(4)

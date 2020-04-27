@@ -132,7 +132,7 @@
                 </li>
             </ul>
 
-            <!-- Social Media Page and Search Button -->
+            {{-- <!-- Social Media Page and Search Button -->
             <ul class="navbar-nav align-items-lg-center ml-lg-auto">
                 <li class="nav-item">
                     <a class="nav-link nav-link-icon" href="https://www.facebook.com/creativetim" target="_blank" data-toggle="tooltip" title="Like us on Facebook">
@@ -177,7 +177,7 @@
                     <input class="form-control" placeholder="بحث" type="text" autofocus>
                     </div>
                 </li>
-            </ul>
+            </ul> --}}
         </div>
     </div>
 </nav>

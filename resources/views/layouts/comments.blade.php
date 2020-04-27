@@ -1,4 +1,4 @@
-<!-- Disqus Comments System -->
+{{-- <!-- Disqus Comments System -->
 <script>
     /**
     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
@@ -6,7 +6,7 @@
     */
 
     var disqus_config = function () {
-        this.page.url = '{{ url()->current() ?? "" }}';  /* Replace PAGE_URL with your page's canonical URL variable */
+        /* this.page.url = '{{ url()->current() ?? "" }}';  /* Replace PAGE_URL with your page's canonical URL variable */
         this.page.identifier = '{{ $page_identifier ?? "" }}'; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
         this.language = "ar";
     };
@@ -21,4 +21,4 @@
     })();
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
-<!-- add <div id="disqus_thread"></div> to show disqus comments -->
+<!-- add <div id="disqus_thread"></div> to show disqus comments --> --}}

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    @if ($paginator->onFirstPage())
+    {{-- @if ($paginator->onFirstPage())
         <!-- Slide Show -->
         <section class="section section-components profile-page pt-0 pb-0" id="section-components">
             <div id="carousel_example" class="carousel slide" data-ride="carousel">
@@ -26,7 +26,7 @@
                 </a>
             </div>
         </section>
-    @endif
+    @endif --}}
 
     <!-- Latest Anime -->
     <section class="section section-components profile-page" id="section-components">

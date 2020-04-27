@@ -83,7 +83,7 @@
         });
     </script>
 
-    <!-- Search Button and Search Field -->
+    {{-- <!-- Search Button and Search Field -->
     <script>
         function classToggle() {
             document.querySelector('#searchfield').classList.toggle('d-lg-none');
@@ -91,8 +91,16 @@
         }
         document.querySelector('#searchfield').addEventListener('focusout', classToggle);
         document.querySelector('#searchbtn').addEventListener('click', classToggle);
-    </script>
+    </script> --}}
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-164705179-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
+  gtag('config', 'UA-164705179-1');
+</script>
     @hasSection ('scripts')
         <script>
             @yield('scripts')
