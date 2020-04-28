@@ -70,7 +70,7 @@
                             <div class="col-md-6 text-lg-right align-self-lg-center">
                                 <div class="card-profile-actions py-4 mt-lg-0 mt-4">
                                     @if ($episode->recap)
-                                        <a href="#" class="btn btn-sm btn-info mr-4">ملخص</a>
+                                        <a href="#" class="btn btn-sm btn-success mr-4">ملخص</a>
                                     @endif
                                     @if ($episode->filler)
                                         <a href="#" class="btn btn-sm btn-danger mr-4">فلر</a>
@@ -84,10 +84,10 @@
 
                             {{-- Watching Servers --}}
                             <div class="row justify-content-center text-dark post">
-                                <h2>سيرفرات المشاهدة</h2>
-                                <div class="col-lg-11">
+                                <h2 class="col-12">سيرفرات المشاهدة</h2>
+                                <div class="col-g-11">
                                     <div class="row mb-4">
-                                        <div class="col-12">
+                                        <div class="col-102">
                                             <div class="mt-5 mt-lg-0">
                                         @if ($watch_links->toArray())
                                             <div class="nav-wrapper">
@@ -123,11 +123,11 @@
                                             <span>لا توجد روابط متاحة لمشاهدة هذه الحلقة في الوقت الحاضر، لكننا سنضيفها في أقرب وقت ممكن.</span>
                                         @endif
                                                 </div>
-                                                <br><hr>
-                                            </div>
-                                            <br><br>
+                                            <br><hr>
                                         </div>
+                                        <br><br>
                                     </div>
+                                </div>
                             </div>
                             
                             {{-- Additional Information --}}
@@ -199,7 +199,7 @@
                                     @foreach ($download_links as $linkrow)
                                         <a
                                         href="{{$linkrow->link}}"
-                                        class="btn {{$episode->filler ? 'btn-danger' : 'btn-primary'}} col-5 my-1 mx-1">
+                                        class="btn {{$episode->filler ? 'btn-danger' : 'btn-primary'}} col-12 col-md-5 my-1 mx-1">
                                         <span class="float-left">#{{$loop->iteration}}</span>
                                         <span>{{$linkrow->name ?? $linkrow->link}}</span>
                                         <span class="float-right">
@@ -242,7 +242,7 @@
 
                         <div class="text-center my-5 floating-sm">
                             <span class="col col-12 col-md-4">أخبر العالم عن هذه الحلقة </span>
-                            <div class="my-3 d-inline mx-3">
+                            <div class="my-3 mx-3">
                                 <a href="#" class="btn btn-primary btn-icon-only rounded-circle">
                                     <i class="fa fa-twitter"></i>
                                 </a>

@@ -1,3 +1,16 @@
+# 0.17.0
+# Added
+- Google Search page emmbeded in /search page
+- Added Tajawal font
+- Added tags pages
+- made a page to check work servers
+
+## Changed
+- fixed share icons on mobiles
+- fixed small video player on mobiles
+- centered footer icons and links
+- translated all status, rating, broadcast and genres columns
+
 # 0.16.2
 ## Changed
 - removed comments from css/app.css and minified it.

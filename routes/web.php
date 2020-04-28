@@ -15,6 +15,9 @@ use Illuminate\Support\Facades\Route;
 
 // the home page of the project
 Route::get('/', 'WelcomeController@index');
+Route::get('/search', 'WelcomeController@search');
+Route::get('/links/{id}', 'LinkController@index');
+Route::post('/links/{anime}', 'LinkController@store');
 
 Route::resources([
     'animes.episodes' => 'EpisodeController',   // All Episodes of an Anime

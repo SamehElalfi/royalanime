@@ -79,7 +79,7 @@
                             <div class="col-md-6 text-lg-right align-self-lg-center">
                                 <div class="card-profile-actions py-4 mt-lg-0 mt-4">
                                     @foreach (json_decode($anime->genres) as $gender)
-                                        <a href="#" class="btn btn-sm btn-default float-right mx-2 my-1">{{$gender}}</a>
+                                        <a href="/tags/{{$gender}}" class="btn btn-sm btn-default float-right mx-2 my-1">{{$gender}}</a>
                                     @endforeach
                                 </div>
                             </div>
@@ -122,7 +122,7 @@
                         
                         <div class="text-center my-5 floating-sm">
                             <span class="text-">أخبر العالم عن هذا الأنمي </span>
-                            <div class="my-3 d-inline mx-3">
+                            <div class="my-3 mx-3">
                                 <a href="#" class="btn btn-primary btn-icon-only rounded-circle">
                                     <i class="fa fa-twitter"></i>
                                 </a>

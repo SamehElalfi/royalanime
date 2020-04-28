@@ -13,7 +13,10 @@ class TagController extends Controller
      */
     public function index()
     {
-        //
+        $primary_nav = true;
+        $title = 'كل تصنيفات الأنمي';
+        $description = 'كل تصنيفات الأنمي من موقع رويال أنمي';
+        return view('tag.index', compact('primary_nav', 'title', 'description'));
     }
 
     /**
@@ -45,7 +48,18 @@ class TagController extends Controller
      */
     public function show($id)
     {
-        //
+        // return $id;
+        // Display anime list
+        $paginator = \App\Anime::orderBy('title')->where('genres','like', '%'.$id.'%')->paginate(10);
+
+        // Return 404 error if there are no animes
+        if ($paginator == null){abort(404);}
+        
+        $primary_nav = true;
+        $title = 'تصنيف '. $id;
+        $description = 'كل الأنميات ذات التصنيف  ' .$id;
+        // $tag = $id;
+        return view('tag.show', compact('paginator', 'primary_nav', 'title', 'description', 'id'));
     }
 
     /**

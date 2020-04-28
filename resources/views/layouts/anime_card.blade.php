@@ -22,9 +22,9 @@
             <div class="col-md-6">
                 <div class="card-profile-actions py-4 mt-0">
                     @foreach (json_decode($anime->genres) as $gener)
-                    <a href="/animes/{{$anime->id}}" class="btn btn-sm btn-default float-right mx-1">{{$gener}}</a>
+                    <a href="/tags/{{$gener}}" class="btn btn-sm btn-default float-right mx-1">{{$gener}}</a>
                     @endforeach
-                    <a href="/animes/{{$anime->id}}" class="btn btn-sm btn-info float-right mr-4">{{$anime->status}}</a>
+                    <a href="/animes/{{$anime->id}}" class="btn btn-sm btn-success float-right mr-4">{{$anime->status}}</a>
                 </div>
             </div>
             

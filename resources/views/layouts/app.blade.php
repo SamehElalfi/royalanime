@@ -20,14 +20,14 @@
     <!-- Fonts -->
     {{-- <link href="{{ cdn('vendor/nucleo/css/nucleo.css') }}" rel="stylesheet"> --}}
     <link href="{{ cdn('vendor/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
-    {{-- <link href="https://fonts.googleapis.com/css?family=Tajawal&display=swap" rel="stylesheet"> --}}
+    <link href="https://fonts.googleapis.com/css?family=Tajawal&display=swap" rel="stylesheet">
     
     <!-- Styles -->
     <link rel="stylesheet" href="{{ cdn('css/app.css') }}">
 
     @hasSection ('style')
         <style>
-            \@yield('style')
+            @yield('style')
         </style>
     @endif
 </head>
@@ -92,6 +92,7 @@
         document.querySelector('#searchfield').addEventListener('focusout', classToggle);
         document.querySelector('#searchbtn').addEventListener('click', classToggle);
     </script> --}}
+    
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-164705179-1"></script>
 <script>
@@ -101,6 +102,7 @@
 
   gtag('config', 'UA-164705179-1');
 </script>
+
     @hasSection ('scripts')
         <script>
             @yield('scripts')

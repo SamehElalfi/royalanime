@@ -2,7 +2,7 @@
 
 return [
 
-    'use_cdn' => env('USE_CDN', false),
+    'use_cdn' => env('USE_CDN', true),
 
     'cdn_url' => 'https://cdn.royalanime.com',
 

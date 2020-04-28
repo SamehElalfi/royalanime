@@ -132,22 +132,22 @@
                 </li>
             </ul>
 
-            {{-- <!-- Social Media Page and Search Button -->
+            <!-- Social Media Page and Search Button -->
             <ul class="navbar-nav align-items-lg-center ml-lg-auto">
                 <li class="nav-item">
-                    <a class="nav-link nav-link-icon" href="https://www.facebook.com/creativetim" target="_blank" data-toggle="tooltip" title="Like us on Facebook">
+                    <a class="nav-link nav-link-icon" href="https://www.facebook.com/RoyalAnimeOfficial" target="_blank" data-toggle="tooltip" title="Like us on Facebook">
                         <i class="fa fa-facebook-square"></i>
                         <span class="nav-link-inner--text d-lg-none">Facebook</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link nav-link-icon" href="https://www.instagram.com/creativetimofficial" target="_blank" data-toggle="tooltip" title="Follow us on Instagram">
-                        <i class="fa fa-instagram"></i>
-                        <span class="nav-link-inner--text d-lg-none">Instagram</span>
+                    <a class="nav-link nav-link-icon" href="https://www.instagram.com/RoyalAnimeOfficial" target="_blank" data-toggle="tooltip" title="Follow us on Instagram">
+                        <i class="fa fa-pinterest"></i>
+                        <span class="nav-link-inner--text d-lg-none">Pinterest</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link nav-link-icon" href="https://twitter.com/creativetim" target="_blank" data-toggle="tooltip" title="Follow us on Twitter">
+                    <a class="nav-link nav-link-icon" href="https://twitter.com/RoyalAnimeOfficial" target="_blank" data-toggle="tooltip" title="Follow us on Twitter">
                         <i class="fa fa-twitter-square"></i>
                         <span class="nav-link-inner--text d-lg-none">Twitter</span>
                     </a>
@@ -157,7 +157,7 @@
                 <!-- NOTE: This button will be visible till a user clicks on it -->
                 <!-- Then SEARCH FIELD will replace it -->
                 <li class="nav-item d-none d-lg-block ml-lg-4 color-primry searchbtn" id='searchbtn'>
-                    <a target="_blank" class="btn btn-neutral btn-icon">
+                    <a class="btn btn-neutral btn-icon" href="/search">
                         <span class="btn-inner--icon">
                             <i class="fa fa-search mr-2"></i>
                         </span>
@@ -169,15 +169,15 @@
                 <!-- NOTE: This field will be hidden till a user clicks on SEARCH BUTTON -->
                 <!-- If the user clicks outside the field, SEARCH FIELD will return hidden -->
                 <!-- And SEARCH BUTTON will return visible -->
-                <li class="nav-item d-sm-block d-lg-none ml-lg-4 color-primry searchfield" id='searchfield'>
+                {{-- <li class="nav-item d-sm-block d-lg-none ml-lg-4 color-primry searchfield" id='searchfield'>
                     <div class="input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="ni ni-zoom-split-in color-primry"></i></span>
                     </div>
-                    <input class="form-control" placeholder="بحث" type="text" autofocus>
+                    
                     </div>
-                </li>
-            </ul> --}}
+                </li> --}}
+            </ul>
         </div>
     </div>
 </nav>
