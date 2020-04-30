@@ -30,7 +30,7 @@
 
                                 <!-- Main Sentence -->
                                 <a href="/animes/{{$anime->id}}">
-                                    <h1 class="text-white mb-5" dir="ltr">
+                                    <h1 class="text-white mb-5 fz-sm-2" dir="ltr">
                                         {{ $anime->title }}
                                         <br/>
                                         @if (strtolower($anime->title) != strtolower($anime->title_japanese))
@@ -101,7 +101,7 @@
                                             @foreach ($episodes as $episode)
                                                 <a
                                                 href="/animes/{{ $anime->id }}/episodes/{{$episode->episode_number}}"
-                                                class="btn {{ $episode->filler ? 'btn-danger' : ($episode->recap ? 'btn-success' : 'btn-primary') }} col-md-5 col-sm-12 my-1 mx-1"
+                                                class="btn btn-lg {{ $episode->filler ? 'btn-danger' : ($episode->recap ? 'btn-success' : 'btn-primary') }} col-md-5 col-sm-12 my-1 mx-1"
                                                 dir="ltr">
                                                     <span class="float-left col col-3">
                                                         {{$episode->episode_number}}

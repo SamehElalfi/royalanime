@@ -29,7 +29,7 @@
 
                                 <!-- Main Sentence -->
                                 <a href="/animes/{{ $anime->id }}">
-                                    <h1 class="text-white mb-5" dir="ltr">
+                                    <h1 class="text-white mb-5 fz-sm-2" dir="ltr">
                                         {{ $anime->title }}
                                         <br/>
                                         @if (strtolower($anime->title) != strtolower($anime->title_japanese))
@@ -91,7 +91,7 @@
                                     <div class="row mb-4">
                                         <div class="col-md-8">
                                             <h2>قصة الأنمي</h2>
-                                            <p class="text-justify">
+                                            <p class="text-justify fz-sm-1 p-0 px-md-5">
                                                 {{$anime->arabic_synopsis}}
                                             </p>
                                             <a href="/animes/{{ $anime->id }}/episodes" class="btn btn-success col-10 my-2">مشاهدة وتحميل الأنمي</a>
@@ -188,7 +188,7 @@
                                         <small class="text-uppercase text-muted font-weight-bold">الاسم الأنمي الياباني</small>
                                     </div>
                                     <div class="col-sm-9">
-                                    <h5 class="mb-0">{{$anime->title_japanese != '' ? $anime->title_japanese : 'غير معروف'}}</h5>
+                                    <h5 class="mb-0 fz-sm-1">{{$anime->title_japanese != '' ? $anime->title_japanese : 'غير معروف'}}</h5>
                                     </div>
                                 </div>
                                 <div class="row py-3 align-items-center">
@@ -196,7 +196,7 @@
                                         <small class="text-uppercase text-muted font-weight-bold">الاسم بالإنجليزي</small>
                                     </div>
                                     <div class="col-sm-9">
-                                        <h5 class="mb-0">{{$anime->title_english != '' ? $anime->title_english : 'غير معروف'}}</h5>
+                                        <h5 class="mb-0 fz-sm-1">{{$anime->title_english != '' ? $anime->title_english : 'غير معروف'}}</h5>
                                     </div>
                                 </div>
                                 @if ($anime->title_synonyms != "[]")
@@ -206,7 +206,7 @@
                                         </div>
                                         <div class="col-sm-9">
                                             @foreach (json_decode($anime->title_synonyms) as $item)
-                                            <h5 class="mb-0">{{$item ?? 'غير معروف'}}</h5>
+                                            <h5 class="mb-0 fz-sm-1">{{$item ?? 'غير معروف'}}</h5>
                                             @endforeach
                                         </div>
                                     </div>
@@ -216,7 +216,7 @@
                                         <small class="text-uppercase text-muted font-weight-bold">متوسط طول الحلقة</small>
                                     </div>
                                     <div class="col-sm-9">
-                                        <h5 class="mb-0">{{$anime->duration != '' ? $anime->duration : 'غير معروف'}}</h5>
+                                        <h5 class="mb-0 fz-sm-1">{{$anime->duration != '' ? $anime->duration : 'غير معروف'}}</h5>
                                     </div>
                                 </div>
                                 <div class="row py-3 align-items-center">
@@ -224,7 +224,7 @@
                                         <small class="text-uppercase text-muted font-weight-bold">الموسم</small>
                                     </div>
                                     <div class="col-sm-9">
-                                        <h5 class="mb-0">{{$anime->premiered != '' ? $anime->premiered : 'غير معروف'}}</h5>
+                                        <h5 class="mb-0 fz-sm-1">{{$anime->premiered != '' ? $anime->premiered : 'غير معروف'}}</h5>
                                     </div>
                                 </div>
                                 <div class="row py-3 align-items-center">
@@ -232,7 +232,7 @@
                                         <small class="text-uppercase text-muted font-weight-bold">يوم بث الحلقات</small>
                                     </div>
                                     <div class="col-sm-9">
-                                        <h5 class="mb-0">{{$anime->broadcast != '' ? $anime->broadcast : 'غير معروف'}}</h5>
+                                        <h5 class="mb-0 fz-sm-1">{{$anime->broadcast != '' ? $anime->broadcast : 'غير معروف'}}</h5>
                                     </div>
                                 </div>
                                 <div class="row py-3 align-items-center">
@@ -240,7 +240,7 @@
                                         <small class="text-uppercase text-muted font-weight-bold">النوع</small>
                                     </div>
                                     <div class="col-sm-9">
-                                        <h5 class="mb-0">{{$anime->rating != '' ? $anime->rating : 'غير معروف'}}</h5>
+                                        <h5 class="mb-0 fz-sm-1">{{$anime->rating != '' ? $anime->rating : 'غير معروف'}}</h5>
                                     </div>
                                 </div>
                                 @if ($anime->notes)
@@ -250,7 +250,7 @@
                                         </div>
                                         <div class="col-sm-9">
                                             @foreach (explode(', ', $anime->notes) as $note)
-                                                <h5 class="mb-0">{{$note}}</h5>
+                                                <h5 class="mb-0 fz-sm-1">{{$note}}</h5>
                                             @endforeach
                                         </div>
                                     </div>
@@ -259,13 +259,13 @@
                             <hr>
                             <h3>معلومات إضافية عن القصة</h3>
                             @if ($anime->background)
-                                <p class="text-justify text-center">
+                                <p class="text-justify text-center fz-sm-1">
                                     {{$anime->background}}
                                 </p>
                                 <hr>
                             @endif
                             @if ($anime->wikipedia_synopsis)
-                                <p class="text-justify text-center">
+                                <p class="text-justify text-center fz-sm-1">
                                     {!! $anime->wikipedia_synopsis !!}
                                 </p>
                                 <hr>
@@ -276,7 +276,7 @@
                                     @foreach (json_decode($anime->opening_themes) as $key => $opening_theme)
                                         <a class="btn btn-icon btn-3 btn-outline-secondary col-12 my-1 mr-0" type="button" href="https://www.youtube.com/results?search_query={{ $opening_theme }}" target="_blank" >
                                             <span class="btn-inner--icon float-left text-warning"><i class="fa">#{{ ++$key }}</i></span>
-                                            <span class="btn-inner--text">{{$opening_theme}}</span>
+                                            <span class="btn-inner--text fz-sm-1">{{$opening_theme}}</span>
                                             </a>
                                     @endforeach
                                 </div>
@@ -285,7 +285,7 @@
                                     @foreach (json_decode($anime->ending_themes) as $key => $ending_theme)
                                     <a class="btn btn-icon btn-3 btn-outline-secondary col-12 my-1 mr-0" type="button" href="https://www.youtube.com/results?search_query={{ $ending_theme }}" target="_blank" >
                                                 <span class="btn-inner--icon float-left text-warning"><i class="fa">#{{ ++$key }}</i></span>
-                                                <span class="btn-inner--text">{{$ending_theme}}</span>
+                                                <span class="btn-inner--text fz-sm-1">{{$ending_theme}}</span>
                                                 </a>
                                     @endforeach
                                 </div>

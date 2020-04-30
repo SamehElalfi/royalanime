@@ -29,7 +29,7 @@
 
                                 <!-- Main Sentence -->
                                 <a href="/animes/{{ $anime->id }}">
-                                    <h1 class="text-white mb-5" dir="ltr">
+                                    <h1 class="text-white mb-5 fz-sm-2" dir="ltr">
                                         {{ $anime->title }}
                                         <br/>
                                         @if (strtolower($anime->title) != strtolower($anime->title_japanese))
@@ -79,7 +79,7 @@
                             </div>
                         </div>
 
-                        <h1 class="text-center">حلقة {{$episode->episode_number}} <br> <span dir="ltr">{{$episode->title}}</span></h1>
+                        <h1 class="text-center fz-sm-2">حلقة {{$episode->episode_number}} <br> <span dir="ltr">{{$episode->title}}</span></h1>
                         <div class="pt-5 text-center">
 
                             {{-- Watching Servers --}}
@@ -115,7 +115,7 @@
                                                             title="{{$item->name}}"></iframe>
                                                         </div>
                                                     @endforeach
-                                                    <span class="text-danger">تنويه: بعض الحلقات مرفوعه على مواقع تعرض إعلانات مزعجة خلال الحلقات. نحن نعمل على إعادة رفع هذه الحلقات إلى مواقع رفع أفضل حاليًا شكرًا لتفهمكم.</span>
+                                                    <span class="text-danger fz-sm-1">تنويه: بعض الحلقات مرفوعه على مواقع تعرض إعلانات مزعجة خلال الحلقات. نحن نعمل على إعادة رفع هذه الحلقات إلى مواقع رفع أفضل حاليًا شكرًا لتفهمكم.</span>
                                                 </div>
                                                 </div>
                                             </div>

@@ -14,25 +14,26 @@ class LinkController extends Controller
 
     public function store(Request $works, $episode) {
         $all_links = \App\Link::where('episode_id', 'like', $episode)->where('type', 'watch')->get('id');
-        
-        // All stored links
-        $ids = [];
-        foreach ($all_links as $link) {
-            array_push($ids, $link['id']);
-        }
-        // return $ids[1];
+        if (count($all_links) > 0) {
+            // All stored links
+            $ids = [];
+            foreach ($all_links as $link) {
+                array_push($ids, $link['id']);
+            }
+            // return $ids[1];
 
-        // Links that works
-        $woks_ids = array();
-        foreach ($works->except('_token') as $key => $value) {
-            array_push($woks_ids, $key);
-        }
-        // return $woks_ids[0];
-        
-        // Update links
-        foreach ($ids as $id) {
-            if (!in_array($id, $woks_ids)) {
-                \App\Link::where('id', $id)->update(['working' => false]);
+            // Links that works
+            $woks_ids = array();
+            foreach ($works->except('_token') as $key => $value) {
+                array_push($woks_ids, $key);
+            }
+            // return $woks_ids[0];
+            
+            // Update links
+            foreach ($ids as $id) {
+                if (!in_array($id, $woks_ids)) {
+                    \App\Link::where('id', $id)->update(['working' => false]);
+                }
             }
         }
 

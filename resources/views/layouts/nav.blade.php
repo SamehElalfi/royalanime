@@ -156,7 +156,7 @@
                 <!-- Search Button -->
                 <!-- NOTE: This button will be visible till a user clicks on it -->
                 <!-- Then SEARCH FIELD will replace it -->
-                <li class="nav-item d-none d-lg-block ml-lg-4 color-primry searchbtn" id='searchbtn'>
+                <li class="nav-item d-block ml-lg-4 color-primry searchbtn" id='searchbtn'>
                     <a class="btn btn-neutral btn-icon" href="/search">
                         <span class="btn-inner--icon">
                             <i class="fa fa-search mr-2"></i>
@@ -164,17 +164,16 @@
                         <span class="nav-link-inner--text">بحث</span>
                     </a>
                 </li>
-
+{{-- 
                 <!-- Search Field -->
                 <!-- NOTE: This field will be hidden till a user clicks on SEARCH BUTTON -->
                 <!-- If the user clicks outside the field, SEARCH FIELD will return hidden -->
                 <!-- And SEARCH BUTTON will return visible -->
-                {{-- <li class="nav-item d-sm-block d-lg-none ml-lg-4 color-primry searchfield" id='searchfield'>
+                <li class="nav-item d-sm-block d-lg-none ml-lg-4 color-primry searchfield" id='searchfield'>
                     <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="ni ni-zoom-split-in color-primry"></i></span>
-                    </div>
-                    
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="ni ni-zoom-split-in color-primry"></i></span>
+                        </div>
                     </div>
                 </li> --}}
             </ul>

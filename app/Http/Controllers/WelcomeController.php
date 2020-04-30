@@ -34,4 +34,14 @@ class WelcomeController extends Controller
         $description = 'أبحث عن أي حلقة أو مسلسل أو فيلم و بأي لغة تريد';
         return view('search', compact('primary_nav', 'title', 'description'));
     }
+    
+    /**
+     * Display the search page
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function dashboard()
+    {
+        return view('dashboard.auth.login');
+    }
 }

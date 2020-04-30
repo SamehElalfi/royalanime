@@ -42,7 +42,7 @@
                                     <div class="form-group mt-5">
                                         <div class="input-group input-group-alternative {{ $errors->has('name') ? 'has-danger' : ''}}">
                                             <div class="input-group-prepend">
-                                            <span class="input-group-text"><i class="ni ni-user-run"></i></span>
+                                            <span class="input-group-text"><i class="fa fa-user"></i></span>
                                             </div>
                                             <input class="form-control" name="name" placeholder="اسمك" type="text" value="{{ old('name') }}" required>
                                         </div>
@@ -55,7 +55,7 @@
                                     <div class="form-group">
                                         <div class="input-group input-group-alternative {{ $errors->has('email') ? 'has-danger' : ''}}">
                                             <div class="input-group-prepend">
-                                            <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                                            <span class="input-group-text"><i class="fa fa-envelope"></i></span>
                                             </div>
                                             <input class="form-control" name="email" placeholder="بريدك الإلكتروني" type="email"  value="{{ old('email') }}" required>
                                         </div>

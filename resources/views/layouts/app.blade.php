@@ -24,6 +24,14 @@
     
     <!-- Styles -->
     <link rel="stylesheet" href="{{ cdn('css/app.css') }}">
+    <style>
+        @media (max-width:576px){
+        .d-sm-hidden{display:none;}
+        .fz-sm-1{font-size:1rem;}
+        .fz-sm-2{font-size:2rem;}
+        .gsc-search-button-v2{padding: 18px 20px !important;}
+        }
+    </style>
 
     @hasSection ('style')
         <style>

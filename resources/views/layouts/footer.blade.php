@@ -32,7 +32,7 @@
 
                 <!-- Copyrights and Website Link -->
                 <div class="copyright">
-                    2019 &copy; <a href="https://www.royalanime.com">Royal Anime</a>
+                    2019 &copy; <a href="/">Royal Anime</a>
                 </div>
             </div>
 
@@ -40,13 +40,13 @@
             <div class="col-md-6 text-center text-md-left">
                 <ul class="nav nav-footer justify-content-center">
                     <li class="nav-item">
-                        <a href="https://www.royalanime.com" class="nav-link">رويال أنمي</a>
+                        <a href="/" class="nav-link">رويال أنمي</a>
                     </li>
                     <li class="nav-item">
-                        <a href="https://www.royalanime.com/about" class="nav-link">المزيد عنا</a>
+                        <a href="/about" class="nav-link">المزيد عنا</a>
                     </li>
                     <li class="nav-item">
-                        <a href="https://wwwroyalanime.com/blog" class="nav-link">المدونة</a>
+                        <a href="/blog" class="nav-link">المدونة</a>
                     </li>
                 </ul>
             </div>
