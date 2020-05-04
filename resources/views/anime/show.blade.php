@@ -6,7 +6,7 @@
             <section class="section section-lg section-hero section-shaped">
                 
                 <!-- Background Circles and Image -->
-                <div class="shape shape-style-1 shape-primary" style="background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(20,0,100,0.8)), url('{{ $anime->cover_url != '' ? $anime->cover_url : $anime->image_url }}'); background-size: cover;background-position:center;">
+                <div class="shape shape-style-1 lazy loading-img colored-bg-dark bg-cover bg-center" data-src="{{ $anime->cover_url != '' ? $anime->cover_url : $anime->image_url }}">
                     <span class="span-150"></span>
                     <span class="span-50"></span>
                     <span class="span-50"></span>
@@ -99,7 +99,7 @@
                                         </div>
                                         <div class="col-md-4 col-sm-12 text-center mt-md-5 mt-sm-4">
                                             {{-- <img src="{{ $anime -> Cover_url }}"> --}}
-                                            <img src="{{$anime->image_url}}" class="mb-2">
+                                            <img data-src="{{$anime->image_url}}" class="mb-2 lazy">
                                                 {{-- <button type="button" class="btn btn-block btn-primary mr-1 mt-4 col-lg-10 ml-lg-4" data-toggle="modal" data-target="#modal-notification">الإعلان التشويقي</button> --}}
                                                 <div class="modal fade" id="modal-notification" tabindex="-1" role="dialog" aria-labelledby="modal-notification" aria-hidden="true" style="display: none;">
                                                     <div class="modal-dialog modal-danger modal-dialog-centered modal-" role="document" style="max-width: fit-content;">
@@ -293,20 +293,10 @@
 
                         </div>
 
-                        <div class="text-center my-5 floating-sm">
-                            <span class="text-">أخبر العالم عن هذا الأنمي </span>
-                            <div class="my-3 mx-3">
-                                <a href="#" class="btn btn-primary btn-icon-only rounded-circle">
-                                    <i class="fa fa-twitter"></i>
-                                </a>
-                                <a href="#" class="btn btn-primary btn-icon-only rounded-circle">
-                                    <i class="fa fa-facebook"></i>
-                                </a>
-                                <a href="#" class="btn btn-primary btn-icon-only rounded-circle">
-                                    <i class="fa fa-dribbble"></i>
-                                </a>
-                            </div>
-                        </div>
+                        
+                        {{-- Share Buttons --}}
+                        @include('layouts.share_buttons', ['title'=>'أخبر العالم عن هذا الأنمي'])
+                        
                         <div id="disqus_thread"></div>
                     </div>
                 </div>

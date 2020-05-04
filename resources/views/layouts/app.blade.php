@@ -25,17 +25,26 @@
     <!-- Styles -->
     <link rel="stylesheet" href="{{ cdn('css/app.css') }}">
     <style>
+        .colored-bg-transparent{background-image:linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1));}
+        .colored-bg{background-image:linear-gradient(rgba(94, 114, 228, 0.3), rgba(23, 43, 77, 0.3));}
+        .colored-bg-dark {background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(20,0,100,0.8));}
+        .h-400{height:400px;}
+        .bg-border {background-origin: border-box;}
+        .rounded-lg{border-radius: 0.6rem !important;}
+        .bg-center{background-position:center;}
+        .bg-cover{background-size: cover;}
+        .float-md-right{float:left}
         @media (max-width:576px){
         .d-sm-hidden{display:none;}
         .fz-sm-1{font-size:1rem;}
         .fz-sm-2{font-size:2rem;}
-        .gsc-search-button-v2{padding: 18px 20px !important;}
+        .gsc-search-button-v2{padding: 17px 20px !important;}
         }
     </style>
 
     @hasSection ('style')
         <style>
-            @yield('style')
+            \@yield('style')
         </style>
     @endif
 </head>
@@ -60,9 +69,21 @@
     <!-- JS -->
     <script src='{{ cdn('js/jquery.min.js') }}'></script>
     <script src='{{ cdn('js/app.js') }}'></script>
-
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.9/jquery.lazy.min.js"></script>
     <!-- Blog Posts Swiper -->
     <script>
+        $(function() {
+            $('.lazy').lazy({
+                beforeLoad: function(e) {
+                    // before load, store the gradient onto the element data
+                    e.data("gradient", e.css("background-image"));
+                },
+                afterLoad: function(e) {
+                    // afterwards create the wanted background image
+                    e.css("background-image", e.data("gradient") + "," + e.css("background-image"));
+                }
+            });
+        });
         var swiper = new Swiper('.blog-slider', {
             spaceBetween: 30,
             effect: 'fade',

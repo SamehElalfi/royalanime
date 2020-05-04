@@ -1,6 +1,6 @@
 <div
- class="card card-profile shadow mb-5 anime-card"
- style="background-origin: border-box;background-image: linear-gradient(rgba(94, 114, 228, 0.3), rgba(23, 43, 77, 0.3)), url({{ $anime->cover_url != '' ? $anime->cover_url : $anime->image_url }});color: #fff;border-radius: 10px;margin-top: 0;">
+ class="card card-profile shadow mb-5 anime-card text-white lazy loading-img colored-bg mt-0 rounded-lg"
+ data-src="{{ $anime->cover_url != '' ? $anime->cover_url : $anime->image_url }}">
     <div class="px-4">
         <div class="row justify-content-center">
             <div class="col-md-6">
@@ -22,7 +22,7 @@
             <div class="col-md-6">
                 <div class="card-profile-actions py-4 mt-0">
                     @foreach (json_decode($anime->genres) as $gener)
-                    <a href="/tags/{{$gener}}" class="btn btn-sm btn-default float-right mx-1">{{$gener}}</a>
+                    <a href="/tags/{{$gener}}" class="btn btn-sm btn-default float-none float-md-right mx-1">{{$gener}}</a>
                     @endforeach
                     <a href="/status/{{$anime->status}}" class="btn btn-sm btn-success float-right mx-1">{{$anime->status}}</a>
                 </div>
@@ -35,7 +35,11 @@
                     <div class="row">
                         <div class="col-lg-9">
                             <div class="text-center mt-5" dir="ltr">
-                                <h3 style="color: #fff;">{{$anime->title}}</h3>
+                                <a href="/animes/{{$anime->id}}/{{ Str::slug($anime->title, '-') ?? '' }}">
+                                    <h3 class="text-white">
+                                        {{$anime->title}}
+                                    </h3>
+                                </a>
                             </div>
                             <p
                             class="fz-sm-1 text-white p-4"
@@ -49,7 +53,7 @@
                             </a>
                         </div>
                     </div>
-                    <a href="/animes/{{$anime->id}}" class="btn btn-lg btn-primary">مشاهدة وتحميل الأنمي</a>
+                    <a href="/animes/{{$anime->id}}/{{ Str::slug($anime->title, '-') ?? '' }}" class="btn btn-lg btn-primary">مشاهدة وتحميل الأنمي</a>
                 </div>
             </div>
         </div>

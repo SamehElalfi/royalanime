@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class AnimeController extends Controller
 {
+    public function __construct() {
+        // Cache the final page  as html file in /public/page-cache/
+        $this->middleware('page-cache', ['only' => ['index', 'show']]);
+    }
+
     /**
      * Display a listing of the resource.
      *

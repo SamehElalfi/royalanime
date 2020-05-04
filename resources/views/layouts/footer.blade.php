@@ -32,7 +32,7 @@
 
                 <!-- Copyrights and Website Link -->
                 <div class="copyright">
-                    2019 &copy; <a href="/">Royal Anime</a>
+                    {{ now()->year }} &copy; <a href="/">Royal Anime</a>
                 </div>
             </div>
 

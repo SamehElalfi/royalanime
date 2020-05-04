@@ -1,5 +1,5 @@
 <!-- SlideShow -->
-<div class="col-lg-7 mb-lg-auto pr-0">
+<div class="col-lg-7 mb-lg-auto pr-md-0">
     <div class="rounded shadow-lg overflow-hidden transform-perspective-right">
         <div id="carousel_example" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">

@@ -1,3 +1,16 @@
+# 0.19.0
+## Changed
+- Share Buttons is dynamic now
+- finished login page for the dashboard
+- fixed tags in anime cards (now it's in the center)
+
+## Added
+- add slug mechanism to animes and episodes
+- add lazy loading to all images
+- add anime covers links
+- installed page-cache to cache every page as html file
+- installed google-analytics package to get data in the dashboard
+
 # 0.18.0
 ## Changed 
 - hide the anime cover on mobiles

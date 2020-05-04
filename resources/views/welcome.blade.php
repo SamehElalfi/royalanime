@@ -6,7 +6,7 @@
             <section class="section section-lg section-hero section-shaped">
                 
                 <!-- Background Circles and Image -->
-                <div class="shape shape-style-1 shape-primary" style="background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url('img/backgrounds/bg-1.webp'); background-size: cover;">
+                <div class="shape shape-style-1 bg-cover colored-bg-transparent lazy" data-src='img/backgrounds/bg-1.webp'>
                     <span class="span-150"></span>
                     <span class="span-50"></span>
                     <span class="span-50"></span>
@@ -25,7 +25,7 @@
                         <div class="row align-items-center justify-content-center">
                             <div class="col-lg-6 text-center">
                                 <!-- Header Brand -->
-                                <img alt="image" src="img/brand/white.webp" style="width: 200px;" class="img-fluid">
+                                <img alt="image" src="{{ cdn('img/brand/white.webp') }}" style="width: 200px;" class="img-fluid">
 
                                 <!-- Main Sentence -->
                                 <p class="lead text-white">المنزل الملكي لكل الأنمي.<br/>كل ما يحتاجه الأوتاكو في مكان واحد.</p>

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\page;
+use App\Page;
 use Illuminate\Http\Request;
 
 class PageController extends Controller

@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 
 class LinkController extends Controller
 {
+    public function hi() {
+        return 'hiaas';
+    }
     public function index($anime) {
         $links = \App\Link::where('episode_id', 'like', $anime)->where('type', 'watch')->get();
         // $links['episode_id'];

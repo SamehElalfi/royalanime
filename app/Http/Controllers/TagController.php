@@ -3,9 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Analytics;
+use Spatie\Analytics\Period;
 class TagController extends Controller
 {
+    public function __construct() {
+        // Cache the final page  as html file in /public/page-cache/
+        $this->middleware('page-cache', ['only' => ['index', 'show']]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -13,6 +18,7 @@ class TagController extends Controller
      */
     public function index()
     {
+        // dd(Analytics::fetchVisitorsAndPageViews(Period::days(7)));
         $primary_nav = true;
         $title = 'كل تصنيفات الأنمي';
         $description = 'كل تصنيفات الأنمي من موقع رويال أنمي';
