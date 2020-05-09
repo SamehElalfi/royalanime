@@ -107,8 +107,8 @@
                                                         {{$episode->episode_number}}
                                                         <br>
                                                         <span>{{$episode->filler ? 'فلر' : ''}}</span>
-                                                        <br>
                                                         <span>{{$episode->recap ? 'ملخص' : ''}}</span>
+                                                        <br>
                                                     </span>
                                                     <span class="col col-9">{{$episode->title}}</span>
                                                 </a>

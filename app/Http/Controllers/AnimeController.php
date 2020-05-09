@@ -9,7 +9,7 @@ class AnimeController extends Controller
 {
     public function __construct() {
         // Cache the final page  as html file in /public/page-cache/
-        $this->middleware('page-cache', ['only' => ['index', 'show']]);
+        $this->middleware('page-cache', ['only' => ['show']]);
     }
 
     /**
@@ -20,7 +20,7 @@ class AnimeController extends Controller
     public function index()
     {
         // Display anime list
-        $paginator = \App\Anime::orderBy('title')->paginate(10);
+        $paginator = Anime::orderBy('title')->paginate(10);
 
         // Return 404 error if there are no animes
         if ($paginator == null){abort(404);}
@@ -60,8 +60,8 @@ class AnimeController extends Controller
      */
     public function show(anime $anime)
     {
-        // the meta tag of anime
-        $title = "مشاهدة وتحميل مسلسل " . $anime->title;
+        // the meta tag of anime page
+        $title = "مشاهدة وتحميل " . $anime->title;
         $description = $anime->background;
 
         // anime variable is passd to this function

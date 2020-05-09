@@ -2,39 +2,53 @@
 
 namespace App\Http\Controllers;
 
+use App\Anime;
 use App\Episode;
+use App\EpisodeDetail;
 use Illuminate\Http\Request;
 
 class EpisodeController extends Controller
 {
-    // public function __construct() {
-    //     // Cache the final page  as html file in /public/page-cache/
-    //     $this->middleware('page-cache', ['only' => ['index', 'show']]);
-    // }
+    public function __construct() {
+        // Cache the final page  as html file in /public/page-cache/
+        $this->middleware('page-cache', ['only' => ['index', 'show']]);
+    }
 
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($anime)
+    public function index($anime_id)
     {
-        $episodes = \App\Episode::where('mal_id', $anime)
-        ->orderBy('episode_number')
-        ->get();
+        // Get the episode_id whiche used to get Episode Details
+        // The next block of code will return the episode id like:
+        // [1, 2, 3]
+        $episodes_ids = Episode::where('anime_id', $anime_id)->pluck('id');
 
-        // dd($episodes);
+        // Abort an ERROR message if no episode found
+        if (!$episodes_ids->first()) {return view('episode.not_found');}
 
-        // Return 404 Error if no episodes found
-        if (empty($episodes->toArray())) {abort(404);}
 
-        $anime = \App\Anime::where('id', $anime)->first();
+        $episodes = EpisodeDetail::whereIn('episode_id', $episodes_ids)
+        ->orderBy('episode_number')->get();
         
-        // Meta Tags
-        $title = "جميع حلقات مسلسل " . $anime->title;
-        $description = 'جميع حلقات مسلسل ' . $anime->title . ' للمشاهدة والتحميل بروابط مباشرة من موقع رويال أنمي';
+        // Return 404 Error if no episodes found
+        if (empty($episodes)) {abort(404);}
 
-        return view('episode.index', compact('episodes', 'anime', 'title', 'description'));
+        // Get the anime details which used in Main page heading
+        // , tags and season information ... etc
+        $anime = Anime::where('id', $anime_id)->first();
+
+        
+        // The Meta tags for this episode page
+        $title = "جميع حلقات مسلسل " . $anime->title;
+        $description = 'جميع حلقات مسلسل ' . $anime->title
+        . ' للمشاهدة والتحميل بروابط مباشرة من موقع رويال أنمي';
+
+        return view('episode.index',
+            compact('episodes', 'anime', 'title', 'description')
+        );
     }
 
     /**
@@ -61,33 +75,69 @@ class EpisodeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\episode  $episode
+     * The request will be like /animes/21/episodes/10/{slug?}
+     * 
+     * @param  $anime_id and $episode_number
      * @return \Illuminate\Http\Response
      */
-    public function show($anime, $episode)
+    public function show($anime_id, $episode_number)
     {
-        $episode = \App\Episode::where('mal_id', $anime)
-            ->where('episode_number', $episode)
-            ->first();
-        
-        // If episode is not found
-        if (!$episode){abort(404);}
+        // Get the episode_id whiche used to get Episode Details
+        // The next block of code will return the episode id like:
+        // {"episode_id":2}
+        $episode = Episode::where('anime_id', $anime_id)
+        ->where('episode_number', $episode_number)->first();
 
-        // Get the anime details which used in "Next ep" and "Prev ep" buttons
-        $anime = \App\Anime::where('id', $anime)->first();
-
-        // dd($anime);
         
-        // The Meta tags for this episode
-        $title = "الحلقة رقم " . $episode->episode_number . ' من مسلسل ' . $anime->title;
-        $description = "مشاهدة وتحميل الحلقة " . $episode->episode_number . ' من مسلسل ' . $anime->title . ' بروابط مباشرة وبدون إعلانات مزعجة';
-        
-        // Watching and downloading servers links
-        $watch_links = $episode->link->where('type', '=', 'watch');
-        $download_links = $episode->link->where('type', '=', 'download');
+        // Abort an ERROR message if no episode found
+        if (!$episode) {return view('episode.not_found');}
+        $episode_id = $episode->id;
 
-        // dd(empty($watch_links));
-        return view('episode.show', compact('episode', 'anime', 'title', 'description', 'watch_links', 'download_links'));
+
+        // Get Episode Details (e.g. title, English Title ...)
+        $episode_details = $episode->episodeDetails;
+
+        // // Return 404 Error if no episodes found
+        if (empty($episode_details)) {abort(404);}
+        
+        // Get the anime details which used in "Next ep"
+        // and "Prev ep" buttons and Main page heading
+        $anime = Anime::where('id', $anime_id)->first();
+        
+        
+        // The Meta tags for this episode page
+        $title = "الحلقة رقم " . $episode_number
+        . ' من ' . $anime->title;
+        $description = "مشاهدة وتحميل الحلقة " . $episode_number
+        . ' من ' . $anime->title . ' بروابط مباشرة وبدون إعلانات مزعجة';
+        $keywords = 'حلقة ' . $episode_number
+        . ', '. $anime->title;
+        
+        
+        // Watching (Streaming) servers whiche used in iframe source
+        // The Structure is like the following
+        // episodes.episode_id (int)
+        // -> episode_link.link_id (int)
+        // -> links.links (text (json))
+        // 
+        // If there is no links an error message will be handled by the view
+        $watch_links = json_decode(
+            $episode->watchLinks['links']
+        );
+
+
+        // Downloading servers
+        // 
+        // If there is no links an error message will be handled by the view
+        // $download_links = $episode->link->where('type', '=', 'download');
+        $download_links = json_decode(
+            $episode->downloadLinks['links']
+        );
+
+        return view('episode.show', compact(
+            'anime', 'title',
+            'description', 'watch_links', 'download_links')
+        )->with('episode', $episode_details);
     }
 
     /**

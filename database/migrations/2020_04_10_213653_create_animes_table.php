@@ -15,6 +15,7 @@ class CreateAnimesTable extends Migration
     {
         Schema::create('animes', function (Blueprint $table) {
             $table->id();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

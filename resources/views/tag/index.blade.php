@@ -14,45 +14,45 @@
                 </div>
             </div>
 
-            <a class="btn btn-lg btn-outline-primary btn-round col col-2" href="/tags/إتشي">إتشي</a>
-            <a class="btn btn-lg btn-outline-primary btn-round col col-2" href="/tags/إثارة">إثارة</a>
-            <a class="btn btn-lg btn-outline-primary btn-round col col-2" href="/tags/أكشن">أكشن</a>
-            <a class="btn btn-lg btn-outline-primary btn-round col col-2" href="/tags/ألعاب">ألعاب</a>
-            <a class="btn btn-lg btn-outline-primary btn-round col col-2" href="/tags/آلات">آلات</a>
-            <a class="btn btn-lg btn-outline-primary btn-round col col-2" href="/tags/بوليسي">بوليسي</a>
-            <a class="btn btn-lg btn-outline-primary btn-round col col-2" href="/tags/تاريخي">تاريخي</a>
-            <a class="btn btn-lg btn-outline-primary btn-round col col-2" href="/tags/جنوني">جنوني</a>
-            <a class="btn btn-lg btn-outline-primary btn-round col col-2" href="/tags/جوسي">جوسي</a>
-            <a class="btn btn-lg btn-outline-primary btn-round col col-2" href="/tags/حريم">حريم</a>
-            <a class="btn btn-lg btn-outline-primary btn-round col col-2" href="/tags/خارق للطبيعة">خارق للطبيعة</a>
-            <a class="btn btn-lg btn-outline-primary btn-round col col-2" href="/tags/خيال علمي">خيال علمي</a>
-            <a class="btn btn-lg btn-outline-primary btn-round col col-2" href="/tags/دراما">دراما</a>
-            <a class="btn btn-lg btn-outline-primary btn-round col col-2" href="/tags/رعب">رعب</a>
-            <a class="btn btn-lg btn-outline-primary btn-round col col-2" href="/tags/رومانسي">رومانسي</a>
-            <a class="btn btn-lg btn-outline-primary btn-round col col-2" href="/tags/رياضي">رياضي</a>
-            <a class="btn btn-lg btn-outline-primary btn-round col col-2" href="/tags/ساخر">ساخر</a>
-            <a class="btn btn-lg btn-outline-primary btn-round col col-2" href="/tags/ساموراي">ساموراي</a>
-            <a class="btn btn-lg btn-outline-primary btn-round col col-2" href="/tags/سحر">سحر</a>
-            <a class="btn btn-lg btn-outline-primary btn-round col col-2" href="/tags/سينن">سينن</a>
-            <a class="btn btn-lg btn-outline-primary btn-round col col-2" href="/tags/شريحة من الحباة">شريحة من الحباة</a>
-            <a class="btn btn-lg btn-outline-primary btn-round col col-2" href="/tags/شوجو">شوجو</a>
-            <a class="btn btn-lg btn-outline-primary btn-round col col-2" href="/tags/شوجو">شوجو</a>
-            <a class="btn btn-lg btn-outline-primary btn-round col col-2" href="/tags/شونين">شونين</a>
-            <a class="btn btn-lg btn-outline-primary btn-round col col-2" href="/tags/شونين">شونين</a>
-            <a class="btn btn-lg btn-outline-primary btn-round col col-2" href="/tags/شياطين">شياطين</a>
-            <a class="btn btn-lg btn-outline-primary btn-round col col-2" href="/tags/طفولي">طفولي</a>
-            <a class="btn btn-lg btn-outline-primary btn-round col col-2" href="/tags/عسكري">عسكري</a>
-            <a class="btn btn-lg btn-outline-primary btn-round col col-2" href="/tags/غموض">غموض</a>
-            <a class="btn btn-lg btn-outline-primary btn-round col col-2" href="/tags/فانتازيا">فانتازيا</a>
-            <a class="btn btn-lg btn-outline-primary btn-round col col-2" href="/tags/فضاء">فضاء</a>
-            <a class="btn btn-lg btn-outline-primary btn-round col col-2" href="/tags/فنون">فنون</a>
-            <a class="btn btn-lg btn-outline-primary btn-round col col-2" href="/tags/قوى خارقة">قوى خارقة</a>
-            <a class="btn btn-lg btn-outline-primary btn-round col col-2" href="/tags/كوميدي ">كوميدي </a>
-            <a class="btn btn-lg btn-outline-primary btn-round col col-2" href="/tags/مدرسي">مدرسي</a>
-            <a class="btn btn-lg btn-outline-primary btn-round col col-2" href="/tags/مصاصي دماء">مصاصي دماء</a>
-            <a class="btn btn-lg btn-outline-primary btn-round col col-2" href="/tags/مغامرات">مغامرات</a>
-            <a class="btn btn-lg btn-outline-primary btn-round col col-2" href="/tags/موسيقي">موسيقي</a>
-            <a class="btn btn-lg btn-outline-primary btn-round col col-2" href="/tags/نفسي">نفسي</a>
+            <a class="btn btn-lg btn-outline-primary btn-round col col-5 col-md-2" href="/tags/إتشي">إتشي</a>
+            <a class="btn btn-lg btn-outline-primary btn-round col col-5 col-md-2" href="/tags/إثارة">إثارة</a>
+            <a class="btn btn-lg btn-outline-primary btn-round col col-5 col-md-2" href="/tags/أكشن">أكشن</a>
+            <a class="btn btn-lg btn-outline-primary btn-round col col-5 col-md-2" href="/tags/ألعاب">ألعاب</a>
+            <a class="btn btn-lg btn-outline-primary btn-round col col-5 col-md-2" href="/tags/آلات">آلات</a>
+            <a class="btn btn-lg btn-outline-primary btn-round col col-5 col-md-2" href="/tags/بوليسي">بوليسي</a>
+            <a class="btn btn-lg btn-outline-primary btn-round col col-5 col-md-2" href="/tags/تاريخي">تاريخي</a>
+            <a class="btn btn-lg btn-outline-primary btn-round col col-5 col-md-2" href="/tags/جنوني">جنوني</a>
+            <a class="btn btn-lg btn-outline-primary btn-round col col-5 col-md-2" href="/tags/جوسي">جوسي</a>
+            <a class="btn btn-lg btn-outline-primary btn-round col col-5 col-md-2" href="/tags/حريم">حريم</a>
+            <a class="btn btn-lg btn-outline-primary btn-round col col-5 col-md-2" href="/tags/خارق للطبيعة">خارق للطبيعة</a>
+            <a class="btn btn-lg btn-outline-primary btn-round col col-5 col-md-2" href="/tags/خيال علمي">خيال علمي</a>
+            <a class="btn btn-lg btn-outline-primary btn-round col col-5 col-md-2" href="/tags/دراما">دراما</a>
+            <a class="btn btn-lg btn-outline-primary btn-round col col-5 col-md-2" href="/tags/رعب">رعب</a>
+            <a class="btn btn-lg btn-outline-primary btn-round col col-5 col-md-2" href="/tags/رومانسي">رومانسي</a>
+            <a class="btn btn-lg btn-outline-primary btn-round col col-5 col-md-2" href="/tags/رياضي">رياضي</a>
+            <a class="btn btn-lg btn-outline-primary btn-round col col-5 col-md-2" href="/tags/ساخر">ساخر</a>
+            <a class="btn btn-lg btn-outline-primary btn-round col col-5 col-md-2" href="/tags/ساموراي">ساموراي</a>
+            <a class="btn btn-lg btn-outline-primary btn-round col col-5 col-md-2" href="/tags/سحر">سحر</a>
+            <a class="btn btn-lg btn-outline-primary btn-round col col-5 col-md-2" href="/tags/سينن">سينن</a>
+            <a class="btn btn-lg btn-outline-primary btn-round col col-5 col-md-2" href="/tags/شريحة من الحباة">شريحة من الحباة</a>
+            <a class="btn btn-lg btn-outline-primary btn-round col col-5 col-md-2" href="/tags/شوجو">شوجو</a>
+            <a class="btn btn-lg btn-outline-primary btn-round col col-5 col-md-2" href="/tags/شوجو">شوجو</a>
+            <a class="btn btn-lg btn-outline-primary btn-round col col-5 col-md-2" href="/tags/شونين">شونين</a>
+            <a class="btn btn-lg btn-outline-primary btn-round col col-5 col-md-2" href="/tags/شونين">شونين</a>
+            <a class="btn btn-lg btn-outline-primary btn-round col col-5 col-md-2" href="/tags/شياطين">شياطين</a>
+            <a class="btn btn-lg btn-outline-primary btn-round col col-5 col-md-2" href="/tags/طفولي">طفولي</a>
+            <a class="btn btn-lg btn-outline-primary btn-round col col-5 col-md-2" href="/tags/عسكري">عسكري</a>
+            <a class="btn btn-lg btn-outline-primary btn-round col col-5 col-md-2" href="/tags/غموض">غموض</a>
+            <a class="btn btn-lg btn-outline-primary btn-round col col-5 col-md-2" href="/tags/فانتازيا">فانتازيا</a>
+            <a class="btn btn-lg btn-outline-primary btn-round col col-5 col-md-2" href="/tags/فضاء">فضاء</a>
+            <a class="btn btn-lg btn-outline-primary btn-round col col-5 col-md-2" href="/tags/فنون">فنون</a>
+            <a class="btn btn-lg btn-outline-primary btn-round col col-5 col-md-2" href="/tags/قوى خارقة">قوى خارقة</a>
+            <a class="btn btn-lg btn-outline-primary btn-round col col-5 col-md-2" href="/tags/كوميدي ">كوميدي </a>
+            <a class="btn btn-lg btn-outline-primary btn-round col col-5 col-md-2" href="/tags/مدرسي">مدرسي</a>
+            <a class="btn btn-lg btn-outline-primary btn-round col col-5 col-md-2" href="/tags/مصاصي دماء">مصاصي دماء</a>
+            <a class="btn btn-lg btn-outline-primary btn-round col col-5 col-md-2" href="/tags/مغامرات">مغامرات</a>
+            <a class="btn btn-lg btn-outline-primary btn-round col col-5 col-md-2" href="/tags/موسيقي">موسيقي</a>
+            <a class="btn btn-lg btn-outline-primary btn-round col col-5 col-md-2" href="/tags/نفسي">نفسي</a>
 
             <div class="text-center">
                 {{-- <i class="fa fa-frown-o" style="font-size: 10em;"></i> --}}

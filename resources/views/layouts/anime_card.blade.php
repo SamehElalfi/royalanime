@@ -49,7 +49,7 @@
                         </div>
                         <div class="col-md-3 mt-md-5 d-md-none d-lg-block d-sm-none">
                             <a href="animes/{{$anime->id}}">
-                                <img src="{{$anime->image_url}}" class="d-sm-hidden img-fluid rounded shadow" alt="{{$anime->title}}">
+                                <img data-src="{{$anime->image_url}}" class="d-sm-hidden img-fluid rounded shadow lazy" alt="{{$anime->title}}">
                             </a>
                         </div>
                     </div>

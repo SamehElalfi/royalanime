@@ -28,7 +28,7 @@
                                 {{-- <img alt="image" src="{{ cdn('img/brand/white.webp') }}" style="width: 200px;" class="img-fluid"> --}}
 
                                 <!-- Main Sentence -->
-                                <a href="/animes/{{ $anime->id }}">
+                                <a href="{{ route('animes.show', ['anime'=>$anime->id]) }}/{{ Str::slug($anime->title) }}">
                                     <h1 class="text-white mb-5 fz-sm-2" dir="ltr">
                                         {{ $anime->title }}
                                         <br/>
@@ -273,21 +273,29 @@
                             <div class="row">
                                 <div class="col-md-6 col-sm-12" dir="ltr">
                                     <h3>موسيقى البداية</h3>
-                                    @foreach (json_decode($anime->opening_themes) as $key => $opening_theme)
+                                    @forelse (json_decode($anime->opening_themes) as $key => $opening_theme)
                                         <a class="btn btn-icon btn-3 btn-outline-secondary col-12 my-1 mr-0" type="button" href="https://www.youtube.com/results?search_query={{ $opening_theme }}" target="_blank" >
                                             <span class="btn-inner--icon float-left text-warning"><i class="fa">#{{ ++$key }}</i></span>
                                             <span class="btn-inner--text fz-sm-1">{{$opening_theme}}</span>
                                             </a>
-                                    @endforeach
+                                    @empty
+                                        <div class="row justify-content-center text-dark post">
+                                            <span>غير معروف حتى الآن</span>
+                                        </div>
+                                    @endforelse
                                 </div>
                                 <div class="col-md-6 col-sm-12text-justify" dir="ltr">
                                     <h3>موسيقى النهاية</h3>
-                                    @foreach (json_decode($anime->ending_themes) as $key => $ending_theme)
-                                    <a class="btn btn-icon btn-3 btn-outline-secondary col-12 my-1 mr-0" type="button" href="https://www.youtube.com/results?search_query={{ $ending_theme }}" target="_blank" >
-                                                <span class="btn-inner--icon float-left text-warning"><i class="fa">#{{ ++$key }}</i></span>
-                                                <span class="btn-inner--text fz-sm-1">{{$ending_theme}}</span>
-                                                </a>
-                                    @endforeach
+                                    @forelse (json_decode($anime->ending_themes) as $key => $ending_theme)
+                                        <a class="btn btn-icon btn-3 btn-outline-secondary col-12 my-1 mr-0" type="button" href="https://www.youtube.com/results?search_query={{ $ending_theme }}" target="_blank" >
+                                            <span class="btn-inner--icon float-left text-warning"><i class="fa">#{{ ++$key }}</i></span>
+                                            <span class="btn-inner--text fz-sm-1">{{$ending_theme}}</span>
+                                        </a>
+                                    @empty
+                                        <div class="row justify-content-center text-dark post">
+                                            <span>غير معروف حتى الآن</span>
+                                        </div>
+                                    @endforelse
                                 </div>
                             </div>
 

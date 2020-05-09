@@ -9,7 +9,7 @@
             <div class="carousel-inner">
                 @foreach ($images as $image)
                     <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
-                        <a href="{{$image['link'] ?? ''}}"><img class="img-fluid sm" src="{{cdn($image['src']) ?? ''}}" alt="{{$image['alt'] ?? ''}}"></a>
+                        <a href="{{$image['link'] ?? ''}}"><img class="img-fluid sm lazy" data-src="{{cdn($image['src']) ?? ''}}" alt="{{$image['alt'] ?? ''}}"></a>
                     </div>
                 @endforeach
             </div>

@@ -3,12 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class LinkController extends Controller
 {
-    public function hi() {
-        return 'hiaas';
-    }
     public function index($anime) {
         $links = \App\Link::where('episode_id', 'like', $anime)->where('type', 'watch')->get();
         // $links['episode_id'];
@@ -46,5 +44,37 @@ class LinkController extends Controller
         $next_ep_id = \App\Episode::where('id', $ep_id+1)->get('episode_id')[0]['episode_id'];
 
         return redirect('/links/'.$next_ep_id);
+    }
+
+    public function downloadLinks(Request $request) {
+
+        // return $request;
+        $validatedData = $request->validate([
+            'ep' => 'int|required',
+            'anime' => 'int|required',
+            // 'current_url' => 'url',
+        ]);
+
+
+        if ($request->has('ep') && $request->has('anime')) {
+            if (strlen($request['ep'])==1) {
+                $ep = 'الحلقة 0' . $request['ep'];
+            } else {
+                $ep = 'الحلقة ' . $request['ep'];
+            }
+            
+            $anime = (int)$request['anime'];
+
+            $response = Http::asForm()->post('https://www.animesilver.com/watch/getQAServer', [
+                'auth' => 'getQAServer',
+                'ep' => $ep,
+                'id' => $anime,
+                'server' => 'RServer',
+                // 'c' => '1',
+            ]);
+
+           
+            return $response;
+        }
     }
 }

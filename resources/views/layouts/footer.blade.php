@@ -16,10 +16,7 @@
                 <a target="_blank" href="https://www.facebook.com/RoyalAnimeOfficial" class="btn btn-neutral btn-icon-only btn-facebook btn-round btn-lg" data-toggle="tooltip" data-original-title="Like us">
                 <i class="fa fa-facebook-square"></i>
                 </a>
-                <a target="_blank" href="https://dribbble.com/RoyalAnimeOfficial" class="btn btn-neutral btn-icon-only btn-instagram btn-lg btn-round" data-toggle="tooltip" data-original-title="Follow us">
-                <i class="fa fa-instagram"></i>
-                </a>
-                <a target="_blank" href="https://github.com/RoyalAnimeOfficialofficial" class="btn btn-neutral btn-icon-only btn-pinterest btn-round btn-lg" data-toggle="tooltip" data-original-title="Follow Us">
+                <a target="_blank" href="https://pinterest.com/RoyalAnimeOfficial" class="btn btn-neutral btn-icon-only btn-pinterest btn-round btn-lg" data-toggle="tooltip" data-original-title="Follow Us">
                 <i class="fa fa-pinterest"></i>
                 </a>
             </div>

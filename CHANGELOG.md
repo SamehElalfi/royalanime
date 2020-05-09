@@ -1,3 +1,24 @@
+# v0.20.0
+## Changed
+- Added lazy load to slideshow in home page
+- translated all argon dashboard to arabic
+- remove page-cache from contact page cause it not redirct 'layout.thanks' view
+- split links table into watch_links and download_links tables
+- resized 'tags.index' page
+- fixed navbar icon on mobile and tablet devices
+- translated /register page
+- set the ratio of the video player 16:9 on all devices
+- rebuilt the database tables
+- fixed unknow opening & ending music
+- enabled comments on animes and episodes
+
+## Added
+- installed debugbar package
+- installed spatie/laravel-permission
+- installed spatie/laravel-sitemap
+- installed telescope
+- installed ARCANEDEV/log-viewer
+
 # 0.19.0
 ## Changed
 - Share Buttons is dynamic now

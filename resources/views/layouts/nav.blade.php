@@ -9,7 +9,7 @@
         <!-- Hamberger Menu -->
         <!-- Brand on Phones ONLY -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 30 30" style="width: 30px;"><path stroke="rgba(255, 255, 255, 1)" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"></path></svg>
         </button>
 
         <!-- Navbar Pages -->

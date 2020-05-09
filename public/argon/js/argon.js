@@ -592,6 +592,7 @@ var Charts = (function() {
 						}
 					},
 					tooltips: {
+						rtl: true,
 						enabled: false,
 						mode: 'index',
 						intersect: false,
@@ -687,6 +688,7 @@ var Charts = (function() {
 				doughnut: {
 					cutoutPercentage: 83,
 					tooltips: {
+						rtl: true,
 						callbacks: {
 							title: function(item, data) {
 								var title = data.labels[item[0].index];
@@ -944,6 +946,7 @@ var OrdersChart = (function() {
 					}]
 				},
 				tooltips: {
+					rtl: true,
 					callbacks: {
 						label: function(item, data) {
 							var label = data.datasets[item.datasetIndex].label || '';
@@ -1022,6 +1025,7 @@ var SalesChart = (function() {
 					}]
 				},
 				tooltips: {
+					rtl: true,
 					callbacks: {
 						label: function(item, data) {
 							var label = data.datasets[item.datasetIndex].label || '';

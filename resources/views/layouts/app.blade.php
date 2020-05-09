@@ -28,7 +28,20 @@
         .colored-bg-transparent{background-image:linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1));}
         .colored-bg{background-image:linear-gradient(rgba(94, 114, 228, 0.3), rgba(23, 43, 77, 0.3));}
         .colored-bg-dark {background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(20,0,100,0.8));}
-        .h-400{height:400px;}
+        /* .h-400{height:400px;} */
+        .tab-pane{
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%;
+        }
+        .tab-pane iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            height: 100%;
+        }
         .bg-border {background-origin: border-box;}
         .rounded-lg{border-radius: 0.6rem !important;}
         .bg-center{background-position:center;}

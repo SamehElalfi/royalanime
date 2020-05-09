@@ -32,7 +32,7 @@
 
                                 <!-- Links' Buttons -->
                                 <div class="btn-wrapper mt-5">
-                                    <a href="/animes" class="btn btn-lg btn-github btn-icon mb-3 mb-sm-0" target="_blank">
+                                    <a href="/animes" class="btn btn-lg btn-github btn-icon mb-3 mb-sm-0">
                                         <span class="btn-inner--icon"><i class="fa fa-th-large"></i></span>
                                         <span class="btn-inner--text">قائمة <span class="text-warning">الأنمي</span></span>
                                     </a>
@@ -73,7 +73,7 @@
                 </div>
             </div>
                 
-            <!-- Latest Anime Cards -->
+            <!-- Best Anime Cards -->
             @forelse ($animes as $anime)
                 @include('layouts.anime_card')
             @empty
@@ -180,12 +180,12 @@
                     
                     <!-- Section Buttons -->
                     <div class="btn-wrapper">
-                        <a href="/mail" class="btn btn-success">إشترك الآن</a>
+                        <a href="/subscriber" class="btn btn-success">إشترك الآن</a>
                         <a href="examples/register.html" class="btn btn-white">إعدادات بريدك الإلكتروني</a>
                     </div>
                 </div>
 
-                <!-- Mail List -->
+                <!-- subscriber List -->
                 <div class="col-lg-5 mb-lg-auto">
                     <div class="transform-perspective-right">
                         <div class="card bg-secondary shadow border-0 floating">
@@ -195,7 +195,7 @@
                                     <small>ضع بريدك الإلكتروني وإختر التصنيفات التي تريد أن تصلك آخر تحديثاتها.</small>
                                 </div>
 
-                                <form method="POST" action="/mail">
+                                <form method="POST" action="/subscriber">
                                     @csrf
                                     <div class="form-group mb-3">
                                         <div class="input-group input-group-alternative">

@@ -4,19 +4,32 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class episode extends Model
+class Episode extends Model
 {
     /**
-     * Return all links (watching and downloading) of an episode
+     * Return all streaimg links Watching (Streaming) of an episode
      */
-    public function link() {
-        return $this->hasMany('App\Link', 'episode_id', 'episode_id');
+    public function watchLinks() {
+        return $this->hasOne('App\StreamLink')->select(['links']);
+    }
+
+    /**
+     * Return all streaimg links (watching and downloading) of an episode
+     */
+    public function downloadLinks() {
+        return $this->hasOne('App\DownloadLink')->select(['links']);
     }
 
     /**
      * Return the anime episodes of an anime
      */
     public function animeEpisodes() {
-        return $this->hasMany('App\Episode', 'mal_id', 'mal_id');
+        return $this->hasMany('App\Episode', 'anime_id', 'anime_id');
+    }
+    /**
+     * Return the anime episodes of an anime
+     */
+    public function episodeDetails() {
+        return $this->hasOne('App\EpisodeDetail');
     }
 }

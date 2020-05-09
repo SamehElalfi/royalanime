@@ -28,7 +28,7 @@
                                 {{-- <img alt="image" src="{{ cdn('img/brand/white.webp') }}" style="width: 200px;" class="img-fluid"> --}}
 
                                 <!-- Main Sentence -->
-                                <a href="/animes/{{ $anime->id }}">
+                                <a href="{{ route('animes.show', ['anime'=>$anime->id]) }}/{{ Str::slug($anime->title) }}">
                                     <h1 class="text-white mb-5 fz-sm-2" dir="ltr">
                                         {{ $anime->title }}
                                         <br/>
@@ -89,12 +89,12 @@
                                     <div class="row mb-4">
                                         <div class="col-102">
                                             <div class="mt-5 mt-lg-0">
-                                        @if ($watch_links->toArray())
+                                        @if ($watch_links)
                                             <div class="nav-wrapper">
                                                 <ul class="nav nav-pills nav-fill flex-column flex-md-row" id="tabs-text" role="tablist">
                                                 @foreach($watch_links as $key => $item)
                                                     <li class="nav-item pr-0 mx-1 my-2">
-                                                        <a class="nav-link mb-sm-3 mb-md-0 {{ $loop->first ? 'active' : '' }}" id="tabs-text-1-tab" data-toggle="tab" href="#tabs-text-{{$key}}" role="tab" aria-controls="tabs-text-{{$key}}" aria-selected="{{$loop->first}}">{{$item->name}}</a>
+                                                        <a class="nav-link mb-sm-3 mb-md-0 text-uppercase {{ $loop->first ? 'active' : '' }}" id="tabs-text-1-tab" data-toggle="tab" href="#tabs-text-{{$key}}" role="tab" aria-controls="tabs-text-{{$key}}" aria-selected="{{$loop->first}}">سيرفر {{$item->name}}</a>
                                                     </li>
                                                 @endforeach
                                                 </ul>
@@ -195,18 +195,18 @@
                             {{-- Download Servers --}}
                             <h2>سيرفرات التحميل</h2>
                             <div class="row justify-content-center text-dark post">
-                                @if ($download_links->toArray())
+                                @if ($download_links)
                                     @foreach ($download_links as $linkrow)
                                         <a
                                         href="{{$linkrow->link}}"
                                         class="btn {{$episode->filler ? 'btn-danger' : 'btn-primary'}} col-12 col-md-5 my-1 mx-1">
                                         <span class="float-left">#{{$loop->iteration}}</span>
                                         <span>{{$linkrow->name ?? $linkrow->link}}</span>
-                                        <span class="float-right">
+                                        {{-- <span class="float-right">
                                             {{ $linkrow->size ? $linkrow->size .'MB' : ''}}
                                             {{ ($linkrow->size && $linkrow->quality) ? ' - ' : '' }}
                                             {{ $linkrow->quality ? $linkrow->quality . 'P' : ''}}
-                                        </span>
+                                        </span> --}}
                                         </a>
                                     @endforeach
                                 @else
@@ -220,20 +220,21 @@
                         <div>
                             {{-- Previous Episode --}}
                             @if ($episode->episode_number > 1)
-                                <a class="btn btn-icon btn-3 btn-default col-md-4 col-sm-12" href="/animes/{{$anime->id}}/episodes/{{$episode->episode_number-1}}">
+                                <a class="btn btn-icon btn-3 btn-default col-md-4 col-sm-12" href="{{ route('animes.episodes.show', ['anime'=>$anime->id, 'episode'=>$episode->episode_number-1]) }}">
                                     <span class="btn-inner--icon"><i class="ni ni-bold-right"></i></span>
                                     <span class="btn-inner--text">الحلقة السابقة</span>
                                 </a>
                             @endif
                             
                             {{-- All Episodes --}}
-                            <a class="btn btn-icon btn-3 btn-warning col-md-3 col-sm-12 mx-md-4 my-1" href="/animes/{{$anime->id}}/episodes">
+                            <a class="btn btn-icon btn-3 btn-warning col-md-3 col-sm-12 mx-md-4 my-1" href="{{ route('animes.episodes.index', ['anime'=>$anime->id]) }}">
                                 <span class="btn-inner--text">كل الحلقات</span>
                             </a>
 
                             {{-- Next Episode --}}
+                            {{-- Check if there is more episodes --}}
                             @if ($episode->episode_number < $episode->animeEpisodes()->count())
-                                <a class="btn btn-icon btn-3 btn-default col-md-4 col-sm-12" href="/animes/{{$anime->id}}/episodes/{{$episode->episode_number+1}}">
+                                <a class="btn btn-icon btn-3 btn-default col-md-4 col-sm-12" href="{{ route('animes.episodes.show', ['anime'=>$anime->id, 'episode'=>$episode->episode_number+1]) }}">
                                     <span class="btn-inner--text">الحلقة التالية</span>
                                     <span class="btn-inner--icon"><i class="ni ni-bold-left"></i></span>
                                 </a>
