@@ -18,11 +18,11 @@
         "laravel/telescope": "^3.3",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.0",
+        "laravelium/sitemap": "^7.0",
         "renatomarinho/laravel-page-speed": "^1.8",
         "silber/page-cache": "^1.0",
         "spatie/laravel-analytics": "^3.9",
-        "spatie/laravel-permission": "^3.11",
-        "spatie/laravel-sitemap": "^5.7"
+        "spatie/laravel-permission": "^3.11"
     },
     "require-dev": {
         "facade/ignition": "^2.0",

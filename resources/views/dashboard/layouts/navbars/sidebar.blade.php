@@ -26,9 +26,9 @@
                         <i class="ni ni-single-02"></i>
                         <span>{{ __('My profile') }}</span>
                     </a>
-                    <a href="#" class="dropdown-item">
+                    <a href="/settings" class="dropdown-item">
                         <i class="ni ni-settings-gear-65"></i>
-                        <span>{{ __('Settings') }}</span>
+                        <span>{{ __('dashboard.Settings') }}</span>
                     </a>
                     <a href="#" class="dropdown-item">
                         <i class="ni ni-calendar-grid-58"></i>
@@ -93,12 +93,81 @@
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('profile.edit') }}">
+                                    <i class="fa fa-id-card"></i>
                                     {{ __('dashboard.User profile') }}
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('user.index') }}">
+                                    <i class="fa fa-user-edit"></i>
                                     {{ __('dashboard.User Management') }}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+                
+                <li class="nav-item">
+                    <a class="nav-link active collapsed text-gray" href="#navbar-settings" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-settings">
+                        <i class="fa fa-cogs"></i>
+                        <span class="nav-link-text">{{ __('dashboard.Settings') }}</span>
+                    </a>
+
+                    <div class="collapse" id="navbar-settings">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('settings.animes') }}">
+                                    <i class="fa fa-chess-knight"></i>
+                                    {{ __("dashboard.Anime Settings") }}
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('settings.episodes') }}">
+                                    <i class="fa fa-play"></i>
+                                    {{ __("dashboard.Episodes Settings") }}
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('settings.blog') }}">
+                                    <i class="fa fa-bold"></i>
+                                    {{ __("dashboard.Blog Settings") }}
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('settings.comments') }}">
+                                    <i class="fa fa-comments"></i>
+                                    {{ __("dashboard.Comments Settings") }}
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('settings.frontend') }}">
+                                    <i class="fas fa-palette"></i>
+                                    {{ __("dashboard.Frontend Settings") }}
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('settings.social') }}">
+                                    <i class="fas fa-thumbs-up"></i>
+                                    {{ __("dashboard.Social Settings") }}
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('settings.backup') }}">
+                                    <i class="fa fa-database"></i>
+                                    {{ __("dashboard.Backup Settings") }}
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('settings.users') }}">
+                                    <i class="fa fa-users-cog"></i>
+                                    {{ __("dashboard.Users Settings") }}
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('settings.advanced') }}">
+                                    <i class="fa fa-wrench"></i>
+                                    {{ __("dashboard.Advanced Settings") }}
                                 </a>
                             </li>
                         </ul>

@@ -87,7 +87,7 @@
 
             <div class="col-xl-3 col-lg-6 my-md-4">
                 <div class="card card-stats shadow mb-4 mb-xl-0">
-                    <a href="/settings/animes">
+                    <a href="{{ route('settings.animes') }}">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col">
@@ -111,7 +111,7 @@
 
             <div class="col-xl-3 col-lg-6 my-md-4">
                 <div class="card card-stats shadow mb-4 mb-xl-0">
-                    <a href="/settings/episodes">
+                    <a href="{{ route('settings.episodes') }}">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col">
@@ -135,7 +135,7 @@
 
             <div class="col-xl-3 col-lg-6 my-md-4">
                 <div class="card card-stats shadow mb-4 mb-xl-0">
-                    <a href="/settings/blog">
+                    <a href="{{ route('settings.blog') }}">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col">
@@ -159,7 +159,7 @@
 
             <div class="col-xl-3 col-lg-6 my-md-4">
                 <div class="card card-stats shadow mb-4 mb-xl-0">
-                    <a href="/settings/comments">
+                    <a href="{{ route('settings.comments') }}">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col">
@@ -183,7 +183,7 @@
             
             <div class="col-xl-3 col-lg-6 my-md-4">
                 <div class="card card-stats shadow mb-4 mb-xl-0">
-                    <a href="/settings/frontend">
+                    <a href="{{ route('settings.frontend') }}">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col">
@@ -207,7 +207,7 @@
             
             <div class="col-xl-3 col-lg-6 my-md-4">
                 <div class="card card-stats shadow mb-4 mb-xl-0">
-                    <a href="/settings/social">
+                    <a href="{{ route('settings.social') }}">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col">
@@ -231,7 +231,7 @@
 
             <div class="col-xl-3 col-lg-6 my-md-4">
                 <div class="card card-stats shadow mb-4 mb-xl-0">
-                    <a href="/settings/backup">
+                    <a href="{{ route('settings.backup') }}">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col">
@@ -255,7 +255,7 @@
 
             <div class="col-xl-3 col-lg-6 my-md-4">
                 <div class="card card-stats shadow mb-4 mb-xl-0">
-                    <a href="/settings/users">
+                    <a href="{{ route('settings.users') }}">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col">
@@ -271,6 +271,30 @@
                             <p class="mt-3 mb-0 text-muted text-sm">
                                 <span class="text-success">غير أدوار المستخدمين</span>
                                 <span class="text-nowrap">وصلاحياتهم</span>
+                            </p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-xl-3 col-lg-6 my-md-4">
+                <div class="card card-stats shadow mb-4 mb-xl-0">
+                    <a href="{{ route('settings.advanced') }}">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    {{-- <h5 class="card-title text-uppercase text-muted mb-0">إعدادات التعليقات</h5> --}}
+                                    <span class="h2 font-weight-bold mb-0">{{ __('dashboard.Advanced Settings') }}</span>
+                                </div>
+                                <div class="col-auto">
+                                    <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
+                                        <i class="fas fa-toolbox"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="mt-3 mb-0 text-muted text-sm">
+                                <span class="text-success">إعدادات خطيرة</span>
+                                <span class="text-nowrap">ومتقدمة</span>
                             </p>
                         </div>
                     </a>

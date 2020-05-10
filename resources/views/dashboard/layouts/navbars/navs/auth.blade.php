@@ -36,7 +36,7 @@
                         <i class="ni ni-single-02"></i>
                         <span>{{ __('dashboard.My profile') }}</span>
                     </a>
-                    <a href="#" class="dropdown-item">
+                    <a href="/settings" class="dropdown-item">
                         <i class="ni ni-settings-gear-65"></i>
                         <span>{{ __('dashboard.Settings') }}</span>
                     </a>

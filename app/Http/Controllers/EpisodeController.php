@@ -7,6 +7,8 @@ use App\Episode;
 use App\EpisodeDetail;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Http;
+
 class EpisodeController extends Controller
 {
     public function __construct() {
@@ -172,5 +174,30 @@ class EpisodeController extends Controller
     public function destroy(episode $episode)
     {
         //
+    }
+
+    /**
+     * Get download links for an episode.
+     * all links are available for 24 hours
+     * 
+     * this method makes a new http request for another servers
+     *
+     * @param  \App\episode  $episode
+     * @return \Illuminate\Http\Response
+     */
+    public function download_links()
+    {
+        $response = Http::asForm()->post('https://www.animesilver.com/watch/getQAServer', [
+            'auth' => 'Oserver',
+            'ep' => 'الحلقة 05',
+            'id' => '2255',
+            'server' => 'Oserver',
+            'c' => '1',
+        ]);
+        
+        // $episode = Episode::where('anime_id', '2')
+        // ->where('episode_number', '1')->first();
+        return 'as';
+        return $response;
     }
 }

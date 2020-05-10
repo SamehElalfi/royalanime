@@ -1,3 +1,11 @@
+# v1.0.0
+## Added
+- Sitemap builder in dashboard /settings/advanced#sitemap
+
+## Changed
+- fixed pagination on mobile devices
+- fixed telescope on production env (it was't working with auth middleware)
+
 # v0.20.0
 ## Changed
 - Added lazy load to slideshow in home page

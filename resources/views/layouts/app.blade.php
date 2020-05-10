@@ -48,7 +48,7 @@
         .bg-cover{background-size: cover;}
         .float-md-right{float:left}
         @media (max-width:576px){
-        .d-sm-hidden{display:none;}
+        .d-sm-hidden{display:none !important;}
         .fz-sm-1{font-size:1rem;}
         .fz-sm-2{font-size:2rem;}
         .gsc-search-button-v2{padding: 17px 20px !important;}
