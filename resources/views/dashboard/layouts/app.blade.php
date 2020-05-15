@@ -19,11 +19,35 @@
         <link href="{{ asset('argon/vendor/@fortawesome/fontawesome-free/css/all.min.css') }}" rel="stylesheet">
         <!-- Argon CSS -->
         <link type="text/css" href="{{ asset('argon/css/argon.css?v=1.0.0') }}" rel="stylesheet">
+
         <style>
             .bg-fire {background-image: linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(255,72,0,1) 100%);}
             body {direction: rtl;overflow-x: hidden;}
             *{font-family: Tajawal, sans-serif;transition: all .2s linear;}
+            #suggestions p:hover {
+                background: #555;
+                color: white
+            }
+                                
+            #sidenav-main::-webkit-scrollbar-track
+            {
+                -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+                background-color: #F5F5F5;
+            }
+
+            #sidenav-main::-webkit-scrollbar
+            {
+                width: 6px;
+                background-color: #F5F5F5;
+            }
+
+            #sidenav-main::-webkit-scrollbar-thumb
+            {
+                background-color: #5e72e4;
+            }
+
         </style>
+        
     </head>
     <body class="{{ $class ?? '' }}">
         @auth()
@@ -50,66 +74,66 @@
         <!-- Argon JS -->
         <script src="{{ asset('argon/js/argon.js?v=1.0.0') }}"></script>
         
-<script>
-    // This function set a cookie or change the cookie's value
-    // code from w3schools.com
-    function setCookie(cname, cvalue, exdays) {
-        var d = new Date();
-        d.setTime(d.getTime() + (exdays*24*60*60*1000));
-        var expires = "expires="+ d.toUTCString();
-        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-    }
+        <script>
+            // This function set a cookie or change the cookie's value
+            // code from w3schools.com
+            function setCookie(cname, cvalue, exdays) {
+                var d = new Date();
+                d.setTime(d.getTime() + (exdays*24*60*60*1000));
+                var expires = "expires="+ d.toUTCString();
+                document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+            }
 
-    // Get the value of any set cookie
-    // code from w3schools.com
-    function getCookie(cname) {
-        var name = cname + "=";
-        var decodedCookie = decodeURIComponent(document.cookie);
-        var ca = decodedCookie.split(';');
-        for(var i = 0; i <ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0) == ' ') {
-            c = c.substring(1);
-        }
-        if (c.indexOf(name) == 0) {
-            return c.substring(name.length, c.length);
-        }
-        }
-        return "";
-    }
+            // Get the value of any set cookie
+            // code from w3schools.com
+            function getCookie(cname) {
+                var name = cname + "=";
+                var decodedCookie = decodeURIComponent(document.cookie);
+                var ca = decodedCookie.split(';');
+                for(var i = 0; i <ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+                }
+                return "";
+            }
 
-    // Open and Close Sidebar
-    // This function set a cookie "sidebar_opened"
-    // to check if the sidebar should be opened or closed
-    function toggleSidebar() {
-        $('.main-content').toggleClass('ml-md-0');
-        $('nav.navbar.navbar-vertical').toggleClass('d-md-none');
-        $('#sidenav-collapse-main').toggleClass('d-md-none');
-        var cookie = getCookie("sidebar_opened");
-        if (cookie == 'true') {
-            setCookie('sidebar_opened', false, 365);
-        } else {
-            setCookie('sidebar_opened', true, 365);
-        }
-    }
-    
-    // The following block will open the sidebar or
-    // close it depending on the cookie "sidebar_opened"
-    var cookie = getCookie("sidebar_opened");
-    if (cookie != "") {
-        if (cookie == 'true') {            
-            $('.main-content').removeClass('ml-md-0');
-            $('nav.navbar.navbar-vertical').removeClass('d-md-none');
-            $('#sidenav-collapse-main').removeClass('d-md-none');
-        } else {
-            $('.main-content').addClass('ml-md-0');
-            $('nav.navbar.navbar-vertical').addClass('d-md-none');
-            $('#sidenav-collapse-main').addClass('d-md-none');
-        }
-        // $('#sidenav-collapse-main').toggleClass('d-none');
-    } else {
-        setCookie('sidebar_opened', true, 365);
-    }
-</script>
+            // Open and Close Sidebar
+            // This function set a cookie "sidebar_opened"
+            // to check if the sidebar should be opened or closed
+            function toggleSidebar() {
+                $('.main-content').toggleClass('ml-md-0');
+                $('nav.navbar.navbar-vertical').toggleClass('d-md-none');
+                $('#sidenav-collapse-main').toggleClass('d-md-none');
+                var cookie = getCookie("sidebar_opened");
+                if (cookie == 'true') {
+                    setCookie('sidebar_opened', false, 365);
+                } else {
+                    setCookie('sidebar_opened', true, 365);
+                }
+            }
+            
+            // The following block will open the sidebar or
+            // close it depending on the cookie "sidebar_opened"
+            var cookie = getCookie("sidebar_opened");
+            if (cookie != "") {
+                if (cookie == 'true') {            
+                    $('.main-content').removeClass('ml-md-0');
+                    $('nav.navbar.navbar-vertical').removeClass('d-md-none');
+                    $('#sidenav-collapse-main').removeClass('d-md-none');
+                } else {
+                    $('.main-content').addClass('ml-md-0');
+                    $('nav.navbar.navbar-vertical').addClass('d-md-none');
+                    $('#sidenav-collapse-main').addClass('d-md-none');
+                }
+                // $('#sidenav-collapse-main').toggleClass('d-none');
+            } else {
+                setCookie('sidebar_opened', true, 365);
+            }
+        </script>
     </body>
 </html>

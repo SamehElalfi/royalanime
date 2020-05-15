@@ -26,10 +26,12 @@
                         <i class="ni ni-single-02"></i>
                         <span>{{ __('My profile') }}</span>
                     </a>
-                    <a href="/settings" class="dropdown-item">
-                        <i class="ni ni-settings-gear-65"></i>
-                        <span>{{ __('dashboard.Settings') }}</span>
-                    </a>
+                    @can('change settings')
+                        <a href="/settings" class="dropdown-item">
+                            <i class="ni ni-settings-gear-65"></i>
+                            <span>{{ __('dashboard.Settings') }}</span>
+                        </a>
+                    @endcan
                     <a href="#" class="dropdown-item">
                         <i class="ni ni-calendar-grid-58"></i>
                         <span>{{ __('Activity') }}</span>
@@ -83,117 +85,167 @@
                         <i class="ni ni-tv-2 text-primary"></i> {{ __('dashboard.Dashboard') }}
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link active collapsed" href="#navbar-examples" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-examples">
-                        <i class="fa fa-users" style="color: #f4645f;"></i>
-                        <span class="nav-link-text" style="color: #f4645f;">{{ __('dashboard.User Management') }}</span>
-                    </a>
-
-                    <div class="collapse" id="navbar-examples">
-                        <ul class="nav nav-sm flex-column">
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('profile.edit') }}">
-                                    <i class="fa fa-id-card"></i>
-                                    {{ __('dashboard.User profile') }}
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('user.index') }}">
-                                    <i class="fa fa-user-edit"></i>
-                                    {{ __('dashboard.User Management') }}
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-
                 
-                <li class="nav-item">
-                    <a class="nav-link active collapsed text-gray" href="#navbar-settings" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-settings">
-                        <i class="fa fa-cogs"></i>
-                        <span class="nav-link-text">{{ __('dashboard.Settings') }}</span>
-                    </a>
+                {{-- Animes Managements --}}
+                @canany('add animes', 'edit animes', 'delete animes', 'activate animes')
+                    <li class="nav-item">
+                        <a class="nav-link active collapsed" href="#navbar-animes" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-examples">
+                            <i class="fa fa-chess-knight text-blue"></i>
+                            <span class="nav-link-text text-blue">{{ __('dashboard.Anime Management') }}</span>
+                        </a>
+                        
+                        <div class="collapse" id="navbar-animes">
+                            <ul class="nav nav-sm flex-column">
 
-                    <div class="collapse" id="navbar-settings">
-                        <ul class="nav nav-sm flex-column">
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('settings.animes') }}">
-                                    <i class="fa fa-chess-knight"></i>
-                                    {{ __("dashboard.Anime Settings") }}
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('settings.episodes') }}">
-                                    <i class="fa fa-play"></i>
-                                    {{ __("dashboard.Episodes Settings") }}
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('settings.blog') }}">
-                                    <i class="fa fa-bold"></i>
-                                    {{ __("dashboard.Blog Settings") }}
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('settings.comments') }}">
-                                    <i class="fa fa-comments"></i>
-                                    {{ __("dashboard.Comments Settings") }}
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('settings.frontend') }}">
-                                    <i class="fas fa-palette"></i>
-                                    {{ __("dashboard.Frontend Settings") }}
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('settings.social') }}">
-                                    <i class="fas fa-thumbs-up"></i>
-                                    {{ __("dashboard.Social Settings") }}
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('settings.backup') }}">
-                                    <i class="fa fa-database"></i>
-                                    {{ __("dashboard.Backup Settings") }}
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('settings.users') }}">
-                                    <i class="fa fa-users-cog"></i>
-                                    {{ __("dashboard.Users Settings") }}
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('settings.advanced') }}">
-                                    <i class="fa fa-wrench"></i>
-                                    {{ __("dashboard.Advanced Settings") }}
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
+                                @can('add animes')
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ route('animes.create') }}">
+                                            <i class="fa fa-folder-plus"></i>
+                                            {{ __('dashboard.Add Anime') }}
+                                        </a>
+                                    </li>
+                                @endcan
 
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="ni ni-planet text-blue"></i> {{ __('dashboard.Icons') }}
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="ni ni-pin-3 text-orange"></i> {{ __('dashboard.Maps') }}
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="ni ni-key-25 text-info"></i> {{ __('dashboard.Login') }}
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="ni ni-circle-08 text-pink"></i> {{ __('dashboard.Register') }}
-                    </a>
-                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('settings.animes.list') }}">
+                                        <i class="fa fa-layer-group"></i>
+                                        {{ __('dashboard.Anime List') }}
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                @endcanany
+
+                {{-- Episodes Management --}}
+                @canany('edit episodes', 'add episodes', 'delete episodes', 'activate episodes')
+                    <li class="nav-item">
+                        <a class="nav-link active collapsed" href="#navbar-episodes" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-examples">
+                            <i class="fa fa-play text-green"></i>
+                            <span class="nav-link-text text-green">{{ __('dashboard.Episodes Management') }}</span>
+                        </a>
+                        
+                        <div class="collapse" id="navbar-episodes">
+                            <ul class="nav nav-sm flex-column">
+
+                                @can('add episodes')
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ route('settings.episodes.create') }}">
+                                            <i class="fa fa-folder-plus"></i>
+                                            {{ __('dashboard.Add Episode') }}
+                                        </a>
+                                    </li>
+                                @endcan
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('settings.episodes.list') }}">
+                                        <i class="fa fa-layer-group"></i>
+                                        {{ __('dashboard.Episodes List') }}
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                @endcanany
+
+                {{-- Users Management --}}
+                @canany('edit users', 'add users', 'delete users', 'activate users')
+                    <li class="nav-item">
+                        <a class="nav-link active collapsed" href="#navbar-examples" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-examples">
+                            <i class="fa fa-users" style="color: #f4645f;"></i>
+                            <span class="nav-link-text" style="color: #f4645f;">{{ __('dashboard.User Management') }}</span>
+                        </a>
+                        
+                        <div class="collapse" id="navbar-examples">
+                            <ul class="nav nav-sm flex-column">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('profile.edit') }}">
+                                        <i class="fa fa-id-card"></i>
+                                        {{ __('dashboard.User profile') }}
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('user.index') }}">
+                                        <i class="fa fa-user-edit"></i>
+                                        {{ __('dashboard.User Management') }}
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                @endcanany
+                
+                
+                @can('change settings')
+                    <li class="nav-item">
+                        <a class="nav-link active collapsed text-gray" href="#navbar-settings" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-settings">
+                            <i class="fa fa-cogs"></i>
+                            <span class="nav-link-text">{{ __('dashboard.Settings') }}</span>
+                        </a>
+
+                        
+                        <div class="collapse" id="navbar-settings">
+                            <ul class="nav nav-sm flex-column">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('settings.animes') }}">
+                                        <i class="fa fa-chess-knight"></i>
+                                        {{ __("dashboard.Anime Settings") }}
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('settings.episodes') }}">
+                                        <i class="fa fa-play"></i>
+                                        {{ __("dashboard.Episodes Settings") }}
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('settings.blog') }}">
+                                        <i class="fa fa-bold"></i>
+                                        {{ __("dashboard.Blog Settings") }}
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('settings.comments') }}">
+                                        <i class="fa fa-comments"></i>
+                                        {{ __("dashboard.Comments Settings") }}
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('settings.frontend') }}">
+                                        <i class="fa fa-palette"></i>
+                                        {{ __("dashboard.Frontend Settings") }}
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('settings.social') }}">
+                                        <i class="fa fa-thumbs-up"></i>
+                                        {{ __("dashboard.Social Settings") }}
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('settings.backup') }}">
+                                        <i class="fa fa-database"></i>
+                                        {{ __("dashboard.Backup Settings") }}
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('settings.users') }}">
+                                        <i class="fa fa-users-cog"></i>
+                                        {{ __("dashboard.Users Settings") }}
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('settings.advanced') }}">
+                                        <i class="fa fa-wrench"></i>
+                                        {{ __("dashboard.Advanced Settings") }}
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                @endcan
+
             </ul>
             <!-- Divider -->
             <hr class="my-3">

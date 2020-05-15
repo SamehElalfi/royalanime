@@ -36,7 +36,7 @@
                                         <span class="btn-inner--icon"><i class="fa fa-th-large"></i></span>
                                         <span class="btn-inner--text">قائمة <span class="text-warning">الأنمي</span></span>
                                     </a>
-                                    <a href="#" class="btn btn-lg btn-white btn-icon mb-3 mb-sm-0">
+                                    <a href="{{ route('episode_list') }}" class="btn btn-lg btn-white btn-icon mb-3 mb-sm-0">
                                         <span class="btn-inner--icon"><i class="fa fa-television"></i></span>
                                         <span class="btn-inner--text">أحدث الحلقات</span>
                                     </a>
@@ -142,12 +142,12 @@
                     <h2 class="display-3">الآلاف من الحلقات</h2>
 
                     <!-- Section Descrption -->
-                    <p class="lead">موقع رويال أنمي يحتوي على أكثر من 21.000 حلقة أنمي لأكثر من 1.000 مسلسل متنوع في أكثر من 40 تصنيف مختلف. كل الأنميات الموجودة في الموقع تم إنتاجها بواسطة أكبر أستديوهات الأنمي المعروفة.</p>
+                    <p class="lead">موقع رويال أنمي يحتوي على أكثر من 40.000 حلقة أنمي لأكثر من 2.000 مسلسل متنوع في أكثر من 35 تصنيف مختلف. كل الأنميات الموجودة في الموقع تم إنتاجها بواسطة أكبر أستديوهات الأنمي المعروفة.</p>
                     
                     <!-- Section Buttons -->
                     <div class="btn-wrapper">
                         <a href="/tags" class="btn btn-primary">مشاهدة الأنمي بحسب التصنيف</a>
-                        <a href="https://nucleoapp.com/?ref=1712" target="_blank" class="btn btn-default mt-3 mt-md-0">مشاهدة كل الأستديوهات</a>
+                        <a href="#" target="_blank" class="btn btn-default mt-3 mt-md-0">مشاهدة كل الأستديوهات</a>
                     </div>
                 </div>
             </div>
@@ -181,7 +181,7 @@
                     <!-- Section Buttons -->
                     <div class="btn-wrapper">
                         <a href="/subscriber" class="btn btn-success">إشترك الآن</a>
-                        <a href="examples/register.html" class="btn btn-white">إعدادات بريدك الإلكتروني</a>
+                        {{-- <a href="examples/register.html" class="btn btn-white">إعدادات بريدك الإلكتروني</a> --}}
                     </div>
                 </div>
 
@@ -200,7 +200,7 @@
                                     <div class="form-group mb-3">
                                         <div class="input-group input-group-alternative">
                                             <div class="input-group-prepend">
-                                                <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                                                <span class="input-group-text"><i class="fa fa-envelope "></i></span>
                                             </div>
                                             <input class="form-control" placeholder="البريد الإلكتروني" type="email" name="email">
                                             <input type="hidden" name="previous_url" value="{{ url()->previous() }}">

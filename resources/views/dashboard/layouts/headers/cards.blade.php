@@ -13,7 +13,7 @@
                                 </div>
                                 <div class="col-auto">
                                     <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
-                                        <i class="fas fa-chart-bar"></i>
+                                        <i class="fa fa-chart-bar"></i>
                                     </div>
                                 </div>
                             </div>
@@ -34,12 +34,12 @@
                                 </div>
                                 <div class="col-auto">
                                     <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
-                                        <i class="fas fa-chart-pie"></i>
+                                        <i class="fa fa-chart-pie"></i>
                                     </div>
                                 </div>
                             </div>
                             <p class="mt-3 mb-0 text-muted text-sm">
-                                <span class="text-danger mr-2"><i class="fas fa-arrow-down"></i> 3.48%</span>
+                                <span class="text-danger mr-2"><i class="fa fa-arrow-down"></i> 3.48%</span>
                                 <span class="text-nowrap">منذ الأسبوع الماضي</span>
                             </p>
                         </div>
@@ -55,12 +55,12 @@
                                 </div>
                                 <div class="col-auto">
                                     <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
-                                        <i class="fas fa-users"></i>
+                                        <i class="fa fa-users"></i>
                                     </div>
                                 </div>
                             </div>
                             <p class="mt-3 mb-0 text-muted text-sm">
-                                <span class="text-warning mr-2"><i class="fas fa-arrow-down"></i> 1.10%</span>
+                                <span class="text-warning mr-2"><i class="fa fa-arrow-down"></i> 1.10%</span>
                                 <span class="text-nowrap">منذ الأمس</span>
                             </p>
                         </div>
@@ -76,12 +76,12 @@
                                 </div>
                                 <div class="col-auto">
                                     <div class="icon icon-shape bg-info text-white rounded-circle shadow">
-                                        <i class="fas fa-percent"></i>
+                                        <i class="fa fa-percent"></i>
                                     </div>
                                 </div>
                             </div>
                             <p class="mt-3 mb-0 text-muted text-sm">
-                                <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> 12%</span>
+                                <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 12%</span>
                                 <span class="text-nowrap">منذ الشهر الماضي</span>
                             </p>
                         </div>

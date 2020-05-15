@@ -29,7 +29,7 @@
                                 {{-- <img alt="image" src="{{ cdn('img/brand/white.webp') }}" style="width: 200px;" class="img-fluid"> --}}
 
                                 <!-- Main Sentence -->
-                                <a href="/animes/{{$anime->id}}">
+                                <a href="{{ route('animes.show', ['anime'=>$anime->id]) }}/{{ Str::slug($anime->title) }}">
                                     <h1 class="text-white mb-5 fz-sm-2" dir="ltr">
                                         {{ $anime->title }}
                                         <br/>
@@ -88,7 +88,7 @@
                         <div class="pt-5 text-center">
                             <div class="row justify-content-center text-dark post">
                                 <div class="col-lg-11">
-                                    <div class="row mb-4">
+                                    <div class="mb-4">
                                         <div class="col-12 my-4">
                                         <button class="btn btn-icon btn-3 btn-outline-default" type="button" onclick="reverseChildren()">
                                             <span class="btn-inner--text">ترتيب الحلقات</span>
@@ -97,7 +97,7 @@
                                             </span>
                                         </button>
                                         </div>
-                                        <div class="col-12" id="eps">
+                                        <div class="mx-0" id="eps">
                                             @foreach ($episodes as $episode)
                                                 <a
                                                 href="/animes/{{ $anime->id }}/episodes/{{$episode->episode_number}}"

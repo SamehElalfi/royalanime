@@ -1,2 +1,3 @@
+Sitemap: https://www.royalanime.com/sitemap.xml
 User-agent: *
 Disallow:

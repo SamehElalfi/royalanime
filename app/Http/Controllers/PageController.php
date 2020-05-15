@@ -12,9 +12,15 @@ class PageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function __invoke($page)
     {
-        //
+        // $fulltitle = $page;
+        $primary_nav = true;
+
+        $title = __('pages.'.$page);
+
+        $description = 'أكبر قائمة للأنمي على الأطلاق مقدمة حصريًأ من موقع رويال أنمي';
+        return view('pages.' . $page, compact('title', 'description', 'primary_nav'));
     }
 
     /**

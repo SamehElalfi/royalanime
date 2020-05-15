@@ -39,13 +39,25 @@
                             <span>قائمة الأنميات</span>
                         </h2>
                     </div>
+                    
+                    <div class="col-lg-6 mb-5 text-center">
+                        <span>ترتيب بحسب:</span>
+                        <a href="{{ route('animes.index') }}?sortBy=title{{ isset($order) ? '&order='.$order : '' }}" class="btn {{ $sortBy == 'title' ? 'btn-default' : 'btn-secondary' }}">الأبجدية A-Z</a>
+                        <a href="{{ route('animes.index') }}?sortBy=score{{ isset($order) ? '&order='.$order : '' }}" class="btn {{ $sortBy == 'score' ? 'btn-default' : 'btn-secondary' }}">التقييم</a>
+                        <a href="{{ route('animes.index') }}?sortBy=date{{ isset($order) ? '&order='.$order : '' }}" class="btn {{ $sortBy == 'date' ? 'btn-default' : 'btn-secondary' }}">تاريخ النشر</a>
+                    </div>
+                    <div class="col-lg-6 mb-5 text-center">
+                        <span>نوع الترتيب:</span>
+                        <a href="{{ route('animes.index') }}{{ isset($sortBy) ? '?sortBy='.$sortBy.'&' : '?' }}order=DESC" class="btn {{ $order == 'ASC' ? 'btn-secondary' : 'btn-default' }}">تنازلي</a>
+                        <a href="{{ route('animes.index') }}{{ isset($sortBy) ? '?sortBy='.$sortBy.'&' : '?' }}order=ASC" class="btn {{ $order == 'ASC' ? 'btn-default' : 'btn-secondary' }}">تصاعدي</a>
+                    </div>
                 </div>
             @endif
             
             @if (!$paginator->items())
                 <div class="text-center">
                     <i class="fa fa-frown-o" style="font-size: 10em;"></i>
-                    <p class="lead">هذه الصفحة لا تحتوي على أي أنميات، هل تريد مشاهدة قائمة الأنميات؟</p>
+                    <p class="lead">هذه الصفحة لا تحتوي على أي أنميات، هل تريد مشاهدة قائمة الأنميات المتاحة؟</p>
                     <div class="btn-wrapper mt-5">
                         <a href="/animes" class="btn btn-lg btn-github btn-icon mb-3 mb-sm-0">
                             <span class="btn-inner--icon"><i class="fa fa-th-large"></i></span>

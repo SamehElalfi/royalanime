@@ -91,13 +91,27 @@ class SitemapController extends Controller
             foreach ($animes as $anime)
             {
                 $url = route('animes.show', ['anime'=>$anime->id.'/'.Str::slug($anime->title)]);
-                $sitemap->add($url, $anime->updated_at, '9.0', 'weekly');
+                $sitemap->add($url, $anime->updated_at, '0.9', 'weekly');
             }
         });
         $sitemap->store('xml','sitemap/sitemap-animes');
     }
 
 
+    /**
+     * Generate sitemap for main pages
+     * The generated sitemap saved in /sitemap/ directory
+     */
+    public function main() {
+        // create sitemap for main pages
+        $sitemap = App::make("sitemap");
+        $sitemap->add(route('homepage'), Carbon::now()->toAtomString(), '1.0', 'Monthly');
+        $sitemap->add(route('contact'), Carbon::now()->toAtomString(), '0.7', 'Monthly');
+        $sitemap->add(route('animes'), Carbon::now()->toAtomString(), '0.7', 'daily');
+        $sitemap->add(route('about'), Carbon::now()->toAtomString(), '0.2', 'daily');
+        $sitemap->add(route('dmca'), Carbon::now()->toAtomString(), '0.2', 'daily');
+        $sitemap->store('xml','sitemap/sitemap-main');
+    }
 
     /**
      * Generate sitemap for pages
@@ -122,6 +136,7 @@ class SitemapController extends Controller
      * The generated sitemap saved in /public directory
      */
     public function all() {
+        $this->main();
         $this->animes();
         $this->episodes();
         $this->pages();

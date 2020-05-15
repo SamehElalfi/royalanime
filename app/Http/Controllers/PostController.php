@@ -11,9 +11,9 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($request)
     {
-        //
+        return $request;
     }
 
     /**
@@ -34,7 +34,8 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // return 'sam';
+        return $request;
     }
 
     /**

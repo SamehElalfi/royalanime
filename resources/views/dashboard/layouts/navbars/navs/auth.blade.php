@@ -2,14 +2,14 @@
 <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
     <div class="container-fluid">
         <!-- Brand -->
-        <i class="fa fa-th-list d-none d-md-block text-white pr-3 sidebar-icon" onclick="toggleSidebar()"></i>
+        <i class="fa fa-th-list d-none d-md-block text-white pr-3 sidebar-icon" onclick="toggleSidebar()" style="cursor: pointer;"></i>
         <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="{{ route('home') }}">{{ __('dashboard.Dashboard') }}</a>
         {{-- <!-- Form -->
         <form class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
             <div class="form-group mb-0">
                 <div class="input-group input-group-alternative">
                     <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="fas fa-search"></i></span>
+                        <span class="input-group-text"><i class="fa fa-search"></i></span>
                     </div>
                     <input class="form-control" placeholder="Search" type="text">
                 </div>

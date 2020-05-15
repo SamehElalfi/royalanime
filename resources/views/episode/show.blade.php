@@ -91,8 +91,8 @@
                                             <div class="mt-5 mt-lg-0">
                                         @if ($watch_links)
                                             <div class="nav-wrapper">
-                                                <ul class="nav nav-pills nav-fill flex-column flex-md-row" id="tabs-text" role="tablist">
-                                                @foreach($watch_links as $key => $item)
+                                                <ul class="nav nav-pills nav-fill flex-md-row" id="tabs-text" role="tablist">
+                                                @foreach(array_reverse($watch_links) as $key => $item)
                                                     <li class="nav-item pr-0 mx-1 my-2">
                                                         <a class="nav-link mb-sm-3 mb-md-0 text-uppercase {{ $loop->first ? 'active' : '' }}" id="tabs-text-1-tab" data-toggle="tab" href="#tabs-text-{{$key}}" role="tab" aria-controls="tabs-text-{{$key}}" aria-selected="{{$loop->first}}">سيرفر {{$item->name}}</a>
                                                     </li>
@@ -102,7 +102,7 @@
                                             <div class="card shadow">
                                                 <div class="card-body bg-dark p-0 p-md-3">
                                                 <div class="tab-content" id="myTabContent">
-                                                    @foreach($watch_links as $key => $item)
+                                                    @foreach(array_reverse($watch_links) as $key => $item)
                                                         <div class="tab-pane fade {{ $loop->first ? 'active show' : '' }}" id="tabs-text-{{$key}}" role="tabpane{{$key}}" aria-labelledby="tabs-text-{{$key}}-tab">
                                                         <iframe
                                                             width="100%"
@@ -115,13 +115,17 @@
                                                             title="{{$item->name}}"></iframe>
                                                         </div>
                                                     @endforeach
-                                                    <span class="text-white fz-sm-1"><span class="text-danger">تنويه:</span> بعض الحلقات مرفوعه على مواقع تعرض إعلانات مزعجة خلال الحلقات. نحن نعمل على إعادة رفع هذه الحلقات إلى مواقع رفع أفضل حاليًا شكرًا لتفهمكم.</span>
+                                                    <span class="text-white h6 text-muted text-sm-small">
+                                                            <span class="text-danger">تنويه:</span>
+                                                             بعض الحلقات مرفوعه على مواقع تعرض إعلانات مزعجة خلال الحلقات. نحن نعمل على إعادة رفع هذه الحلقات إلى مواقع رفع أفضل حاليًا شكرًا لتفهمكم.
+                                                    </span>
                                                 </div>
                                                 </div>
                                             </div>
                                         @else
                                             <span>لا توجد روابط متاحة لمشاهدة هذه الحلقة في الوقت الحاضر، لكننا سنضيفها في أقرب وقت ممكن.</span>
                                         @endif
+
                                                 </div>
                                             <br><hr>
                                         </div>
@@ -221,7 +225,7 @@
                             {{-- Previous Episode --}}
                             @if ($episode->episode_number > 1)
                                 <a class="btn btn-icon btn-3 btn-default col-md-4 col-sm-12" href="{{ route('animes.episodes.show', ['anime'=>$anime->id, 'episode'=>$episode->episode_number-1]) }}">
-                                    <span class="btn-inner--icon"><i class="ni ni-bold-right"></i></span>
+                                    <span class="btn-inner--icon"><i class="fa fa-angle-right"></i></span>
                                     <span class="btn-inner--text">الحلقة السابقة</span>
                                 </a>
                             @endif
@@ -236,7 +240,7 @@
                             @if ($episode->episode_number < $episode->animeEpisodes()->count())
                                 <a class="btn btn-icon btn-3 btn-default col-md-4 col-sm-12" href="{{ route('animes.episodes.show', ['anime'=>$anime->id, 'episode'=>$episode->episode_number+1]) }}">
                                     <span class="btn-inner--text">الحلقة التالية</span>
-                                    <span class="btn-inner--icon"><i class="ni ni-bold-left"></i></span>
+                                    <span class="btn-inner--icon"><i class="fa fa-angle-left"></i></span>
                                 </a>
                             @endif
                         </div>

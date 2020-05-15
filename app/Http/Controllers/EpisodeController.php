@@ -197,7 +197,26 @@ class EpisodeController extends Controller
         
         // $episode = Episode::where('anime_id', '2')
         // ->where('episode_number', '1')->first();
-        return 'as';
+        // return 'as';
         return $response;
+    }
+
+    /**
+     * Display a pagination of latest episodes from all animes
+     * 
+     * @return \Illuminate\Http\Response
+     */
+    public function episode_list()
+    {
+        // Display anime list
+        $paginator = EpisodeDetail::orderBy('aired')->paginate(52);
+
+        // Return 404 error if there are no animes
+        if ($paginator == null){abort(404);}
+        
+        $primary_nav = true;
+        $title = 'قائمة الحلقات';
+        $description = 'أكبر قائمة للأنمي على الأطلاق مقدمة حصريًأ من موقع رويال أنمي';
+        return view('episode.episode_list', compact('paginator', 'primary_nav', 'title', 'description'));
     }
 }

@@ -10,6 +10,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="{{ isset($description) ? $description . ' - شاهد الآلاف من مسلسلات وأفلام الأنمي مجانًا وبروابط مباشرة وبدون إعلانات مزعجة.' : 'شاهد الآلاف من مسلسلات وأفلام الأنمي مجانًا وبروابط مباشرة وبدون إعلانات مزعجة.' }}">
+    <meta name="keywords" content="{{ isset($keywords) ? $keywords : 'أنمي مترجم, أنمي أونلاين, أنمي أون لاين' }}">
+    <link rel="canonical" href="{{ isset($canonical) ? $canonical : '' }}" />
     <meta name="author" content="Sameh Elalfi">
 
     <title>{{ isset($title) ? $title . ' - رويال أنمي' : 'رويال أنمي' }}</title>
@@ -20,6 +22,7 @@
     <!-- Fonts -->
     {{-- <link href="{{ cdn('vendor/nucleo/css/nucleo.css') }}" rel="stylesheet"> --}}
     <link href="{{ cdn('vendor/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
+    {{-- <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet"> --}}
     <link href="https://fonts.googleapis.com/css?family=Tajawal&display=swap" rel="stylesheet">
     
     <!-- Styles -->
@@ -49,9 +52,10 @@
         .float-md-right{float:left}
         @media (max-width:576px){
         .d-sm-hidden{display:none !important;}
-        .fz-sm-1{font-size:1rem;}
+        .h6{font-size:1rem;}
         .fz-sm-2{font-size:2rem;}
         .gsc-search-button-v2{padding: 17px 20px !important;}
+        .text-sm-small{font-size: 80%;}
         }
     </style>
 

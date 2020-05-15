@@ -53,7 +53,7 @@
                                         <td class="text-right">
                                             <div class="dropdown">
                                                 <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    <i class="fas fa-ellipsis-v"></i>
+                                                    <i class="fa fa-ellipsis-v"></i>
                                                 </a>
                                                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
                                                     @if ($user->id != auth()->id())
@@ -120,7 +120,7 @@
                                 </div>
                                 <div class="col-auto">
                                     <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
-                                        <i class="fas fa-play"></i>
+                                        <i class="fa fa-play"></i>
                                     </div>
                                 </div>
                             </div>
@@ -144,7 +144,7 @@
                                 </div>
                                 <div class="col-auto">
                                     <div class="icon icon-shape bg-info text-white rounded-circle shadow">
-                                        <i class="fas fa-bold"></i>
+                                        <i class="fa fa-bold"></i>
                                     </div>
                                 </div>
                             </div>
@@ -168,7 +168,7 @@
                                 </div>
                                 <div class="col-auto">
                                     <div class="icon icon-shape bg-gray text-white rounded-circle shadow">
-                                        <i class="fas fa-comments"></i>
+                                        <i class="fa fa-comments"></i>
                                     </div>
                                 </div>
                             </div>
@@ -192,7 +192,7 @@
                                 </div>
                                 <div class="col-auto">
                                     <div class="icon icon-shape bg-primary text-white rounded-circle shadow">
-                                        <i class="fas fa-palette"></i>
+                                        <i class="fa fa-palette"></i>
                                     </div>
                                 </div>
                             </div>
@@ -216,7 +216,7 @@
                                 </div>
                                 <div class="col-auto">
                                     <div class="icon icon-shape bg-info text-white rounded-circle shadow">
-                                        <i class="fas fa-thumbs-up"></i>
+                                        <i class="fa fa-thumbs-up"></i>
                                     </div>
                                 </div>
                             </div>
@@ -240,7 +240,7 @@
                                 </div>
                                 <div class="col-auto">
                                     <div class="icon icon-shape bg-green text-white rounded-circle shadow">
-                                        <i class="fas fa-database"></i>
+                                        <i class="fa fa-database"></i>
                                     </div>
                                 </div>
                             </div>
@@ -264,7 +264,7 @@
                                 </div>
                                 <div class="col-auto">
                                     <div class="icon icon-shape bg-info text-white rounded-circle shadow">
-                                        <i class="fas fa-users"></i>
+                                        <i class="fa fa-users"></i>
                                     </div>
                                 </div>
                             </div>
@@ -288,7 +288,7 @@
                                 </div>
                                 <div class="col-auto">
                                     <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
-                                        <i class="fas fa-toolbox"></i>
+                                        <i class="fa fa-toolbox"></i>
                                     </div>
                                 </div>
                             </div>

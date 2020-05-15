@@ -1,3 +1,25 @@
+# v1.1
+## Added
+- created all roles and permissions
+- added an option to edit robots.txt file from dashboard
+- finished "add anime" page (frontend & backend)
+- finished episode list page /episodes
+- added the new anime list in navbar
+- add the order/sort by optionin anime list page '/animes'
+- installed nicolaslopezj/searchable package
+- added /search page with custom search engine
+
+## Changed
+- fixed anime sitemap priority
+- fixed titles for episodes without one
+- fixed episode list for animes with only one episode (it was so small)
+- reversed the order of the watch servers by using array_reverse()
+- disabled ONLY_FULL_GROUP_BY MYSQL mode to use searchable package
+- moved old /search page to /google-search
+- added rel="nofollow" to navbar links
+
+----
+
 # v1.0.0
 ## Added
 - Sitemap builder in dashboard /settings/advanced#sitemap
@@ -5,6 +27,8 @@
 ## Changed
 - fixed pagination on mobile devices
 - fixed telescope on production env (it was't working with auth middleware)
+
+----
 
 # v0.20.0
 ## Changed
@@ -27,6 +51,8 @@
 - installed telescope
 - installed ARCANEDEV/log-viewer
 
+----
+
 # 0.19.0
 ## Changed
 - Share Buttons is dynamic now
@@ -39,6 +65,8 @@
 - add anime covers links
 - installed page-cache to cache every page as html file
 - installed google-analytics package to get data in the dashboard
+
+----
 
 # 0.18.0
 ## Changed 

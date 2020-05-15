@@ -27,19 +27,6 @@ class WelcomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function search()
-    {
-        $primary_nav = true;
-        $title = 'البحث في الموقع';
-        $description = 'أبحث عن أي حلقة أو مسلسل أو فيلم و بأي لغة تريد';
-        return view('search', compact('primary_nav', 'title', 'description'));
-    }
-    
-    /**
-     * Display the search page
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function dashboard()
     {
         return view('dashboard.auth.login');

@@ -167,6 +167,8 @@ return [
          * Package Service Providers...
          */
         Arcanedev\LogViewer\LogViewerServiceProvider::class,
+        Spatie\Permission\PermissionServiceProvider::class,
+        
         /*
          * Application Service Providers...
          */
@@ -240,6 +242,6 @@ return [
     |
     */
     'cdn' => array(
-        // "cdn.royalanime.com" => "css|js|eot|woff|ttfjpg|jpeg|png|gif|svg"
+        "cdn.royalanime.com" => "css|js|eot|woff|ttfjpg|jpeg|png|gif|svg"
     ),
 ];

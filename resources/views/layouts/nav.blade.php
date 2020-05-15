@@ -40,11 +40,11 @@
 
             <!-- Main Pages in Navbar -->
             <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
-                {{-- <li class="nav-item dropdown">
+                <li class="nav-item dropdown">
 
                     <!-- Page Name -->
                     <a href="/animes" class="nav-link" data-toggle="dropdown" role="button">
-                        <i class="ni ni-ui-04 d-lg-none"></i>
+                        <i class="fa fa-home"></i>
                         <span class="nav-link-inner--text">أنمي</span>
                     </a>
 
@@ -53,29 +53,29 @@
                     <div class="dropdown-menu dropdown-menu-xl">
                         <div class="dropdown-menu-inner">
 
-                            <a href="#new-anime" class="media d-flex align-items-center">
+                            <a href="{{ route('episode_list') }}" class="media d-flex align-items-center">
                                 <div class="icon icon-shape bg-gradient-primary rounded-circle text-white">
-                                    <i class="ni ni-spaceship"></i>
+                                    <i class="fa fa-film"></i>
                                 </div>
                                 <div class="media-body ml-3">
-                                    <h6 class="heading text-primary mb-md-1">جديد الأنمي</h6>
+                                    <h6 class="heading text-primary mb-md-1">جديد الحلقات</h6>
                                     <p class="description description-content d-none d-md-inline-block mb-0">تابع أحدث حلقات الأنميات الجديدة، عشرات الحلقات الجديدة كل يوم.</p>
                                 </div>
                             </a>
 
-                            <a href="/animes" class="media d-flex align-items-center">
+                            <a href="{{ route('animes.index') }}" class="media d-flex align-items-center">
                                 <div class="icon icon-shape bg-gradient-success rounded-circle text-white">
-                                    <i class="ni ni-align-left-2"></i>
+                                    <i class="fa fa-th-list"></i>
                                 </div>
                                 <div class="media-body ml-3">
-                                    <h6 class="heading text-primary mb-md-1">قائمة الأنمي</h6>
+                                    <h6 class="heading text-success mb-md-1">قائمة الأنمي</h6>
                                     <p class="description description-content d-none d-md-inline-block mb-0">تريد أن تشاهد مسلسل آخر. أبحث في قائمة الأنمي بين مئات المسلسلات الممتعة.</p>
                                 </div>
                             </a>
 
-                            <a href="#" class="media d-flex align-items-center">
+                            <a href="{{ route('contact.index') }}" class="media d-flex align-items-center">
                                 <div class="icon icon-shape bg-gradient-warning rounded-circle text-white">
-                                    <i class="ni ni-delivery-fast"></i>
+                                    <i class="fa fa-truck"></i>
                                 </div>
                                 <div class="media-body ml-3">
                                     <h5 class="heading text-warning mb-md-1">أطلب أنمي</h5>
@@ -83,9 +83,9 @@
                                 </div>
                             </a>
 
-                            <a href="#" class="media d-flex align-items-center">
+                            <a href="{{ route('tags.index') }}" class="media d-flex align-items-center">
                                 <div class="icon icon-shape bg-gradient-primary rounded-circle text-white">
-                                    <i class="ni ni-ui-04"></i>
+                                    <i class="fa fa-tags"></i>
                                 </div>
                                 <div class="media-body ml-3">
                                     <h6 class="heading text-primary mb-md-1">تصنيفات الأنمي</h6>
@@ -95,7 +95,7 @@
 
                         </div>
                     </div>
-                </li> --}}
+                </li>
 
                 {{-- <li class="nav-item dropdown">
 
@@ -113,11 +113,19 @@
                     </div>
                 </li> --}}
 
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <!-- Page Name -->
                     <a href="/animes" class="nav-link" role="button">
                         <i class="ni ni-collection d-lg-none"></i>
                         <span class="nav-link-inner--text">أنمي</span>
+                    </a>
+                </li> --}}
+
+                <li class="nav-item">
+                    <!-- Page Name -->
+                    <a href="{{ route('random-anime') }}" class="nav-link" role="button" rel="nofollow">
+                        <i class="fa fa-random"></i>
+                        <span class="nav-link-inner--text">أنمي عشوائي</span>
                     </a>
                     <!-- NOTE: This page has not any PAGE CONTENT -->
                 </li>
@@ -125,7 +133,7 @@
                 <li class="nav-item">
                     <!-- Page Name -->
                     <a href="/contact" class="nav-link" role="button">
-                        <i class="ni ni-collection d-lg-none"></i>
+                        <i class="fa fa-life-ring"></i>
                         <span class="nav-link-inner--text">تواصل معنا</span>
                     </a>
                     <!-- NOTE: This page has not any PAGE CONTENT -->
@@ -135,19 +143,19 @@
             <!-- Social Media Page and Search Button -->
             <ul class="navbar-nav align-items-lg-center ml-lg-auto">
                 <li class="nav-item">
-                    <a class="nav-link nav-link-icon" href="https://www.facebook.com/RoyalAnimeOfficial" target="_blank" data-toggle="tooltip" title="Like us on Facebook">
+                    <a class="nav-link nav-link-icon" href="https://www.facebook.com/RoyalAnimeOfficial" target="_blank" data-toggle="tooltip" title="Like us on Facebook" rel="nofollow">
                         <i class="fa fa-facebook-square"></i>
                         <span class="nav-link-inner--text d-lg-none">Facebook</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link nav-link-icon" href="https://www.instagram.com/RoyalAnimeOfficial" target="_blank" data-toggle="tooltip" title="Follow us on Instagram">
+                    <a class="nav-link nav-link-icon" href="https://www.instagram.com/RoyalAnimeOfficial" target="_blank" data-toggle="tooltip" title="Follow us on Instagram" rel="nofollow">
                         <i class="fa fa-pinterest"></i>
                         <span class="nav-link-inner--text d-lg-none">Pinterest</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link nav-link-icon" href="https://twitter.com/RoyalAnimeOfficial" target="_blank" data-toggle="tooltip" title="Follow us on Twitter">
+                    <a class="nav-link nav-link-icon" href="https://twitter.com/RoyalAnimeOfficial" target="_blank" data-toggle="tooltip" title="Follow us on Twitter" rel="nofollow">
                         <i class="fa fa-twitter-square"></i>
                         <span class="nav-link-inner--text d-lg-none">Twitter</span>
                     </a>

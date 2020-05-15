@@ -95,7 +95,7 @@
                                         340
                                     </td>
                                     <td>
-                                        <i class="fas fa-arrow-up text-success mr-3"></i> 46,53%
+                                        <i class="fa fa-arrow-up text-success mr-3"></i> 46,53%
                                     </td>
                                 </tr>
                                 <tr>
@@ -109,7 +109,7 @@
                                         319
                                     </td>
                                     <td>
-                                        <i class="fas fa-arrow-down text-warning mr-3"></i> 46,53%
+                                        <i class="fa fa-arrow-down text-warning mr-3"></i> 46,53%
                                     </td>
                                 </tr>
                                 <tr>
@@ -123,7 +123,7 @@
                                         294
                                     </td>
                                     <td>
-                                        <i class="fas fa-arrow-down text-warning mr-3"></i> 36,49%
+                                        <i class="fa fa-arrow-down text-warning mr-3"></i> 36,49%
                                     </td>
                                 </tr>
                                 <tr>
@@ -137,7 +137,7 @@
                                         147
                                     </td>
                                     <td>
-                                        <i class="fas fa-arrow-up text-success mr-3"></i> 50,87%
+                                        <i class="fa fa-arrow-up text-success mr-3"></i> 50,87%
                                     </td>
                                 </tr>
                                 <tr>
@@ -151,7 +151,7 @@
                                         190
                                     </td>
                                     <td>
-                                        <i class="fas fa-arrow-down text-danger mr-3"></i> 46,53%
+                                        <i class="fa fa-arrow-down text-danger mr-3"></i> 46,53%
                                     </td>
                                 </tr>
                             </tbody>

@@ -42,9 +42,9 @@
                                 </a>
                             </div>
                             <p
-                            class="fz-sm-1 text-white p-4"
+                            class="h6 text-white p-4"
                             style="background: rgba(23, 43, 77, 0.5);border-radius: 15px;">
-                            {{$anime->arabic_synopsis}}
+                            {!! substr($anime->arabic_synopsis, 0, 500) !!} ...
                             </p>
                         </div>
                         <div class="col-md-3 mt-md-5 d-md-none d-lg-block d-sm-none">

@@ -18,7 +18,7 @@
             @if (!$paginator->items())
                 <div class="text-center">
                     <i class="fa fa-frown-o" style="font-size: 10em;"></i>
-                    <p class="lead">هذه الصفحة لا تحتوي على أي أنميات، هل تريد مشاهدة قائمة الأنميات؟</p>
+                    <p class="lead">هذه الصفحة لا تحتوي على أي أنميات، هل تريد مشاهدة قائمة الأنميات المتاحة؟</p>
                     <div class="btn-wrapper mt-5">
                         <a href="/animes" class="btn btn-lg btn-github btn-icon mb-3 mb-sm-0">
                             <span class="btn-inner--icon"><i class="fa fa-th-large"></i></span>

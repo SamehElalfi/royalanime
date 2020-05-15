@@ -17,7 +17,7 @@
                     @if ($i < 1)
                         @continue
                     @endif
-                    <li class="page-item"><a class="page-link" href="?page={{$i}}">{{$i}}</a></li>
+                    <li class="page-item"><a class="page-link" href="?page={{$i}}{{ isset($sortBy) ? '&sortBy='.$sortBy : '' }}{{ isset($sortBy) ? '&order='.$order : '' }}{{ isset($query) ? '&q='.$query : '' }}">{{$i}}</a></li>
                 @endfor
                 
                 {{-- Current Page --}}
@@ -28,7 +28,9 @@
                     @if ($i > $paginator->lastPage())
                         @continue
                     @endif
-                    <li class="page-item"><a class="page-link" href="?page={{$i}}">{{$i}}</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ $i }}{{ isset($sortBy) ? '&sortBy='.$sortBy : '' }}{{ isset($sortBy) ? '&order='.$order : '' }}{{ isset($query) ? '&q='.$query : '' }}">{{$i}}</a>
+                    </li>
                 @endfor
                 
                 {{-- Next Button --}}

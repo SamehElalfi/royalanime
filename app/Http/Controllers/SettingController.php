@@ -8,7 +8,7 @@ class SettingController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware(['auth','can:change settings']);
     }
     /**
      * Display a listing of the resource.
@@ -203,7 +203,8 @@ class SettingController extends Controller
      */
     public function advanced() {
         $title = __('dashboard.advanced');
-        return view('dashboard.settings.advanced', compact('title'));
+        $robots = file_get_contents(public_path('robots.txt'));
+        return view('dashboard.settings.advanced', compact('title', 'robots'));
     }
 
     /**
@@ -217,28 +218,59 @@ class SettingController extends Controller
             'pages-sitemaps' => 'nullable|in:on',
             'blog-sitemaps' => 'nullable|in:on',
             'main-sitemaps' => 'nullable|in:on',
+
+            'robots' => 'nullable',
+            'robots-default' => 'nullable|in:1'
         ]);
         // return $request;
 
+        // Update Sitemaps for all animes, episode, posts and pages
         if (!empty($validatedData['all-sitemaps'])) {
+            // Update all sitemaps including animes, episodes, posts and pages
             app('App\Http\Controllers\SitemapController')->all();
+            return back()->with('sitemap', __('dashboard.All Sitemaps Updated successfully'));
         } else {
+            // this variable will be used to check if there is any sitemap
+            // updated to see if should return a message
+            $updated = false;
             if (!empty($validatedData['animes-sitemaps'])) {
-                $animes = app('App\Http\Controllers\SitemapController')->animes();
+                app('App\Http\Controllers\SitemapController')->animes();
+                $updated = true;
             }
             if (!empty($validatedData['episodes-sitemaps'])) {
-                $episodes = app('App\Http\Controllers\SitemapController')->episodes();
+                app('App\Http\Controllers\SitemapController')->episodes();
+                $updated = true;
             }
             if (!empty($validatedData['pages-sitemaps'])) {
                 app('App\Http\Controllers\SitemapController')->pages();
+                $updated = true;
             }
             if (!empty($validatedData['blog-sitemaps'])) {
                 app('App\Http\Controllers\SitemapController')->blog();
+                $updated = true;
             }
             if (!empty($validatedData['main-sitemaps'])) {
                 app('App\Http\Controllers\SitemapController')->index();
+                $updated = true;
+            }
+            if ($updated) {
+                return back()->with('sitemap', __('dashboard.Sitemap Updated successfully'));
+                // if there are any sitemap updated, return this message
             }
         }
-        return back()->withStatus(__('dashboard.Settings Updated successfully'));;
+
+        // Update robots.txt file
+        if (!empty($validatedData['robots'])) {
+            file_put_contents(public_path('robots.txt'), $validatedData['robots']);
+            return back()->with('robots', __('dashboard.robots file Updated successfully'));
+        }
+
+        if (!empty($validatedData['robots-default'])) {
+            $content = "Sitemap: https://www.royalanime.com/sitemap.xml\nUser-agent: *\nDisallow:";
+            file_put_contents(public_path('robots.txt'), $content);
+            return back()->with('robots', __('dashboard.robots.txt file reset'));
+        }
+
+        return back()->with('main', __('dashboard.Settings Updated successfully') );
     }
 }
