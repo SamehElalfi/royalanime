@@ -25,9 +25,11 @@ class SettingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create_episode()
     {
-        //
+        // TODO: add tags
+        $tags = ['animes', 'episodes', 'actions'];
+        return view('dashboard.episodes.create', compact('tags'));
     }
 
     /**

@@ -67,8 +67,9 @@ class AnimeController extends Controller
      */
     public function create()
     {
-        // TODO: add tags
-        $tags = ['animes', 'episodes', 'actions'];
+        $tags = ['action', 'adventure', 'cars', 'comedy', 'dementia', 'demons', 'drama', 'ecchi', 'fantasy', 'game', 'harem', 'hentai', 'historical', 'horror', 'josei', 'kids', 'magic', 'martial arts', 'mecha', 'military', 'music', 'mystery', 'parody', 'police', 'psychological', 'romance', 'samurai', 'school', 'sci-fi', 'seinen', 'shoujo', 'shoujo ai', 'shounen', 'shounen ai', 'slice of life', 'space', 'sports', 'super power', 'supernatural', 'thriller', 'vampire', 'yaoi', 'yuri'];
+
+        // $tags = ['animes', 'episodes', 'actions'];
         return view('dashboard.animes.create', compact('tags'));
     }
 

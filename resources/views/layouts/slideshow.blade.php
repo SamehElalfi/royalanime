@@ -13,14 +13,14 @@
                     </div>
                 @endforeach
             </div>
-            <a class="carousel-control-prev" href="#carousel_example" role="button" data-slide="prev">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="cursor-pointer carousel-control-prev h1" href="#carousel_example" role="button" data-slide="prev">
+                <span class="text-dark fa fa-angle-right carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="sr-only">Next</span>
-            </a>
-            <a class="carousel-control-next" href="#carousel_example" role="button" data-slide="next">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            </span>
+            <span class="cursor-pointer carousel-control-next h1" href="#carousel_example" role="button" data-slide="next">
+                <span class="text-dark fa fa-angle-left carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="sr-only">Previous</span>
-            </a>
+            </span>
         </div>
     </div>
 </div>

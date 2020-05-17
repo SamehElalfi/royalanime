@@ -148,6 +148,38 @@
                     </li>
                 @endcanany
 
+                
+                {{-- Posts Management --}}
+                @canany('edit posts', 'add posts', 'delete posts', 'activate posts')
+                    <li class="nav-item">
+                        <a class="nav-link active collapsed" href="#navbar-posts" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-examples">
+                            <i class="fas fa-pen text-info"></i>
+                            <span class="nav-link-text text-info">{{ __('dashboard.Posts Management') }}</span>
+                        </a>
+                        
+                        <div class="collapse" id="navbar-posts">
+                            <ul class="nav nav-sm flex-column">
+
+                                @can('add posts')
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ route('posts.create') }}">
+                                            <i class="fa fa-folder-plus"></i>
+                                            {{ __('dashboard.Add Post') }}
+                                        </a>
+                                    </li>
+                                @endcan
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('settings.posts.list') }}">
+                                        <i class="fa fa-layer-group"></i>
+                                        {{ __('dashboard.Posts List') }}
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                @endcanany
+
                 {{-- Users Management --}}
                 @canany('edit users', 'add users', 'delete users', 'activate users')
                     <li class="nav-item">

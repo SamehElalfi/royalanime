@@ -29,7 +29,7 @@
                     <div class="col-lg-8">
                         <div class="card bg-gradient-secondary shadow">
                             <div class="card-body p-lg-5 text-center">
-                                <h4 class="mb-1">تابع كل جديد من بريدك الإلكتروني مباشرةً</h4>
+                                <h1 class="mb-1 h4">تابع كل جديد من بريدك الإلكتروني مباشرةً</h1>
                                 <p class="mt-0">إشترك الآن وستصلك رسائل مجانية بكل الأخبار وجديد الأنميات!</p>
                                 <form action="/subscriber" method="post">
 

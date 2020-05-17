@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
@@ -23,7 +24,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.posts.create');
     }
 
     /**
@@ -34,8 +35,41 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        // return 'sam';
-        return $request;
+        // Validate All input fields data
+        $validatedData = $request->validate([
+            "title" => "required",
+            "content" => "required",
+            "tags" => "nullable",
+            "slug" => "nullable",
+            "summary" => "nullable",
+            "cover" => "image|mimes:jpeg,png,jpg,gif,svg",
+        ]);
+
+        $post = new \App\Post;
+        $post->title = $request['title'];
+        $post->content = $request['content'];
+        $post->tags = $request['tags'];
+        $post->summary = $request['summary'];
+        
+        if ($request['slug']){
+            $post->slug = Str::slug($request['slug']);
+        } else {
+            $post->slug = Str::slug($request['title']);
+        }
+        
+
+        
+        if ($request->has('cover')) {
+            $cover = time().'.'.request()->cover->getClientOriginalExtension();
+            request()->cover->move(public_path('images'), $cover);
+            $cover = cdn('images/'.$cover);
+        } else {
+            $cover = Null;
+        }
+        $post->feature_image = $cover   ;
+
+        $post->save();
+        return back()->with('main', __('dashboard.A new post added to database successfully') );
     }
 
     /**

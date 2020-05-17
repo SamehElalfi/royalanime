@@ -34,13 +34,13 @@
             <!-- Section Title -->
             <div class="row justify-content-center">
                 <div class="col-lg-12">
-                    <h2 class="mb-5" id="new-anime">
+                    <h1 class="mb-5 h2" id="new-anime">
                         <span>البحث</span>
-                    </h2>
+                    </h1>
                 </div>
                 <div class="col-lg-12 mb-4">
                     <form action="/search" method="GET">
-                        <div class="row">
+                        <div class="row container m-auto">
                             <input type="text" name="q" value="{{ $query ?? '' }}" class="form-control col-12 col-md-9 ml-md-3" placeholder="أكتب اسم الأنمي هنا ..." required>
                             <button type="submit" class="col-12 col-md-2 btn btn-outline-primary mt-4 mt-md-0 ml-md-4">
                                 <i class="fa fa-search mr-2"></i>

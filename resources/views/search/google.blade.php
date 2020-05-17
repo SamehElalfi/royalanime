@@ -14,7 +14,7 @@
             <div class="row justify-content-center mb-5">
                 <div class="col-lg-12">
                     <h1>
-                        <span>البحث بواسطو جوجل</span>
+                        <span>البحث بواسطة جوجل</span>
                     </h1>
                 </div>
             </div>

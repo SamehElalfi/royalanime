@@ -10,13 +10,13 @@
 
             <!-- Social Media Links -->
             <div class="col-lg-6 text-lg-center btn-wrapper text-center">
-                <a target="_blank" href="https://twitter.com/RoyalAnimeOfficial" class="btn btn-neutral btn-icon-only btn-twitter btn-round btn-lg" data-toggle="tooltip" data-original-title="Follow us">
+                <a target="_blank" href="https://twitter.com/RoyalAnimeCom" class="btn btn-neutral btn-icon-only btn-twitter btn-round btn-lg" data-toggle="tooltip" data-original-title="Follow us" rel="external nofollow" title="twitter">
                 <i class="fa fa-twitter"></i>
                 </a>
-                <a target="_blank" href="https://www.facebook.com/RoyalAnimeOfficial" class="btn btn-neutral btn-icon-only btn-facebook btn-round btn-lg" data-toggle="tooltip" data-original-title="Like us">
+                <a target="_blank" href="https://www.facebook.com/RoyalAnimeOfficial" class="btn btn-neutral btn-icon-only btn-facebook btn-round btn-lg" data-toggle="tooltip" data-original-title="Like us" rel="external nofollow" title="facebook">
                 <i class="fa fa-facebook-square"></i>
                 </a>
-                <a target="_blank" href="https://pinterest.com/RoyalAnimeOfficial" class="btn btn-neutral btn-icon-only btn-pinterest btn-round btn-lg" data-toggle="tooltip" data-original-title="Follow Us">
+                <a target="_blank" href="https://pinterest.com/RoyalAnimeOfficial" class="btn btn-neutral btn-icon-only btn-pinterest btn-round btn-lg" data-toggle="tooltip" data-original-title="Follow Us" rel="external nofollow" title="pinterest">
                 <i class="fa fa-pinterest"></i>
                 </a>
             </div>
@@ -29,7 +29,7 @@
 
                 <!-- Copyrights and Website Link -->
                 <div class="copyright">
-                    {{ now()->year }} &copy; <a href="/">Royal Anime</a>
+                    {{ now()->year }} &copy; <a href="/" title="الصفحة الرئيسية">Royal Anime</a>
                 </div>
             </div>
 
@@ -37,13 +37,13 @@
             <div class="col-md-6 text-center text-md-left">
                 <ul class="nav nav-footer justify-content-center">
                     <li class="nav-item">
-                        <a href="/" class="nav-link">رويال أنمي</a>
+                        <a href="/" class="nav-link mx-3" title="الصفحة الرئيسية">رويال أنمي</a>
                     </li>
                     <li class="nav-item">
-                        <a href="/about" class="nav-link">المزيد عنا</a>
+                        <a href="/about" class="nav-link mx-3" title="المزيد عنا">المزيد عنا</a>
                     </li>
                     <li class="nav-item">
-                        <a href="/blog" class="nav-link">المدونة</a>
+                        <a href="/blog" class="nav-link mx-3" title="المدونة">المدونة</a>
                     </li>
                 </ul>
             </div>

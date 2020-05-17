@@ -48,8 +48,10 @@ class EpisodeController extends Controller
         $description = 'جميع حلقات مسلسل ' . $anime->title
         . ' للمشاهدة والتحميل بروابط مباشرة من موقع رويال أنمي';
 
+        $canonical = route('animes.episodes.index', ['anime'=>$anime_id]);
+
         return view('episode.index',
-            compact('episodes', 'anime', 'title', 'description')
+            compact('episodes', 'anime', 'title', 'description', 'canonical')
         );
     }
 
@@ -60,7 +62,7 @@ class EpisodeController extends Controller
      */
     public function create()
     {
-        //
+        return 'create ep';
     }
 
     /**
@@ -115,6 +117,7 @@ class EpisodeController extends Controller
         $keywords = 'حلقة ' . $episode_number
         . ', '. $anime->title;
         
+        $canonical = route('animes.episodes.show', ['anime'=>$anime_id, 'episode'=>$episode_number]);
         
         // Watching (Streaming) servers whiche used in iframe source
         // The Structure is like the following
@@ -123,9 +126,14 @@ class EpisodeController extends Controller
         // -> links.links (text (json))
         // 
         // If there is no links an error message will be handled by the view
-        $watch_links = json_decode(
-            $episode->watchLinks['links']
-        );
+
+        if (isset($episode->watchLinks['links'])) {
+            $watch_links = json_decode(
+                $episode->watchLinks['links']
+            );
+        } else {
+            $watch_links = [];
+        }
 
 
         // Downloading servers
@@ -138,7 +146,7 @@ class EpisodeController extends Controller
 
         return view('episode.show', compact(
             'anime', 'title',
-            'description', 'watch_links', 'download_links')
+            'description', 'watch_links', 'download_links', 'canonical')
         )->with('episode', $episode_details);
     }
 
@@ -214,9 +222,13 @@ class EpisodeController extends Controller
         // Return 404 error if there are no animes
         if ($paginator == null){abort(404);}
         
+        // return $paginator;
         $primary_nav = true;
         $title = 'قائمة الحلقات';
         $description = 'أكبر قائمة للأنمي على الأطلاق مقدمة حصريًأ من موقع رويال أنمي';
-        return view('episode.episode_list', compact('paginator', 'primary_nav', 'title', 'description'));
+
+        $canonical = route('episodes');
+
+        return view('episode.episode_list', compact('paginator', 'primary_nav', 'title', 'description', 'canonical'));
     }
 }

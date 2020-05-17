@@ -35,9 +35,9 @@
                 <!-- Section Title -->
                 <div class="row justify-content-center">
                     <div class="col-lg-12">
-                        <h2 class="mb-5" id="new-anime">
+                        <h1 class="mb-5 h2" id="new-anime">
                             <span>قائمة الحلقات</span>
-                        </h2>
+                        </h1>
                     </div>
                 </div>
             @endif

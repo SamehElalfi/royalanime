@@ -8,10 +8,12 @@
                 <!-- Section Title -->
                 <div class="row justify-content-center">
                     <div class="col-lg-12">
-                        <h2 class="mb-5" id="new-anime">
+                        <h1 class="mb-5 h2" id="new-anime">
                             <span>أنمي {{ $id }}</span>
-                        </h2>
+                            <a href="{{ route('tags.index') }}" class="btn btn-outline-primary float-right">قائمة التصنيفات</a>
+                        </h1>
                     </div>
+                    @include('layouts.sort_by')
                 </div>
             @endif
             

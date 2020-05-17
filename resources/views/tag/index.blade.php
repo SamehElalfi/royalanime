@@ -8,9 +8,9 @@
             <!-- Section Title -->
             <div class="row justify-content-center">
                 <div class="col-lg-12">
-                    <h2 class="mb-5" id="new-anime">
+                    <h1 class="mb-5 h2" id="new-anime">
                         <span>كل تصنيفات الأنمي</span>
-                    </h2>
+                    </h1>
                 </div>
             </div>
 
@@ -56,7 +56,7 @@
 
             <div class="text-center">
                 {{-- <i class="fa fa-frown-o" style="font-size: 10em;"></i> --}}
-                <p class="lead">هذه الصفحة لا تحتوي على أي أنميات، وإنما فقط كل تصنيفات الأنمي التي لدينا، يمكنك مشاهدة قائمة الأنميات أو البحث في أكثر من 21.000 حلقة لدينا.</p>
+                <p class="lead">هذه الصفحة لا تحتوي على أي أنميات، وإنما فقط كل تصنيفات الأنمي التي لدينا، يمكنك مشاهدة قائمة الأنميات أو البحث في أكثر من 40.000 حلقة لدينا.</p>
                 <div class="btn-wrapper mt-5">
                     <a href="/animes" class="btn btn-lg btn-github btn-icon mb-3 mb-sm-0">
                         <span class="btn-inner--icon"><i class="fa fa-th-large"></i></span>

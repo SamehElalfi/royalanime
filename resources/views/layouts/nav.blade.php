@@ -53,7 +53,7 @@
                     <div class="dropdown-menu dropdown-menu-xl">
                         <div class="dropdown-menu-inner">
 
-                            <a href="{{ route('episode_list') }}" class="media d-flex align-items-center">
+                            <a href="{{ route('episodes') }}" class="media d-flex align-items-center">
                                 <div class="icon icon-shape bg-gradient-primary rounded-circle text-white">
                                     <i class="fa fa-film"></i>
                                 </div>
@@ -149,13 +149,13 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link nav-link-icon" href="https://www.instagram.com/RoyalAnimeOfficial" target="_blank" data-toggle="tooltip" title="Follow us on Instagram" rel="nofollow">
+                    <a class="nav-link nav-link-icon" href="https://www.pinterest.com/RoyalAnimeOfficial" target="_blank" data-toggle="tooltip" title="Follow us on Instagram" rel="nofollow">
                         <i class="fa fa-pinterest"></i>
                         <span class="nav-link-inner--text d-lg-none">Pinterest</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link nav-link-icon" href="https://twitter.com/RoyalAnimeOfficial" target="_blank" data-toggle="tooltip" title="Follow us on Twitter" rel="nofollow">
+                    <a class="nav-link nav-link-icon" href="https://twitter.com/RoyalAnimeCom" target="_blank" data-toggle="tooltip" title="Follow us on Twitter" rel="nofollow">
                         <i class="fa fa-twitter-square"></i>
                         <span class="nav-link-inner--text d-lg-none">Twitter</span>
                     </a>

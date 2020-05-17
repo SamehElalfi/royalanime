@@ -25,6 +25,8 @@
         "spatie/laravel-analytics": "^3.9",
         "spatie/laravel-backup": "^6.9",
         "spatie/laravel-permission": "^3.11",
+        "tinymce/tinymce": "^5.2",
+        "unisharp/laravel-filemanager": "^2.1",
         "van-ons/laraberg": "^1.1"
     },
     "require-dev": {

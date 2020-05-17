@@ -221,7 +221,7 @@
 
                         <br><hr><br>
 
-                        <div>
+                        <div class="text-center">
                             {{-- Previous Episode --}}
                             @if ($episode->episode_number > 1)
                                 <a class="btn btn-icon btn-3 btn-default col-md-4 col-sm-12" href="{{ route('animes.episodes.show', ['anime'=>$anime->id, 'episode'=>$episode->episode_number-1]) }}">

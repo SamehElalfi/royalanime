@@ -50,11 +50,32 @@ class StatusController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id, Request $request)
     {
+        // Ordering and sorting options
+        $sortBy = $request->input('sortBy');
+        $order = $request->input('order');
+
+        if (!in_array($order, ['DESC', 'ASC'])) {
+            $order = 'ASC';
+        }
+
+        if (!in_array($sortBy, ['title', 'score', 'date'])) {
+            $sortBy = 'title';
+        }
+
+        // $sortBy = $sortBy == 'date' ?  : $sortBy;
+
+        if ($sortBy == 'date') {
         // return $id;
         // Display anime list
-        $paginator = \App\Anime::orderBy('title')->where('status','like', '%'.$id.'%')->paginate(10);
+        $paginator = \App\Anime::orderBy('aired_from', $order)->where('status','like', '%'.$id.'%')->paginate(10);
+        $paginator = $paginator->appends(['sortBy'=> 'date', 'order'=>$order]);
+    } else {
+        // Display anime list
+        $paginator = \App\Anime::orderBy($sortBy, $order)->where('status','like', '%'.$id.'%')->paginate(10);
+        $paginator = $paginator->appends(['sortBy'=> $sortBy, 'order'=>$order]);
+    }
 
         // Return 404 error if there are no animes
         if ($paginator == null){abort(404);}
@@ -63,7 +84,7 @@ class StatusController extends Controller
         $title = 'أنمي '. $id;
         $description = 'كل الأنميات ' .$id;
         // $tag = $id;
-        return view('tag.show', compact('paginator', 'primary_nav', 'title', 'description', 'id'));
+        return view('tag.show', compact('paginator', 'primary_nav', 'title', 'description', 'id', 'sortBy', 'order'));
     }
 
     /**

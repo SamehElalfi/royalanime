@@ -28,7 +28,7 @@
                                 <img alt="image" src="{{ cdn('img/brand/white.webp') }}" style="width: 200px;" class="img-fluid">
 
                                 <!-- Main Sentence -->
-                                <p class="lead text-white">المنزل الملكي لكل الأنمي.<br/>كل ما يحتاجه الأوتاكو في مكان واحد.</p>
+                                <h1 class="lead text-white h2">المنزل الملكي لكل الأنمي.<br/>كل ما يحتاجه الأوتاكو في مكان واحد.</h1>
 
                                 <!-- Links' Buttons -->
                                 <div class="btn-wrapper mt-5">
@@ -36,7 +36,7 @@
                                         <span class="btn-inner--icon"><i class="fa fa-th-large"></i></span>
                                         <span class="btn-inner--text">قائمة <span class="text-warning">الأنمي</span></span>
                                     </a>
-                                    <a href="{{ route('episode_list') }}" class="btn btn-lg btn-white btn-icon mb-3 mb-sm-0">
+                                    <a href="{{ route('episodes') }}" class="btn btn-lg btn-white btn-icon mb-3 mb-sm-0">
                                         <span class="btn-inner--icon"><i class="fa fa-television"></i></span>
                                         <span class="btn-inner--text">أحدث الحلقات</span>
                                     </a>
@@ -111,16 +111,16 @@
             <div class="row justify-content-between align-items-center">
                 <div class="col-lg-5 mb-5 mb-lg-0">
                     <!-- Section Title and Description -->
-                    <h1 class="text-white font-weight-light">أفلام الأنمي</h1>
+                    <h2 class="text-white font-weight-light h1">أفلام الأنمي</h2>
                     <p class="lead text-white mt-4">يحتوي موقع رويال أنمي على الآلاف من مسلسلات الأنمي بالإضافة إلى المئات من أفلام الأنمي أيضًا. يمكنك مشاهدة وتحميل أحدث أفلام الأنمي بروابط مباشرة من هنا.</p>
-                    <a href="#" class="btn btn-white mt-4">أحدث أفلام الأنمي</a>
+                    <a href="{{ route('types.show', ['type'=>'Movie']) }}" class="btn btn-white mt-4">أحدث أفلام الأنمي</a>
                 </div>
 
                 <!-- SlideShow -->
                 @include('layouts.slideshow', [
                     'images' => [
-                        ['link' => "http://www.google.com", 'src' => "img/11.webp", 'alt' => "First slide"],
-                        ['link' => "http://www.facebook.com", 'src' => "img/12.webp", 'alt' => "First slide"]
+                        ['link' => "#", 'src' => "img/11.webp", 'alt' => "First slide"],
+                        ['link' => "#", 'src' => "img/12.webp", 'alt' => "First slide"]
                     ]
                 ])
             </div>
@@ -146,8 +146,8 @@
                     
                     <!-- Section Buttons -->
                     <div class="btn-wrapper">
-                        <a href="/tags" class="btn btn-primary">مشاهدة الأنمي بحسب التصنيف</a>
-                        <a href="#" target="_blank" class="btn btn-default mt-3 mt-md-0">مشاهدة كل الأستديوهات</a>
+                        <a href="{{ route('tags.index') }}" class="btn btn-primary">مشاهدة الأنمي بحسب التصنيف</a>
+                        <a href="{{ route('animes.index') }}?sortBy=score&order=DESC" target="_blank" class="btn btn-default mt-3 mt-md-0">مشاهدة الأنميات بحسب التقييم</a>
                     </div>
                 </div>
             </div>

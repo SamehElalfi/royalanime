@@ -1,3 +1,16 @@
+# v1.2
+## Added
+- added controllers for seasons, anime type and rating with sorting options
+- added sorting options to status and tags pages
+- created add new post page in the dashboard with TinyMCE editor
+- created filemanager page to upload and download files
+
+## Changed
+- made Next/Prev/All Episodes in the center
+- fixed all links in the home page
+- fixed search feild
+- some SEO fixes
+
 # v1.1
 ## Added
 - created all roles and permissions

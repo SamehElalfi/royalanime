@@ -3,9 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class EpisodeDetail extends Model
 {
+    use SoftDeletes;
+
     /**
      * Return the name of the table for this model
      */

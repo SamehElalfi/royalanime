@@ -13,13 +13,14 @@ class WelcomeController extends Controller
     */
     public function index()
     {
-     //   return cdsdn('/css/app.css');
        // Display best animes
        $animes = \App\Anime::find(4)->orderBy('score', 'desc')
        ->take(4)
        ->get();
-       // dd($animes);
-       return view('welcome', compact('animes'));
+
+       $full_title = 'رويال أنمي - أكبر موقع أنمي على الإطلاق';
+
+       return view('welcome', compact('animes', 'full_title'));
     }
 
     /**

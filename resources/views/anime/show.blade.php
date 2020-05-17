@@ -62,13 +62,17 @@
                             <div class="col-md-6 float-left align-self-lg-center">
                                 <div class="card-profile-stats d-flex justify-content-center">
                                     <div>
-                                        <span class="description">الحالة</span>
-                                        <span class="heading">{{ $anime->status }}</span>
+                                        <a href="{{ route('status.show', ['statu'=>$anime->status]) }}">
+                                            <span class="description">الحالة</span>
+                                            <span class="heading">{{ $anime->status }}</span>
+                                        </a>
                                     </div>
                                     @if ($anime->rating)
                                         <div>
-                                            <span class="description">النوع</span>
-                                            <span class="heading">{{ $anime->rating }}</span>
+                                            <a href="{{ route('rating.show', ['rating'=>$anime->rating]) }}">
+                                                <span class="description">النوع</span>
+                                                <span class="heading">{{ $anime->rating }}</span>
+                                            </a>
                                         </div>
                                     @endif
                                 </div>
@@ -76,7 +80,7 @@
                             <div class="col-md-6 text-lg-right align-self-lg-center">
                                 <div class="card-profile-actions py-4 mt-lg-0 mt-4">
                                     @if ($anime->anime_type)
-                                        <a href="#" class="btn btn-sm btn-success float-right mx-2 my-1">{{$anime->anime_type}}</a>
+                                        <a href="{{ route('types.show', ['type'=>$anime->anime_type]) }}" class="btn btn-sm btn-success float-right mx-2 my-1">{{$anime->anime_type}}</a>
                                     @endif
                                     @foreach (json_decode($anime->genres) as $gender)
                                         <a href="/tags/{{$gender}}" class="btn btn-sm btn-default float-right mx-2 my-1">{{$gender}}</a>
@@ -94,46 +98,27 @@
                                             <p class="text-justify h6 p-0 px-md-5">
                                                 {{$anime->arabic_synopsis}}
                                             </p>
-                                            <a href="/animes/{{ $anime->id }}/episodes" class="btn btn-success col-10 my-2">مشاهدة وتحميل الأنمي</a>
-                                            {{-- <a href="#" class="btn btn-secondary col-5 my-2">تحميل الأنمي</a> --}}
+                                            <a href="/animes/{{ $anime->id }}/episodes" class="btn btn-lg btn-success col col-md-5 my-5">مشاهدة وتحميل الأنمي</a>
+                                            @if ($anime->trailer_url)
+                                                <span onclick="$('#trailer').show()" class="btn btn-lg btn-outline-success col-12 col-md-5 my-5">الإعلان التشويقي</span>
+                                            @endif
                                         </div>
                                         <div class="col-md-4 col-sm-12 text-center mt-md-5 mt-sm-4">
-                                            {{-- <img src="{{ $anime -> Cover_url }}"> --}}
                                             <img data-src="{{$anime->image_url}}" class="mb-2 lazy">
-                                                {{-- <button type="button" class="btn btn-block btn-primary mr-1 mt-4 col-lg-10 ml-lg-4" data-toggle="modal" data-target="#modal-notification">الإعلان التشويقي</button> --}}
-                                                <div class="modal fade" id="modal-notification" tabindex="-1" role="dialog" aria-labelledby="modal-notification" aria-hidden="true" style="display: none;">
-                                                    <div class="modal-dialog modal-danger modal-dialog-centered modal-" role="document" style="max-width: fit-content;">
-                                                    <div class="modal-content bg-gradient-danger">
-                                                        <div class="modal-header">
-                                                        <h6 class="modal-title" id="modal-title-notification">الإعلان التشويقي</h6>
-                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                            <span aria-hidden="true">×</span>
-                                                        </button>
-                                                        </div>
-                                                        <div class="modal-body px-sm-1 px-md-4">
-                                                        <div class="py-3 text-center">
-                                                            <iframe
-                                                            width="100%"
-                                                            height="300px"
-                                                            src="https://www.youtube.com/embed/eRgjK23taLw"
-                                                            srcdoc="<style>*{padding:0;margin:0;overflow:hidden}html,body{height:100%}img,span{position:absolute;width:100%;top:0;bottom:0;margin:auto}span{height:1.5em;text-align:center;font:48px/1.5 sans-serif;color:white;text-shadow:0 0 0.5em black}</style><a href=https://www.youtube.com/embed/eRgjK23taLw?autoplay=1><img src=https://img.youtube.com/vi/eRgjK23taLw/hqdefault.jpg alt='Video The Dark Knight Rises: What Went Wrong? – Wisecrack Edition'><span>▶</span></a>"
-                                                            frameborder="0"
-                                                            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                                                            allowfullscreen></iframe>
-                                                        </div>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                        <!-- <button type="button" class="btn btn-white">Ok, Got it</button> -->
-                                                        <button type="button" class="btn btn-link text-white ml-auto" data-dismiss="modal">Close</button>
-                                                        </div>
-                                                    </div>
-                                                    </div>
-                                                </div>
-                                            {{-- <a href="#" class="btn btn-primary col-10 mr-1 mt-4">الإعلان التشويقي</a> --}}
                                         </div>
                                         <br><br>
                                     </div>
-                                    
+
+                                    @if ($anime->trailer_url)
+                                        <div class="row mb-4" id="trailer" style="display: none">
+                                            <div class="col-12 col-md-10" style="margin: auto;">
+                                                <h2>الإعلان التشويقي</h2>
+                                                <div class="tab-pane fade active show" id="tabs-text-0" role="tabpane0" aria-labelledby="tabs-text-0-tab" style="background: black;">
+                                                    <iframe width="100%" class="h-400" src="{{ $anime->trailer_url }}" srcdoc="<style>*{padding:0;margin:0;overflow:hidden}html,body{height:100%}img,span{position:absolute;width:100%;top:0;bottom:0;margin:auto}span{height:1.5em;text-align:center;font:48px/1.5 sans-serif;color:white;text-shadow:0 0 0.5em black}</style><a href={{ $anime->trailer_url }}><span>▶</span></a>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" title="{{ $anime->title }}"></iframe>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endif
                                     <div class="container">
                                         <div class="row card-profile-stats justify-content-center" style="color: #fff;
                                         border-radius: 14px;
@@ -224,7 +209,11 @@
                                         <small class="text-uppercase text-muted font-weight-bold">الموسم</small>
                                     </div>
                                     <div class="col-sm-9">
-                                        <h5 class="mb-0 h6">{{$anime->premiered != '' ? $anime->premiered : 'غير معروف'}}</h5>
+                                        <h5 class="mb-0 h6">
+                                            <a href="{{ $anime->premiered != null ? route('seasons.show', ['season'=>$anime->premiered]) : '' }}">
+                                                {{$anime->premiered != '' ? $anime->premiered : 'غير معروف'}}
+                                            </a>
+                                        </h5>
                                     </div>
                                 </div>
                                 <div class="row py-3 align-items-center">
@@ -240,7 +229,11 @@
                                         <small class="text-uppercase text-muted font-weight-bold">النوع</small>
                                     </div>
                                     <div class="col-sm-9">
-                                        <h5 class="mb-0 h6">{{$anime->rating != '' ? $anime->rating : 'غير معروف'}}</h5>
+                                        <h5 class="mb-0 h6">
+                                            <a href="{{ $anime->rating != null ? route('rating.show', ['rating'=>$anime->rating]) : '' }}">
+                                                {{$anime->rating != '' ? $anime->rating : 'غير معروف'}}
+                                            </a>
+                                        </h5>
                                     </div>
                                 </div>
                                 @if ($anime->notes)
