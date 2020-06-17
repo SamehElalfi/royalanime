@@ -45,7 +45,10 @@ Route::get('animes/{anime}/{slug?}', ['as'=>'animes.show', 'uses'=>'AnimeControl
 Route::get('animes/{anime}/episodes/{episode}/{slug?}', ['as'=>'animes.episodes.show', 'uses'=>'EpisodeController@show']);
 Route::get('tags/{tag}/{slug?}', ['as'=>'tags.show', 'uses'=>'TagController@show']);
 Route::get('blog/posts/{post}/{slug?}', ['as'=>'posts.show', 'uses'=>'PostController@show']);
-    
+
+Route::get('embed/{url}', 'EmbedController@show')->where('url', '(.*)');
+Route::get('embed', function(){return redirect('/');});
+
 
 /**
  * Main Support Pages

@@ -26,8 +26,8 @@ class Anime extends Model
         'columns' => [
             'animes.title_english' => 100,
             'animes.title' => 10,
-            'animes.arabic_synopsis' => 5,
-            // 'animes.title_synonyms' => 5,
+            // 'animes.arabic_synopsis' => 5,
+            'animes.title_synonyms' => 5,
             // 'animes.title_japanese' => 2,
         ],
     ];

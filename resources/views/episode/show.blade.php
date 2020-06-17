@@ -112,7 +112,8 @@
                                                             frameborder="0"
                                                             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                                                             allowfullscreen
-                                                            title="{{$item->name}}"></iframe>
+                                                            title="{{$item->name}}"
+                                                            id="server-{{$item->name}}"></iframe>
                                                         </div>
                                                     @endforeach
                                                     <span class="text-white h6 text-muted text-sm-small">

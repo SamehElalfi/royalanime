@@ -1,3 +1,10 @@
+# v1.3 [18-06-2020]
+## Added
+- Embed Page to play videos from servers without ads.
+
+## Changed
+- Fixed $title error in subscripe page
+
 # v1.2
 ## Added
 - added controllers for seasons, anime type and rating with sorting options

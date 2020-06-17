@@ -2,7 +2,7 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {{-- <meta name="viewport" content="width=device-width, initial-scale=1"> --}}
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -10,7 +10,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="{{ isset($description) ? $description . ' - شاهد الآلاف من مسلسلات وأفلام الأنمي مجانًا وبروابط مباشرة وبدون إعلانات مزعجة.' : 'شاهد الآلاف من مسلسلات وأفلام الأنمي مجانًا وبروابط مباشرة وبدون إعلانات مزعجة.' }}">
-    <meta name="keywords" content="{{ isset($keywords) ? $keywords : 'أنمي مترجم, أنمي أونلاين, أنمي أون لاين' }}">
+    <meta name="keywords" content="{{ isset($keywords) ? $keywords : 'أنمي مترجم, أنمي أونلاين, أنمي أون لاين, رويال أنمي, أنمي رويال, موقع رويال أنمي, رويال أنمي أكبر موقع أنمي' }}">
     @isset($canonical)
         <link rel="canonical" href="{{ $canonical ?? '' }}" />
     @endisset
@@ -19,23 +19,24 @@
     @isset($full_title)
         <title>{{ $full_title }}</title>
     @else
-        <title>{{ $title }}</title>
+        <title>{{ $title ?? "رويال أنمي - أكبر موقع أنمي على الإطلاق" }}</title>
     @endisset
-        
+    
+    <link rel="apple-touch-icon" href="{{ cdn('img/brand/white.webp') }}">
     <meta property=”fb:pages” content=”RoyalAnimeOfficial”/>
-    <meta property="og:title" content="رويال أنمي - أكير موقع أنمي على الإطلاق">
+    <meta property="og:title" content="رويال أنمي - أكبر موقع أنمي على الإطلاق">
     <meta property="og:description" content="شاهد الآلاف من مسلسلات وأفلام الأنمي مجانًا وبروابط مباشرة وبدون إعلانات مزعجة.">
     <meta property="og:image" content="{{ cdn('img/brand/white.webp') }}">
     <meta property="og:url" content="https://www.royalanime.com">
     
     <meta name="twitter:site" content="@RoyalAnimeCom">
     <meta name="twitter:description" content="شاهد الآلاف من مسلسلات وأفلام الأنمي مجانًا وبروابط مباشرة وبدون إعلانات مزعجة.' : 'شاهد الآلاف من مسلسلات وأفلام الأنمي مجانًا وبروابط مباشرة وبدون إعلانات مزعجة.">
-    <meta name="twitter:title" content="رويال أنمي - أكير موقع أنمي على الإطلاق">
+    <meta name="twitter:title" content="رويال أنمي - أكبر موقع أنمي على الإطلاق">
     <meta name="twitter:image" content="{{ cdn('img/brand/white.webp') }}">
     <meta name="twitter:card" content="{{ cdn('img/brand/white.webp') }}">
-    <meta name="twitter:image:alt" content="رويال أنمي - أكير موقع أنمي على الإطلاق">
+    <meta name="twitter:image:alt" content="رويال أنمي - أكبر موقع أنمي على الإطلاق">
 
-    <meta property="og:site_name" content="رويال أنمي - أكير موقع أنمي على الإطلاق">
+    <meta property="og:site_name" content="رويال أنمي - أكبر موقع أنمي على الإطلاق">
 
     <!-- Favicon -->
     <link href="{{ cdn('favicon.webp') }}" rel="icon" type="image/png">
@@ -177,5 +178,9 @@
             @yield('scripts')
         </script>
     @endif
+    
+    <script>
+        console.log($("#server-google").attr('src'));
+    </script>
 </body>
 </html>
