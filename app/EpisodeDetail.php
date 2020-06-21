@@ -20,13 +20,13 @@ class EpisodeDetail extends Model
      * Return the anime episodes of an anime
      */
     public function animeEpisodes() {
-        return $this->hasMany('App\Episode', 'anime_id', 'mal_id');
+        return $this->hasMany('App\Episode', 'anime_id', 'anime_id');
     }
 
     /**
      * Return the anime episodes of an anime
      */
     public function animeDetails() {
-        return $this->hasOne('App\Anime', 'id', 'mal_id');
+        return $this->hasOne('App\Anime', 'id', 'anime_id');
     }
 }

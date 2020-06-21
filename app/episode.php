@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Episode extends Model
 {
+    // Remove created_at and updated_at from this model
+    public $timestamps = false;
+
     /**
      * Return all streaimg links Watching (Streaming) of an episode
      */

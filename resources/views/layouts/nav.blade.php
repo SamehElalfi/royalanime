@@ -149,7 +149,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link nav-link-icon" href="https://www.pinterest.com/RoyalAnimeOfficial" target="_blank" data-toggle="tooltip" title="Follow us on Instagram" rel="nofollow">
+                    <a class="nav-link nav-link-icon" href="https://www.pinterest.com/RoyalAnimeOfficial" target="_blank" data-toggle="tooltip" title="Follow us on Pirnterest" rel="nofollow">
                         <i class="fa fa-pinterest"></i>
                         <span class="nav-link-inner--text d-lg-none">Pinterest</span>
                     </a>

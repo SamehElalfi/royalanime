@@ -55,6 +55,6 @@ class ServerController extends Controller
                 // return $all_urls;
             }
         }
-        return true
+        return true;
     }
 }

@@ -29,7 +29,7 @@ Route::resources([
     'studios' => 'StudioController',            // Anime Studios (e.g. ghibli, madhouse ...)
     'seasons' => 'SeasonController',            // Anime Seasons (e.g. 2019 summer ...)
     'rating' => 'RatingController',             // Anime Rating (e.g. PG - Children, G - All Ages ...)
-    'types' => 'TypeController',             // Anime Rating (e.g. PG - Children, G - All Ages ...)
+    'types' => 'TypeController',                // Anime Rating (e.g. PG - Children, G - All Ages ...)
     'status' => 'StatusController',             // Anime List of status (e.g. finished, airing ...)
     'blog/posts' => 'PostController',           // Posts in the Blog
     'pages' => 'PageController',                // Pages for every popular anime (e.g. Death Note, One Piece ...)

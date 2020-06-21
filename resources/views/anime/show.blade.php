@@ -62,7 +62,7 @@
                             <div class="col-md-6 float-left align-self-lg-center">
                                 <div class="card-profile-stats d-flex justify-content-center">
                                     <div>
-                                        <a href="{{ route('status.show', ['statu'=>$anime->status]) }}">
+                                        <a href="{{ route('status.show', ['status'=>$anime->status]) }}">
                                             <span class="description">الحالة</span>
                                             <span class="heading">{{ $anime->status }}</span>
                                         </a>
@@ -266,29 +266,33 @@
                             <div class="row">
                                 <div class="col-md-6 col-sm-12" dir="ltr">
                                     <h3>موسيقى البداية</h3>
-                                    @forelse (json_decode($anime->opening_themes) as $key => $opening_theme)
-                                        <a class="btn btn-icon btn-3 btn-outline-secondary col-12 my-1 mr-0" type="button" href="https://www.youtube.com/results?search_query={{ $opening_theme }}" target="_blank" >
-                                            <span class="btn-inner--icon float-left text-warning"><i class="fa">#{{ ++$key }}</i></span>
-                                            <span class="btn-inner--text h6">{{$opening_theme}}</span>
-                                            </a>
-                                    @empty
+                                    @if($anime->opening_theme)
+                                        @foreach (json_decode($anime->opening_themes) as $key => $opening_theme)
+                                            <a class="btn btn-icon btn-3 btn-outline-secondary col-12 my-1 mr-0" type="button" href="https://www.youtube.com/results?search_query={{ $opening_theme }}" target="_blank" >
+                                                <span class="btn-inner--icon float-left text-warning"><i class="fa">#{{ ++$key }}</i></span>
+                                                <span class="btn-inner--text h6">{{$opening_theme}}</span>
+                                                </a>
+                                        @endforeach
+                                    @else
                                         <div class="row justify-content-center text-dark post">
                                             <span>غير معروف حتى الآن</span>
                                         </div>
-                                    @endforelse
+                                    @endif
                                 </div>
                                 <div class="col-md-6 col-sm-12text-justify" dir="ltr">
                                     <h3>موسيقى النهاية</h3>
-                                    @forelse (json_decode($anime->ending_themes) as $key => $ending_theme)
+                                    @if($anime->ending_theme)
+                                        @foreach (json_decode($anime->ending_themes) as $key => $ending_theme)
                                         <a class="btn btn-icon btn-3 btn-outline-secondary col-12 my-1 mr-0" type="button" href="https://www.youtube.com/results?search_query={{ $ending_theme }}" target="_blank" >
                                             <span class="btn-inner--icon float-left text-warning"><i class="fa">#{{ ++$key }}</i></span>
                                             <span class="btn-inner--text h6">{{$ending_theme}}</span>
                                         </a>
-                                    @empty
+                                        @endforeach
+                                    @else
                                         <div class="row justify-content-center text-dark post">
                                             <span>غير معروف حتى الآن</span>
                                         </div>
-                                    @endforelse
+                                    @endif
                                 </div>
                             </div>
 
