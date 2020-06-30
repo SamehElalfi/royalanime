@@ -9,6 +9,8 @@ class EpisodeDetail extends Model
 {
     use SoftDeletes;
 
+    protected $guarded = [];
+
     /**
      * Return the name of the table for this model
      */

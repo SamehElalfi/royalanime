@@ -6,9 +6,10 @@ use App\Http\Controllers\API\BaseController;
 use Illuminate\Http\Request;
 
 use App\Episode;
-use App\EpisodeDetail;
+// use App\EpisodeDetail;
 use App\StreamLink;
 use App\DownloadLink;
+use App\Http\Controllers\API\ServerController;
 
 class EpisodeController extends BaseController
 {
@@ -54,35 +55,97 @@ class EpisodeController extends BaseController
             "stream_links.*.name"       => "required",
             "stream_links.*.link"       => "required|url",
             
-            "download_links.*.name"     => "required",
-            "download_links.*.link"     => "required|url",
+            "download_links.*.name"     => "nullable",
+            "download_links.*.link"     => "nullable|url"
             
         ]);
-        
-        // Add the episode to Episode Povite table
-        $episode = new Episode;
-        $episode->anime_id = $validatedData["details"]['anime_id'];
-        $episode->episode_number = $validatedData["details"]['episode_number'];
-        $episode->save();
-        $episode_id = $episode->id;
-        
-        // Add the id of the episode to insert its details
-        $validatedData["details"]["episode_id"] = $episode_id;
+
+        $data =  $validatedData["details"];
         
         // Save the details of this episode
-        EpisodeDetail::insert($validatedData["details"]);
+        $episodeQuery = Episode::where("anime_id", '=', $data["anime_id"])
+        ->where("episode_number", '=', $data["episode_number"]);
+        
+        $episode = $episodeQuery->first();
+
+        if ($episode == null) {
+            $episode = Episode::withTrashed()->where("anime_id", '=', $data["anime_id"])
+            ->where("episode_number", '=', $data["episode_number"])->first();
+            if ($episode != null) {
+                $episode->restore();
+            } else {
+                $episode = new Episode;
+            }
+        }
+
+        $episode->anime_id          = $data["anime_id"];
+        $episode->episode_number    = $data["episode_number"];
+        $episode->filler            = $data["filler"];
+        $episode->recap             = $data["recap"];
+        $episode->video_url         = $data["video_url"];
+        $episode->forum_url         = $data["forum_url"];
+        $episode->title             = $data["title"];
+        $episode->title_japanese    = $data["title_japanese"];
+        $episode->title_romanji     = $data["title_romanji"];
+        $episode->save();
+
+        $episode_id = $episode->id;
 
         // Save all Streaming Server
-        Streamlink::insert([
-            "episode_id"    => $episode_id,
-            "links"         => json_encode($validatedData["stream_links"])
-        ]);
+        if (array_key_exists('stream_links', $validatedData)) {
+            try {
+                Streamlink::insert([
+                    "episode_id"    => $episode_id,
+                    "links"         => json_encode($validatedData["stream_links"])
+                ]);
+            } catch (\Exception $e) {
+
+            }
+            // $streamlink = Streamlink::where("episode_id", "=", $episode_id);
+            // if ($streamlink->first() == null) {
+            //     Streamlink::insert([
+            //         "episode_id"    => $episode_id,
+            //         "links"         => json_encode($validatedData["stream_links"])
+            //     ]);
+            // } else {
+            //     $old_links = json_decode($streamlink->first()->links);
+            //     $old_links_raw = [];
+            //     // return json_encode($old_links[0]->link);
+
+            //     foreach ($old_links as $value) {
+            //         array_push($old_links_raw, $value->link);
+            //     }
+            //     // return $old_links_raw;
+
+            //     $new_links = [];
+
+            //     foreach ($validatedData["stream_links"] as $link) {
+            //         if (!array_key_exists($link["link"], $old_links_raw)) {
+            //             array_push($new_links, $link);
+            //         }
+            //     }
+            //     $all_links = array_merge($old_links, $new_links);
+            //     // return $all_links;
+
+            //     StreamLink::where("episode_id", "=", $episode_id)->update([
+            //         'links' => json_encode(
+            //             $all_links
+            //             )
+            //         ]);
+            // }
+        }
 
         // Save all Downloading Server
-        DownloadLink::insert([
-            "episode_id"    => $episode_id,
-            "links"         => json_encode($validatedData["download_links"])
-        ]);
+        if (array_key_exists('download_links', $validatedData)) {
+            try {
+                DownloadLink::insert([
+                    "episode_id"    => $episode_id,
+                    "links"         => json_encode($validatedData["download_links"])
+                ]);
+            } catch (\Throwable $th) {
+                //throw $th;
+            }
+        }
 
         return $this->sendResponse([
             "message"       => "Inserted a new episode successfully",

@@ -6,21 +6,23 @@ use Illuminate\Http\Request;
 
 class WelcomeController extends Controller
 {
-   /**
+    /**
     * Display the home page of the website.
     *
     * @return \Illuminate\Http\Response
     */
     public function index()
     {
-       // Display best animes
-       $animes = \App\Anime::find(4)->orderBy('score', 'desc')
-       ->take(4)
-       ->get();
+        // TODO: Add latest episodes in the home page
 
-       $full_title = 'رويال أنمي - أكبر موقع أنمي على الإطلاق';
+        // Display best animes
+        $animes = \App\Anime::find(4)->orderBy('score', 'desc')
+        ->take(4)
+        ->get();
 
-       return view('welcome', compact('animes', 'full_title'));
+        $full_title = 'رويال أنمي - أكبر موقع أنمي على الإطلاق';
+
+        return view('welcome', compact('animes', 'full_title'));
     }
 
     /**

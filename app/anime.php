@@ -9,6 +9,7 @@ use Nicolaslopezj\Searchable\SearchableTrait;
 class Anime extends Model
 {
     use SoftDeletes, SearchableTrait;
+    protected $guarded = [];
 
     /**
      * Searchable rules.
@@ -31,4 +32,11 @@ class Anime extends Model
             // 'animes.title_japanese' => 2,
         ],
     ];
+
+    /**
+     * Return the anime episodes of an anime
+     */
+    public function episodesList() {
+        return $this->hasMany('App\Episode');
+    }
 }

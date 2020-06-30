@@ -1,3 +1,16 @@
+# v1.5 [30-06-2020]
+
+## Added
+
+-   finished API for adding animes and episodes
+
+## Changed
+
+-   removed EpisodesDetails table
+-   fixed many issues in database and controllers
+
+---
+
 # v1.4 [21-06-2020]
 
 ## Added

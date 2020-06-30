@@ -3,11 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Episode extends Model
 {
-    // Remove created_at and updated_at from this model
-    public $timestamps = false;
+    use SoftDeletes;
 
     /**
      * Return all streaimg links Watching (Streaming) of an episode
@@ -26,13 +26,7 @@ class Episode extends Model
     /**
      * Return the anime episodes of an anime
      */
-    public function animeEpisodes() {
-        return $this->hasMany('App\Episode', 'anime_id', 'anime_id');
-    }
-    /**
-     * Return the anime episodes of an anime
-     */
-    public function episodeDetails() {
-        return $this->hasOne('App\EpisodeDetail');
+    public function anime() {
+        return $this->belongsTo('App\Anime');
     }
 }

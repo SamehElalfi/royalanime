@@ -389,6 +389,7 @@ class AnimeController extends Controller
      */
     public function show(anime $anime)
     {
+        // dd($anime->episodesList);
         // the meta tag of anime page
         $title = "مشاهدة وتحميل " . $anime->title;
         $description = $anime->arabic_synopsis;

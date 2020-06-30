@@ -1,5 +1,7 @@
 <?php
 
+// TODO: Split web.php into smaller files and import them here
+
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Http;
 
@@ -46,8 +48,8 @@ Route::get('animes/{anime}/episodes/{episode}/{slug?}', ['as'=>'animes.episodes.
 Route::get('tags/{tag}/{slug?}', ['as'=>'tags.show', 'uses'=>'TagController@show']);
 Route::get('blog/posts/{post}/{slug?}', ['as'=>'posts.show', 'uses'=>'PostController@show']);
 
-Route::get('embed/{url}', 'EmbedController@show')->where('url', '(.*)');
-Route::get('embed', function(){return redirect('/');});
+Route::get('royalembed/{url}', 'EmbedController@show')->where('url', '(.*)');
+Route::get('royalembed', function(){return redirect('/');});
 
 
 /**

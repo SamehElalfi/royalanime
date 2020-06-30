@@ -107,8 +107,8 @@
                                                         <iframe
                                                             width="100%"
                                                             class="h-400"
-                                                            src="{{$item->link}}"
-                                                            srcdoc="<style>*{padding:0;margin:0;overflow:hidden}html,body{height:100%}img,span{position:absolute;width:100%;top:0;bottom:0;margin:auto}span{height:1.5em;text-align:center;font:48px/1.5 sans-serif;color:white;text-shadow:0 0 0.5em black}</style><a href={{$item->link}}><span>▶</span></a>"
+                                                            src="/royalembed/{{$item->link}}"
+                                                            srcdoc="<style>*{padding:0;margin:0;overflow:hidden}html,body{height:100%}img,span{position:absolute;width:100%;top:0;bottom:0;margin:auto}span{height:1.5em;text-align:center;font:48px/1.5 sans-serif;color:white;text-shadow:0 0 0.5em black}</style><a href=/royalembed/{{$item->link}}><span>▶</span></a>"
                                                             frameborder="0"
                                                             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                                                             allowfullscreen
@@ -238,7 +238,7 @@
 
                             {{-- Next Episode --}}
                             {{-- Check if there is more episodes --}}
-                            @if ($episode->episode_number < $episode->animeEpisodes()->count())
+                            @if ($episode->episode_number < $episode->anime->episodesList->count())
                                 <a class="btn btn-icon btn-3 btn-default col-md-4 col-sm-12" href="{{ route('animes.episodes.show', ['anime'=>$anime->id, 'episode'=>$episode->episode_number+1]) }}">
                                     <span class="btn-inner--text">الحلقة التالية</span>
                                     <span class="btn-inner--icon"><i class="fa fa-angle-left"></i></span>

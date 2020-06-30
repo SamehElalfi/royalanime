@@ -7,11 +7,21 @@
     <title>فيديو من رويال أنمي - أكبر موقع لمشاهدة الأنمي على الإطلاق</title>
     <link rel="stylesheet" href="/css/embed/videre.css">
     <link rel="stylesheet" href="https://unpkg.com/plyr@3/dist/plyr.css">
+    <style>
+    .container {width:100%;height: 100vh;}
+    .container video {
+        display:none;
+    }
+    </style>
 
 </head>
-<body style="background: url('/img/loading.png');background-size: cover;">
-
+<body style="background: url('/img/loading.png');background-size: cover;    height: 100vh;
+    overflow: hidden;">
+    <div id="iframe"></div>
     <div class="container">
+    <a href="https://www.royalanime.com/">
+        <img src="http://cdn.royalanime.com/img/brand/white.webp" style="position: absolute;top: 0;left: 0;z-index: 9;">
+    </a>
         <video controls crossorigin playsinline poster="">
             
         </video>
@@ -71,7 +81,8 @@
             $("body div").remove();
             $("body").css("background","url('/img/errors/undraw_page_not_found_su7k.png') 0% 0% / cover");
         }
-        function playerHandler() {
+        function playerHandler(url=0) {
+            $('video').show();
             var controls =
             [
                 'play-large', // The large play button in the center
@@ -94,7 +105,9 @@
             
             // Expose player so it can be used from the console
             window.player = player;
-            // player.config.urls.download = urls[urls.length-1][1];
+            if (url != 0) {
+                player.config.urls.download = url;
+            }
         }
 
         function mp4upload(code) {
@@ -267,6 +280,9 @@
         const url = 'https://cors-anywhere.herokuapp.com/{{ $url }}';
         const cors = '{{ $cors }}';
         const urlWithoutCors = '{{ $url }}';
+
+        // TODO: Remove CORS error and stop using cors-anywhere.herokuapp.com
+        // By using JSONP or fetch function
         try {
             if (url.includes('vk.com')) {
                 var a = $.ajax({
@@ -279,7 +295,7 @@
                             e = "<source src='" + cors + element[1].split("\\/").join("/") + "'  type='video/mp4' size='" + element[0] + "'>";
                             $('video').append(e);
                         });
-                        playerHandler()
+                        playerHandler(urls[0][1].split("\\/").join("/"))
                     },
                     error: errorHandler
                 });
@@ -295,7 +311,7 @@
                             e = "<source src='" + cors + element.split("\\/").join("/") + "'  type='video/mp4'>";
                             $('video').append(e);
                         });
-                        playerHandler();
+                        playerHandler(urls[0].split("\\/").join("/"));
                     },
                     error: errorHandler
                 });
@@ -310,7 +326,7 @@
                             e = "<source src='" + cors + element[0].split("\\/").join("/") + "'  type='video/mp4' size='" + element[1] + "'>";
                             $('video').append(e);
                         });
-                        playerHandler();
+                        playerHandler(urls[0][0].split("\\/").join("/"));
                     },
                     error: errorHandler
                 });
@@ -327,7 +343,7 @@
                             e = "<source src='" + cors + element.split("\\/").join("/") + "'  type='video/mp4'>";
                             $('video').append(e);
                         });
-                        playerHandler();
+                        playerHandler(urls[0].split("\\/").join("/"));
                     },
                     error: errorHandler
                 });
@@ -344,7 +360,7 @@
                             e = "<source src='" + cors + element.split("\\/").join("/") + "'  type='video/mp4'>";
                             $('video').append(e);
                         });
-                        playerHandler();
+                        playerHandler(urls[0].split("\\/").join("/"));
                     },
                     error: errorHandler
                 });
@@ -363,7 +379,7 @@
                             $('video').append(e);
                         });
                         
-                        playerHandler();
+                        playerHandler(urls[0][0]);
                     },
                     error: errorHandler
                 });
@@ -381,7 +397,7 @@
                             $('video').append(e);
                         });
                         
-                        playerHandler();
+                        playerHandler(urls[0][0]);
                     },
                     error: errorHandler
                 });
@@ -432,7 +448,7 @@
                             }
                         });
                         
-                        playerHandler();
+                        playerHandler(urls[0][0]);
                     },
                     error: errorHandler
                 });
@@ -458,7 +474,7 @@
                             }
                         });
                         
-                        playerHandler();
+                        playerHandler(urls[0][0]);
                     },
                     error: errorHandler
                 });
@@ -475,40 +491,40 @@
                             $('video').attr("src", cors + element[0]);
                         });
                         
-                        playerHandler();
+                        playerHandler(urls[0][0]);
                     },
                     error: errorHandler
                 });
             } else if (url.includes('gounlimited')) {
-                fetch(urlWithoutCors).then(function(response) {
-                    console.log(response.text());
-                    return response.text();
-                }).then(function(code) {
-                    var urls = gounlimited(code);
-                    console.log(code, urls)
+                // fetch(urlWithoutCors).then(function(response) {
+                //     console.log(response.text());
+                //     return response.text();
+                // }).then(function(code) {
+                //     var urls = gounlimited(code);
+                //     console.log(code, urls)
 
-                    urls.forEach(element => {
-                        const video = document.querySelector('video');
-                        $('video').attr("src", element[0]);
-                    });
+                //     urls.forEach(element => {
+                //         const video = document.querySelector('video');
+                //         $('video').attr("src", element[0]);
+                //     });
                     
-                    playerHandler();
-                });
-                // var a = $.ajax({
-                //     url: urlWithoutCors,
-                //     // dataType:'jsonp',
-                //     success: function(code){
-                //         var urls = gounlimited(code);
-
-                //         urls.forEach(element => {
-                //             const video = document.querySelector('video');
-                //             $('video').attr("src", cors + element[0]);
-                //         });
-                        
-                //         playerHandler();
-                //     },
-                //     error: errorHandler
+                //     playerHandler();
                 // });
+                var a = $.ajax({
+                    url: urlWithoutCors,
+                    // dataType:'jsonp',
+                    success: function(code){
+                        var urls = gounlimited(code);
+
+                        urls.forEach(element => {
+                            const video = document.querySelector('video');
+                            $('video').attr("src", cors + element[0]);
+                        });
+                        
+                        playerHandler(urls[0][0]);
+                    },
+                    error: errorHandler
+                });
             } else if (url.includes('sendvid')) {
                 var a = $.ajax({
                     url: urlWithoutCors,
@@ -525,17 +541,40 @@
                             $('video').attr("src", cors + element[0]);
                         });
                         
-                        playerHandler();
+                        playerHandler(urls[0][0]);
                     },
                     error: errorHandler
                 });
+            } else if (url.includes('google')) {
+                // TODO: Extract Google view ID
+                e = `<iframe src="`+urlWithoutCors+`" style=" width: 100%; height: 100vh; "></iframe> `
+                $('#iframe').append(e);
+                console.log("done google")
+                // var a = $.ajax({
+                //     url: urlWithoutCors,
+                //     headers:{
+                //         'x-requested-with':'XMLHttpRequest',
+                //         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36 Edg/83.0.478.45'
+                //         },
+                //     // dataType:'jsonp',
+                //     success: function(code){
+                //         var urls = sendvid(code);
+
+                //         urls.forEach(element => {
+                //             const video = document.querySelector('video');
+                //         });
+                        
+                //         playerHandler();
+                //     },
+                //     error: errorHandler
+                // });
             } else {
                 $( document ).ready( () => {
                     console.log('else')
-                    e = "<source src='" + url + "'  type='video/mp4'>";
+                    e = "<iframe style='width:100%; height:100vh' src='" + urlWithoutCors + "'></iframe>";
                     // $('video').attr("src", urlWithoutCors);
-                    $('video').append(e);
-                    playerHandler();
+                    $('#iframe').append(e);
+                    // playerHandler();
                 });
             }
         } catch(err) {

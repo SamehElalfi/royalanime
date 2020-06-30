@@ -26,13 +26,13 @@ class EpisodeController extends Controller
         // Get the episode_id whiche used to get Episode Details
         // The next block of code will return the episode id like:
         // [1, 2, 3]
-        $episodes_ids = Episode::where('anime_id', $anime_id)->pluck('id');
+        // $episodes_ids = Episode::where('anime_id', $anime_id)->pluck('id');
 
         // Abort an ERROR message if no episode found
-        if (!$episodes_ids->first()) {return view('episode.not_found');}
+        // if (!$episodes_ids->first()) {return view('episode.not_found');}
 
 
-        $episodes = EpisodeDetail::whereIn('episode_id', $episodes_ids)
+        $episodes = Episode::where('anime_id', $anime_id)
         ->orderBy('episode_number')->get();
         
         // Return 404 Error if no episodes found
@@ -99,10 +99,10 @@ class EpisodeController extends Controller
 
 
         // Get Episode Details (e.g. title, English Title ...)
-        $episode_details = $episode->episodeDetails;
+        // $episode_details = $episode->episodeDetails;
 
         // // Return 404 Error if no episodes found
-        if (empty($episode_details)) {abort(404);}
+        // if (empty($episode_details)) {abort(404);}
         
         // Get the anime details which used in "Next ep"
         // and "Prev ep" buttons and Main page heading
@@ -145,9 +145,9 @@ class EpisodeController extends Controller
         );
 
         return view('episode.show', compact(
-            'anime', 'title',
+            'anime', 'title', 'episode',
             'description', 'watch_links', 'download_links', 'canonical')
-        )->with('episode', $episode_details);
+        );
     }
 
     /**
@@ -217,18 +217,16 @@ class EpisodeController extends Controller
     public function episode_list()
     {
         // Display anime list
-        $paginator = EpisodeDetail::orderBy('aired')->paginate(52);
+        $paginator = EpisodeDetail::latest()->paginate(52);
 
-        // Return 404 error if there are no animes
+        // Return 404 error if there are no episodes
         if ($paginator == null){abort(404);}
-        
-        // return $paginator;
+
         $primary_nav = true;
         $title = 'قائمة الحلقات';
         $description = 'أكبر قائمة للأنمي على الأطلاق مقدمة حصريًأ من موقع رويال أنمي';
 
         $canonical = route('episodes');
-
         return view('episode.episode_list', compact('paginator', 'primary_nav', 'title', 'description', 'canonical'));
     }
 }

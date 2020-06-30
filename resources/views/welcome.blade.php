@@ -6,7 +6,7 @@
             <section class="section section-lg section-hero section-shaped">
                 
                 <!-- Background Circles and Image -->
-                <div class="shape shape-style-1 bg-cover colored-bg-transparent lazy" data-src='img/backgrounds/bg-1.webp'>
+                <div class="shape shape-style-1 bg-cover colored-bg-transparent" style='background: url(img/backgrounds/bg-1.webp);background-size: cover;'>
                     <span class="span-150"></span>
                     <span class="span-50"></span>
                     <span class="span-50"></span>

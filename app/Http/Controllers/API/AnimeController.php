@@ -32,17 +32,64 @@ class AnimeController extends BaseController
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Response anime id
      */
     public function store(Request $request)
     {
         // Validate that every single information is correct
         $validatedData = $this->validate_anime_data($request);
-
-        // Save Anime Details in the database
-        Anime::insert($validatedData);
-
-        return $this->sendResponse('Inserted new anime successfully');
+        
+        $message = "Anime already exists";
+        
+        // Save Anime Details in the database and get ID
+        // '&' in use() to modify the variable from inside the function
+        $anime = Anime::where("mal_id", "=", $validatedData["mal_id"])->first();
+        
+        if ( $anime == null ) {
+            $anime = Anime::withTrashed()->where("mal_id", "=", $validatedData["mal_id"])->first();
+            if ( $anime != null ) {
+                $anime->restore();
+                $message = "Anime restored succesfully";
+            } else {
+                $message = "Inserted anime succesfully";
+                
+                // If anime doesn't exist, Insert new one
+                $anime = new Anime;
+                $anime->mal_id              = (in_array("mal_id", array_keys($validatedData))) ? $validatedData["mal_id"] : null;
+                $anime->title               = (in_array("title", array_keys($validatedData))) ? $validatedData['title'] : null;
+                $anime->arabic_synopsis     = (in_array("arabic_synopsis", array_keys($validatedData))) ? $validatedData["arabic_synopsis"] : null;
+                $anime->anime_type          = (in_array("anime_type", array_keys($validatedData))) ? $validatedData["anime_type"] : null;
+                $anime->aired_from          = (in_array("aired_from", array_keys($validatedData))) ? $validatedData["aired_from"] : null;
+                $anime->aired_to            = (in_array("aired_to", array_keys($validatedData))) ? $validatedData["aired_to"] : null;
+                $anime->background          = (in_array("background", array_keys($validatedData))) ? $validatedData["background"] : null;
+                $anime->broadcast           = (in_array("broadcast", array_keys($validatedData))) ? $validatedData["broadcast"] : null;
+                $anime->cover_url           = (in_array("cover_url", array_keys($validatedData))) ? $validatedData["cover_url"] : null;
+                $anime->duration            = (in_array("duration", array_keys($validatedData))) ? $validatedData["duration"] : null;
+                $anime->ending_themes       = (in_array("ending_themes", array_keys($validatedData))) ? json_encode($validatedData["ending_themes"]) : null;
+                $anime->episodes            = (in_array("episodes", array_keys($validatedData))) ? $validatedData["episodes"] : null;
+                $anime->favorites           = (in_array("favorites", array_keys($validatedData))) ? $validatedData["favorites"] : null;
+                $anime->genres              = (in_array("genres", array_keys($validatedData))) ? json_encode($validatedData["genres"]) : null;
+                $anime->image_url           = (in_array("image_url", array_keys($validatedData))) ? $validatedData["image_url"] : null;
+                $anime->members             = (in_array("members", array_keys($validatedData))) ? $validatedData["members"] : null;
+                $anime->opening_themes      = (in_array("opening_themes", array_keys($validatedData))) ? json_encode($validatedData["opening_themes"]) : null;
+                $anime->popularity          = (in_array("popularity", array_keys($validatedData))) ? $validatedData["popularity"] : null;
+                $anime->rank                = (in_array("rank", array_keys($validatedData))) ? $validatedData["rank"] : null;
+                $anime->rating              = (in_array("rating", array_keys($validatedData))) ? $validatedData["rating"] : null;
+                $anime->source              = (in_array("source", array_keys($validatedData))) ? $validatedData["source"] : null;
+                $anime->status              = (in_array("status", array_keys($validatedData))) ? $validatedData["status"] : null;
+                $anime->scored_by           = (in_array("scored_by", array_keys($validatedData))) ? $validatedData["scored_by"] : null;
+                $anime->synopsis            = (in_array("synopsis", array_keys($validatedData))) ? $validatedData["synopsis"] : null;
+                $anime->title_english       = (in_array("title_english", array_keys($validatedData))) ? $validatedData["title_english"] : null;
+                $anime->title_japanese      = (in_array("title_japanese", array_keys($validatedData))) ? $validatedData["title_japanese"] : null;
+                $anime->title_synonyms      = (in_array("title_synonyms", array_keys($validatedData))) ? $validatedData["title_synonyms"] : null;
+                $anime->trailer_url         = (in_array("trailer_url", array_keys($validatedData))) ? $validatedData["trailer_url"] : null;
+                $anime->url                 = (in_array("url", array_keys($validatedData))) ? $validatedData["url"] : null;
+                $anime->save();
+                // return $validatedData;
+            }
+        }
+        
+        return $this->sendResponse(["anime_id" => $anime->id, "message" => $message]);
     }
 
     /**
@@ -60,9 +107,9 @@ class AnimeController extends BaseController
         // Validate All input fields data
         $validatedData = $request->validate([
             "arabic_synopsis"   => "nullable",
-            "anime_type"        => "in:TV,Movie,OVA,ONA,Special,Music",
-            "aired_from"        => "nullable|date",
-            "aired_to"          => "nullable|date",
+            "type"              => "nullable",
+            "aired.from"        => "nullable|date",
+            "aired.to"          => "nullable|date",
             "background"        => "nullable",
             "broadcast"         => "nullable",
             "cover"             => "image|mimes:jpeg,png,jpg,gif,svg",
@@ -78,9 +125,9 @@ class AnimeController extends BaseController
             "opening_themes"    => "nullable",
             "popularity"        => "nullable|int",
             "rank"              => "nullable|numeric",
-            "rating"            => "numeric|between:0,5",
-            "source"            => "numeric",
-            "status"            => "in:airing,finished,upcoming",
+            "rating"            => "nullable",
+            "source"            => "nullable",
+            "status"            => "nullable",
             "scored_by"         => "nullable|int",
             "synopsis"          => "nullable",
             "title_english"     => "nullable",
@@ -94,7 +141,7 @@ class AnimeController extends BaseController
         // Translate all genres to Arabic
         // splited by commas (,) and translated into arabic
         if ($validatedData->has('genres')) {
-            $genres = $validatedData['genres'];
+            $genres = [];
 
             // The words that will be translated
             $translateWords = array(
@@ -143,57 +190,48 @@ class AnimeController extends BaseController
                 'Yuri'             => 'يوري'
             );
 
-            $genres = str_replace(
-                array_keys($translateWords), 
-                array_values($translateWords), 
-                $genres
-            );
+            foreach ($validatedData['genres'] as $genre) {
+                $genre = str_replace(
+                    array_keys($translateWords), 
+                    array_values($translateWords), 
+                    $genre['name']
+                );
+                array_push($genres, $genre);
+            }
             
             // Remove duplicate words and translate the string into json code
-            $validatedData['genres'] = json_encode(
-                array_unique(
-                    array_filter(
-                        explode(',', $genres)
-                    )
-                ), JSON_UNESCAPED_UNICODE
-            );
+            $validatedData['genres'] = $genres;
         }
 
         // Remove duplicated title synonyms
         // splited by commas (,) and translated into arabic
         if ($validatedData->has('title_synonyms')) {
-            $validatedData['title_synonyms'] = json_encode(
-                array_unique(
-                    array_filter(
-                        explode(',', $validatedData['title_synonyms'])
-                    )
-                )
-            );
+            $validatedData['title_synonyms'] = json_encode($validatedData['title_synonyms']);
         }
 
         // Translate anime type into Arabic (default: Null)
-        if ($validatedData->has('anime_type')) {
-            switch ($validatedData->anime_type) {
+        if ($validatedData->has('type')) {
+            switch ($validatedData->type) {
                 case "TV":
-                    $validatedData->anime_type = "مسلسل";
+                    $validatedData["anime_type"] = "مسلسل";
                     break;
                 case "Movie":
-                    $validatedData->anime_type = "فيلم";
+                    $validatedData["anime_type"] = "فيلم";
                     break;
                 case "OVA":
-                    $validatedData->anime_type = "أوفا";
+                    $validatedData["anime_type"] = "أوفا";
                     break;
                 case "ONA":
-                    $validatedData->anime_type = "أونا";
+                    $validatedData["anime_type"] = "أونا";
                     break;
                 case "Special":
-                    $validatedData->anime_type = "خاصة";
+                    $validatedData["anime_type"] = "خاصة";
                     break;
                 case "Music":
-                    $validatedData->anime_type = "موسيقى";
+                    $validatedData["anime_type"] = "موسيقى";
                     break;
                 default:
-                    $validatedData->anime_type = NULL;
+                    $validatedData["anime_type"] = NULL;
             }
         }
 
@@ -203,7 +241,7 @@ class AnimeController extends BaseController
                 case 'currently':
                     $validatedData->status = "مستمر";
                     break;
-                case 'finished':
+                case 'Finished Airing':
                     $validatedData->status = "منتهي";
                     break;
                 case 'upcoming':
@@ -226,7 +264,7 @@ class AnimeController extends BaseController
                 case 2:
                     $validatedData->rating = "PG - أطفال";
                     break;
-                case 3:
+                case "PG-13 - Teens 13 or older":
                     $validatedData->rating = "PG-13 - مراهقين 13+";
                     break;
                 case 4:
@@ -265,22 +303,10 @@ class AnimeController extends BaseController
         // Split OSTs into arrays and remove duplicated ones
         // splited by new line (\r\n, \r, \n)
         if ($validatedData->has('opening_themes')) {
-            $validatedData->opening_themes = json_encode(
-                array_unique(
-                    array_filter(
-                        preg_split("/\r\n|\n|\r/", $validatedData['opening_themes'])
-                    )
-                )
-            );
+            $validatedData->opening_themes = json_encode($validatedData['opening_themes']);
         }
         if ($validatedData->has('ending_themes')) {
-            $validatedData->ending_themes = json_encode(
-                array_unique(
-                    array_filter(
-                        preg_split("/\r\n|\n|\r/", $validatedData['ending_themes'])
-                    )
-                )
-            );
+            $validatedData->ending_themes = json_encode($validatedData['ending_themes']);
         }
 
         if ($validatedData->has('cover')) {
@@ -295,6 +321,17 @@ class AnimeController extends BaseController
             $validatedData->cover = cdn('images/'.$cover);
         }
 
+        $validatedData["aired_from"] = new \DateTime($validatedData["aired.from"]);
+        $validatedData["aired_string"] = $validatedData["aired.string"];
+        $validatedData["aired_to"] = new \DateTime($validatedData["aired.to"]);
+        
+        unset($validatedData["aired"]);
+        unset($validatedData["request_hash"]);
+        unset($validatedData["request_cached"]);
+        unset($validatedData["request_cache_expiry"]);
+        unset($validatedData["jikan_url"]);
+        unset($validatedData["headers"]);
+        unset($validatedData["type"]);
         return $validatedData->toArray();
     }
 
