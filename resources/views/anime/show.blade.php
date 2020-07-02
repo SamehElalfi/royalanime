@@ -61,12 +61,14 @@
                         <div class="row justify-content-center">
                             <div class="col-md-6 float-left align-self-lg-center">
                                 <div class="card-profile-stats d-flex justify-content-center">
-                                    <div>
-                                        <a href="{{ route('status.show', ['status'=>$anime->status]) }}">
-                                            <span class="description">الحالة</span>
-                                            <span class="heading">{{ $anime->status }}</span>
-                                        </a>
-                                    </div>
+                                    @if ($anime->status)
+                                        <div>
+                                            <a href="{{ route('status.show', ['status'=>$anime->status]) }}">
+                                                <span class="description">الحالة</span>
+                                                <span class="heading">{{ $anime->status }}</span>
+                                            </a>
+                                        </div>
+                                    @endif
                                     @if ($anime->rating)
                                         <div>
                                             <a href="{{ route('rating.show', ['rating'=>$anime->rating]) }}">
@@ -82,9 +84,11 @@
                                     @if ($anime->anime_type)
                                         <a href="{{ route('types.show', ['type'=>$anime->anime_type]) }}" class="btn btn-sm btn-success float-right mx-2 my-1">{{$anime->anime_type}}</a>
                                     @endif
-                                    @foreach (json_decode($anime->genres) as $gender)
-                                        <a href="/tags/{{$gender}}" class="btn btn-sm btn-default float-right mx-2 my-1">{{$gender}}</a>
-                                    @endforeach
+                                    @if ($anime->genres)
+                                        @foreach (json_decode($anime->genres) as $gender)
+                                            <a href="/tags/{{$gender}}" class="btn btn-sm btn-default float-right mx-2 my-1">{{$gender}}</a>
+                                        @endforeach
+                                    @endif
                                 </div>
                             </div>
                             
@@ -96,7 +100,7 @@
                                         <div class="col-md-8">
                                             <h2>قصة الأنمي</h2>
                                             <p class="text-justify h6 p-0 px-md-5">
-                                                {{$anime->arabic_synopsis}}
+                                                {{$anime->arabic_synopsis ?? "جاري العمل على قصة الأنمي."}}
                                             </p>
                                             <a href="/animes/{{ $anime->id }}/episodes" class="btn btn-lg btn-success col col-md-5 my-5">مشاهدة وتحميل الأنمي</a>
                                             @if ($anime->trailer_url)
@@ -104,7 +108,7 @@
                                             @endif
                                         </div>
                                         <div class="col-md-4 col-sm-12 text-center mt-md-5 mt-sm-4">
-                                            <img data-src="{{$anime->image_url}}" class="mb-2 lazy">
+                                            <img data-src="{{$anime->image_url}}" class="mb-2 lazy rounded">
                                         </div>
                                         <br><br>
                                     </div>
@@ -190,9 +194,11 @@
                                             <small class="text-uppercase text-muted font-weight-bold">أسماء أخرى</small>
                                         </div>
                                         <div class="col-sm-9">
-                                            @foreach (json_decode($anime->title_synonyms) as $item)
-                                            <h5 class="mb-0 h6">{{$item ?? 'غير معروف'}}</h5>
-                                            @endforeach
+                                            @if ($anime->title_synonyms)
+                                                @foreach (json_decode($anime->title_synonyms) as $item)
+                                                <h5 class="mb-0 h6">{{$item ?? 'غير معروف'}}</h5>
+                                                @endforeach
+                                            @endif
                                         </div>
                                     </div>
                                 @endif
@@ -250,8 +256,8 @@
                                 @endif
                             </div>
                             <hr>
-                            <h3>معلومات إضافية عن القصة</h3>
                             @if ($anime->background)
+                                <h3>معلومات إضافية عن القصة</h3>
                                 <p class="text-justify text-center h6">
                                     {{$anime->background}}
                                 </p>

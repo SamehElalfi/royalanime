@@ -408,9 +408,11 @@ class AnimeController extends Controller
         }
 
         // Adding all anime genres to meta tags
-        if (!json_decode($anime->genres)) {
-            foreach (json_decode($anime->genres) as $tag) {
-                $keywords = $keywords . 'أنمي ' . $tag . 'مترجم';
+        if ($anime->genres) {
+            if (!json_decode($anime->genres)) {
+                foreach (json_decode($anime->genres) as $tag) {
+                    $keywords = $keywords . 'أنمي ' . $tag . 'مترجم';
+                }
             }
         }
 

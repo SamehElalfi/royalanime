@@ -12,16 +12,52 @@
     .container video {
         display:none;
     }
+    * {
+        
+        transition: 0.5s;
+    }
+    #logo {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 9;
+        width: 100%;
+        opacity: 0.3;
+        text-align: right;
+    }
+    #logo img {
+        width: 10%;
+    }
+    #list * {
+        font-family: tahoma, sans-serif;
+        padding: 0 20px;
+        cursor: pointer
+        }
+    #list {
+        /* opacity: 0; */
+        text-align: right;
+    }
+    #logo:hover {
+        opacity: 1;
+    }
+    iframe {
+        border: none;
+    }
     </style>
 
 </head>
-<body style="background: url('/img/loading.png');background-size: cover;    height: 100vh;
+<body style="background: url('/img/loading.png');background-size: cover;height: 100vh;
     overflow: hidden;">
     <div id="iframe"></div>
     <div class="container">
-    <a href="https://www.royalanime.com/">
-        <img src="http://cdn.royalanime.com/img/brand/white.webp" style="position: absolute;top: 0;left: 0;z-index: 9;">
-    </a>
+    <div href="https://www.royalanime.com/" style="" id="logo">
+        <a href="https://www.royalanime.com/">
+            <img src="https://cdn.royalanime.com/img/brand/white.webp">
+        </a> 
+        <div id="list">
+            <div id="changeFullscreen" style="color:white;margin: 15px 0;">وضع ملئ الشاشة</div>
+        </div>
+    </div>
         <video controls crossorigin playsinline poster="">
             
         </video>
@@ -31,6 +67,41 @@
     <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=es6,Array.prototype.includes,CustomEvent,Object.entries,Object.values,URL"></script>
     <script src="https://unpkg.com/plyr@3"></script>
     <script src="https://cdn.rawgit.com/video-dev/hls.js/18bb552/dist/hls.min.js"></script>
+    <script>
+        var fullscreenList = [openFullscreen, closeFullscreen],
+        c = 0;
+
+        function openFullscreen() {
+            if (document.documentElement.requestFullscreen) {
+                document.documentElement.requestFullscreen();
+            } else if (document.documentElement.mozRequestFullScreen) { /* Firefox */
+                document.documentElement.mozRequestFullScreen();
+            } else if (document.documentElement.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                document.documentElement.webkitRequestFullscreen();
+            } else if (document.documentElement.msRequestFullscreen) { /* IE/Edge */
+                document.documentElement.msRequestFullscreen();
+            }
+        }
+        function closeFullscreen() {
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+            } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+            } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+            } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+            }
+        }
+
+
+
+        $('#changeFullscreen').click(function(e){  
+            e.preventDefault();
+            fullscreenList[c++%2]();
+        });
+
+    </script>
     <script>
         function getMatches(string,regex,index) {
             index || (index = 1);
@@ -146,6 +217,8 @@
             return urls;
         }
         function fembed(code) {
+            // video_id = url.split('/')[-1];
+            // api_url = "https://feurl.com/api/source/" + video_id;
             var urls = [];
             var myArr = code;
             for (i = 0; i < myArr['data'].length; i++) {
@@ -330,77 +403,77 @@
                     },
                     error: errorHandler
                 });
-            } else if (url.includes('mixdrop')) {
-                var a = $.ajax({
-                    url: url,
-                    headers:{'x-requested-with':'XMLHttpRequest'},
-                    // dataType:'jsonp',
-                    success: function(code){
-                        var urls = mixdrop(code);
+            // } else if (url.includes('mixdrop')) {
+            //     var a = $.ajax({
+            //         url: url,
+            //         headers:{'x-requested-with':'XMLHttpRequest'},
+            //         // dataType:'jsonp',
+            //         success: function(code){
+            //             var urls = mixdrop(code);
 
-                        urls.forEach(element => {
-                            console.log(element)
-                            e = "<source src='" + cors + element.split("\\/").join("/") + "'  type='video/mp4'>";
-                            $('video').append(e);
-                        });
-                        playerHandler(urls[0].split("\\/").join("/"));
-                    },
-                    error: errorHandler
-                });
-            } else if (url.includes('jawcloud')) {
-                var a = $.ajax({
-                    url: url,
-                    headers:{'x-requested-with':'XMLHttpRequest'},
-                    // dataType:'jsonp',
-                    success: function(code){
-                        var urls = jawcloud(code);
+            //             urls.forEach(element => {
+            //                 console.log(element)
+            //                 e = "<source src='" +  element.split("\\/").join("/") + "'  type='video/mp4'>";
+            //                 $('video').append(e);
+            //             });
+            //             playerHandler(urls[0].split("\\/").join("/"));
+            //         },
+            //         error: errorHandler
+            //     });
+            // } else if (url.includes('jawcloud')) {
+            //     var a = $.ajax({
+            //         url: url,
+            //         headers:{'x-requested-with':'XMLHttpRequest'},
+            //         // dataType:'jsonp',
+            //         success: function(code){
+            //             var urls = jawcloud(code);
 
-                        urls.forEach(element => {
-                            console.log(element)
-                            e = "<source src='" + cors + element.split("\\/").join("/") + "'  type='video/mp4'>";
-                            $('video').append(e);
-                        });
-                        playerHandler(urls[0].split("\\/").join("/"));
-                    },
-                    error: errorHandler
-                });
-            } else if (url.includes('fembed')) {
-                var a = $.ajax({
-                    url: url,
-                    headers:{'x-requested-with':'XMLHttpRequest'},
-                    method: "POST",
-                    // dataType:'jsonp',
-                    success: function(code){
-                    var urls = fembed(code);
+            //             urls.forEach(element => {
+            //                 console.log(element)
+            //                 e = "<source src='" + cors + element.split("\\/").join("/") + "'  type='video/mp4'>";
+            //                 $('video').append(e);
+            //             });
+            //             playerHandler(urls[0].split("\\/").join("/"));
+            //         },
+            //         error: errorHandler
+            //     });
+            // } else if (url.includes('fembed') || url.includes('feurl')) {
+            //     var a = $.ajax({
+            //         url: url,
+            //         headers:{'x-requested-with':'XMLHttpRequest'},
+            //         method: "POST",
+            //         // dataType:'jsonp',
+            //         success: function(code){
+            //         var urls = fembed(code);
 
-                        urls.forEach(element => {
-                            console.log(element)
-                            e = "<source src='" + cors + element[0] + "'  type='video/mp4' size='" + element[1] + "'>";
-                            $('video').append(e);
-                        });
+            //             urls.forEach(element => {
+            //                 console.log(element)
+            //                 e = "<source src='" + cors + element[0] + "'  type='video/mp4' size='" + element[1] + "'>";
+            //                 $('video').append(e);
+            //             });
                         
-                        playerHandler(urls[0][0]);
-                    },
-                    error: errorHandler
-                });
-            } else if (url.includes('mp4upload')) {
-                var a = $.ajax({
-                    url: url,
-                    headers:{'x-requested-with':'XMLHttpRequest'},
-                    // dataType:'jsonp',
-                    success: function(code){
-                        var urls = mp4upload(code);
+            //             playerHandler(urls[0][0]);
+            //         },
+            //         error: errorHandler
+            //     });
+            // } else if (url.includes('mp4upload')) {
+            //     var a = $.ajax({
+            //         url: url,
+            //         headers:{'x-requested-with':'XMLHttpRequest'},
+            //         // dataType:'jsonp',
+            //         success: function(code){
+            //             var urls = mp4upload(code);
 
-                        urls.forEach(element => {
-                            console.log(element)
-                            e = "<source src='" + cors + element[0] + "'  type='video/mp4' size='" + element[1] + "'>";
-                            $('video').append(e);
-                        });
+            //             urls.forEach(element => {
+            //                 console.log(element)
+            //                 e = "<source src='" + cors + element[0] + "'  type='video/mp4' size='" + element[1] + "'>";
+            //                 $('video').append(e);
+            //             });
                         
-                        playerHandler(urls[0][0]);
-                    },
-                    error: errorHandler
-                });
+            //             playerHandler(urls[0][0]);
+            //         },
+            //         error: errorHandler
+            //     });
             } else if (url.includes('vidia.tv')) {
                 var a = $.ajax({
                     url: url,
@@ -549,7 +622,6 @@
                 // TODO: Extract Google view ID
                 e = `<iframe src="`+urlWithoutCors+`" style=" width: 100%; height: 100vh; "></iframe> `
                 $('#iframe').append(e);
-                console.log("done google")
                 // var a = $.ajax({
                 //     url: urlWithoutCors,
                 //     headers:{

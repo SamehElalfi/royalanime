@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Anime;
 use App\Episode;
-use App\EpisodeDetail;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Http;
@@ -32,15 +31,20 @@ class EpisodeController extends Controller
         // if (!$episodes_ids->first()) {return view('episode.not_found');}
 
 
-        $episodes = Episode::where('anime_id', $anime_id)
-        ->orderBy('episode_number')->get();
+        // $episodes = Episode::where('anime_id', $anime_id)
+        // ->orderBy('episode_number')->get();
+        // return $episodes;
         
         // Return 404 Error if no episodes found
-        if (empty($episodes)) {abort(404);}
+        // if (empty($episodes)) {abort(404);}
 
         // Get the anime details which used in Main page heading
         // , tags and season information ... etc
-        $anime = Anime::where('id', $anime_id)->first();
+        $anime = Anime::findOrFail($anime_id);
+
+        if ($anime == null) {
+            abort(404);
+        }
 
         
         // The Meta tags for this episode page
@@ -51,7 +55,7 @@ class EpisodeController extends Controller
         $canonical = route('animes.episodes.index', ['anime'=>$anime_id]);
 
         return view('episode.index',
-            compact('episodes', 'anime', 'title', 'description', 'canonical')
+            compact('anime', 'title', 'description', 'canonical')
         );
     }
 
@@ -94,8 +98,12 @@ class EpisodeController extends Controller
 
         
         // Abort an ERROR message if no episode found
-        if (!$episode) {return view('episode.not_found');}
+        if (!$episode) {abort(404);}
         $episode_id = $episode->id;
+
+        if (!$episode->anime) {
+            abort(404);
+        }
 
 
         // Get Episode Details (e.g. title, English Title ...)
@@ -106,16 +114,16 @@ class EpisodeController extends Controller
         
         // Get the anime details which used in "Next ep"
         // and "Prev ep" buttons and Main page heading
-        $anime = Anime::where('id', $anime_id)->first();
+        // $anime = Anime::where('id', $anime_id)->first();
         
         
         // The Meta tags for this episode page
         $title = "الحلقة رقم " . $episode_number
-        . ' من ' . $anime->title;
+        . ' من ' . $episode->anime->title;
         $description = "مشاهدة وتحميل الحلقة " . $episode_number
-        . ' من ' . $anime->title . ' بروابط مباشرة وبدون إعلانات مزعجة';
+        . ' من ' . $episode->anime->title . ' بروابط مباشرة وبدون إعلانات مزعجة';
         $keywords = 'حلقة ' . $episode_number
-        . ', '. $anime->title;
+        . ', '. $episode->anime->title;
         
         $canonical = route('animes.episodes.show', ['anime'=>$anime_id, 'episode'=>$episode_number]);
         
@@ -127,9 +135,9 @@ class EpisodeController extends Controller
         // 
         // If there is no links an error message will be handled by the view
 
-        if (isset($episode->watchLinks['links'])) {
+        if (isset($episode->streamLinks['links'])) {
             $watch_links = json_decode(
-                $episode->watchLinks['links']
+                $episode->streamLinks['links']
             );
         } else {
             $watch_links = [];
@@ -145,7 +153,7 @@ class EpisodeController extends Controller
         );
 
         return view('episode.show', compact(
-            'anime', 'title', 'episode',
+            'title', 'episode',
             'description', 'watch_links', 'download_links', 'canonical')
         );
     }
@@ -217,7 +225,7 @@ class EpisodeController extends Controller
     public function episode_list()
     {
         // Display anime list
-        $paginator = EpisodeDetail::latest()->paginate(52);
+        $paginator = Episode::latest()->paginate(52);
 
         // Return 404 error if there are no episodes
         if ($paginator == null){abort(404);}

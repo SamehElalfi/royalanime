@@ -6,7 +6,7 @@
             <section class="section section-lg section-hero section-shaped">
                 
                 <!-- Background Circles and Image -->
-                <div class="shape shape-style-1 lazy loading-img colored-bg-dark bg-cover bg-center" data-src="{{ $anime->cover_url != '' ? $anime->cover_url : $anime->image_url }}">
+                <div class="shape shape-style-1 lazy loading-img colored-bg-dark bg-cover bg-center" data-src="{{ $episode->anime->cover_url != '' ? $episode->anime->cover_url : $episode->anime->image_url }}">
                     <span class="span-150"></span>
                     <span class="span-50"></span>
                     <span class="span-50"></span>
@@ -28,12 +28,12 @@
                                 {{-- <img alt="image" src="{{ cdn('img/brand/white.webp') }}" style="width: 200px;" class="img-fluid"> --}}
 
                                 <!-- Main Sentence -->
-                                <a href="{{ route('animes.show', ['anime'=>$anime->id]) }}/{{ Str::slug($anime->title) }}">
+                                <a href="{{ route('animes.show', ['anime'=>$episode->anime->id]) }}/{{ Str::slug($episode->anime->title) }}">
                                     <h1 class="text-white mb-5 fz-sm-2" dir="ltr">
-                                        {{ $anime->title }}
+                                        {{ $episode->anime->title }}
                                         <br/>
-                                        @if (strtolower($anime->title) != strtolower($anime->title_japanese))
-                                            {{ $anime->title_japanese }}
+                                        @if (strtolower($episode->anime->title) != strtolower($episode->anime->title_japanese))
+                                            {{ $episode->anime->title_japanese }}
                                         @endif
                                     </h1>
                                 </a>
@@ -101,6 +101,7 @@
                                             </div>
                                             <div class="card shadow">
                                                 <div class="card-body bg-dark p-0 p-md-3">
+                                                <!-- <button onclick="document.getElementById('myTabContent').requestFullscreen()" class="btn btn-primary" style="font-size:3rm; color:white;">وضع ملئ الشاشة</button> -->
                                                 <div class="tab-content" id="myTabContent">
                                                     @foreach(array_reverse($watch_links) as $key => $item)
                                                         <div class="tab-pane fade {{ $loop->first ? 'active show' : '' }}" id="tabs-text-{{$key}}" role="tabpane{{$key}}" aria-labelledby="tabs-text-{{$key}}-tab">
@@ -225,21 +226,21 @@
                         <div class="text-center">
                             {{-- Previous Episode --}}
                             @if ($episode->episode_number > 1)
-                                <a class="btn btn-icon btn-3 btn-default col-md-4 col-sm-12" href="{{ route('animes.episodes.show', ['anime'=>$anime->id, 'episode'=>$episode->episode_number-1]) }}">
+                                <a class="btn btn-icon btn-3 btn-default col-md-4 col-sm-12" href="{{ route('animes.episodes.show', ['anime'=>$episode->anime->id, 'episode'=>$episode->episode_number-1]) }}">
                                     <span class="btn-inner--icon"><i class="fa fa-angle-right"></i></span>
                                     <span class="btn-inner--text">الحلقة السابقة</span>
                                 </a>
                             @endif
                             
                             {{-- All Episodes --}}
-                            <a class="btn btn-icon btn-3 btn-warning col-md-3 col-sm-12 mx-md-4 my-1" href="{{ route('animes.episodes.index', ['anime'=>$anime->id]) }}">
+                            <a class="btn btn-icon btn-3 btn-warning col-md-3 col-sm-12 mx-md-4 my-1" href="{{ route('animes.episodes.index', ['anime'=>$episode->anime->id]) }}">
                                 <span class="btn-inner--text">كل الحلقات</span>
                             </a>
 
                             {{-- Next Episode --}}
                             {{-- Check if there is more episodes --}}
                             @if ($episode->episode_number < $episode->anime->episodesList->count())
-                                <a class="btn btn-icon btn-3 btn-default col-md-4 col-sm-12" href="{{ route('animes.episodes.show', ['anime'=>$anime->id, 'episode'=>$episode->episode_number+1]) }}">
+                                <a class="btn btn-icon btn-3 btn-default col-md-4 col-sm-12" href="{{ route('animes.episodes.show', ['anime'=>$episode->anime->id, 'episode'=>$episode->episode_number+1]) }}">
                                     <span class="btn-inner--text">الحلقة التالية</span>
                                     <span class="btn-inner--icon"><i class="fa fa-angle-left"></i></span>
                                 </a>
@@ -256,5 +257,5 @@
         </section>
     </main>
     
-    @include('layouts.comments', ['page_identifier' => 'animes-' . $anime->id .'-episodes-'. $episode->id])
+    @include('layouts.comments', ['page_identifier' => 'animes-' . $episode->anime->id .'-episodes-'. $episode->episode_number])
 @endsection

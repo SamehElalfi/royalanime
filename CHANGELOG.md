@@ -1,3 +1,11 @@
+# v1.6 [02-07-2020]
+
+## Changed
+
+-   fixed episodes page
+-   removed extra padding from purple navbar
+-   fixed many issues in views
+
 # v1.5 [30-06-2020]
 
 ## Added

@@ -89,16 +89,18 @@
                             <div class="row justify-content-center text-dark post">
                                 <div class="col-lg-11">
                                     <div class="mb-4">
-                                        <div class="col-12 my-4">
-                                        <button class="btn btn-icon btn-3 btn-outline-default" type="button" onclick="reverseChildren()">
-                                            <span class="btn-inner--text">ترتيب الحلقات</span>
-                                            <span class="btn-inner--icon">
-                                                <i class="fa fa-sort-numeric-asc" id="order-btn"></i>
-                                            </span>
-                                        </button>
-                                        </div>
+                                        @if (!empty($anime->episodesList->toArray()))
+                                            <div class="col-12 my-4">
+                                            <button class="btn btn-icon btn-3 btn-outline-default" type="button" onclick="reverseChildren()">
+                                                <span class="btn-inner--text">ترتيب الحلقات</span>
+                                                <span class="btn-inner--icon">
+                                                    <i class="fa fa-sort-numeric-asc" id="order-btn"></i>
+                                                </span>
+                                            </button>
+                                            </div>
+                                        @endif
                                         <div class="mx-0" id="eps">
-                                            @foreach ($episodes as $episode)
+                                            @forelse ($anime->episodesList as $episode)
                                                 <a
                                                 href="/animes/{{ $anime->id }}/episodes/{{$episode->episode_number}}"
                                                 class="btn btn-lg {{ $episode->filler ? 'btn-danger' : ($episode->recap ? 'btn-success' : 'btn-primary') }} col-md-5 col-sm-12 my-1 mx-1"
@@ -112,7 +114,9 @@
                                                     </span>
                                                     <span class="col col-9">{{$episode->title}}</span>
                                                 </a>
-                                            @endforeach
+                                            @empty
+                                                <span>لا توجد حلقات في الوقت الحالي، فنحن مازلنا نعمل على أضافة الحلقات. شكرا لتفهمكم!</span>
+                                            @endforelse
                                         </div>
                                         <br><br>
                                     </div>

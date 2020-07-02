@@ -51,6 +51,7 @@
                     </a>
                 </li>
             </ul>
+            <div>إجمالي عدد الصفحات : {{$paginator->lastPage()}}</div>
         </nav>
     </div>
     @endif

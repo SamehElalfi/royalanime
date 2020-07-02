@@ -12,7 +12,7 @@ class Episode extends Model
     /**
      * Return all streaimg links Watching (Streaming) of an episode
      */
-    public function watchLinks() {
+    public function streamLinks() {
         return $this->hasOne('App\StreamLink')->select(['links']);
     }
 

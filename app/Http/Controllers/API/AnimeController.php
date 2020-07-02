@@ -38,6 +38,7 @@ class AnimeController extends BaseController
     {
         // Validate that every single information is correct
         $validatedData = $this->validate_anime_data($request);
+        // return $validatedData;
         
         $message = "Anime already exists";
         
@@ -77,6 +78,7 @@ class AnimeController extends BaseController
                 $anime->rating              = (in_array("rating", array_keys($validatedData))) ? $validatedData["rating"] : null;
                 $anime->source              = (in_array("source", array_keys($validatedData))) ? $validatedData["source"] : null;
                 $anime->status              = (in_array("status", array_keys($validatedData))) ? $validatedData["status"] : null;
+                $anime->score           = (in_array("score", array_keys($validatedData))) ? $validatedData["score"] : null;
                 $anime->scored_by           = (in_array("scored_by", array_keys($validatedData))) ? $validatedData["scored_by"] : null;
                 $anime->synopsis            = (in_array("synopsis", array_keys($validatedData))) ? $validatedData["synopsis"] : null;
                 $anime->title_english       = (in_array("title_english", array_keys($validatedData))) ? $validatedData["title_english"] : null;
@@ -84,6 +86,7 @@ class AnimeController extends BaseController
                 $anime->title_synonyms      = (in_array("title_synonyms", array_keys($validatedData))) ? $validatedData["title_synonyms"] : null;
                 $anime->trailer_url         = (in_array("trailer_url", array_keys($validatedData))) ? $validatedData["trailer_url"] : null;
                 $anime->url                 = (in_array("url", array_keys($validatedData))) ? $validatedData["url"] : null;
+                $anime->arabic_synopsis                 = (in_array("arabic_synopsis", array_keys($validatedData))) ? $validatedData["arabic_synopsis"] : null;
                 $anime->save();
                 // return $validatedData;
             }
@@ -211,23 +214,23 @@ class AnimeController extends BaseController
 
         // Translate anime type into Arabic (default: Null)
         if ($validatedData->has('type')) {
-            switch ($validatedData->type) {
-                case "TV":
+            switch (strtolower($validatedData->type)) {
+                case "tv":
                     $validatedData["anime_type"] = "مسلسل";
                     break;
-                case "Movie":
+                case "movie":
                     $validatedData["anime_type"] = "فيلم";
                     break;
-                case "OVA":
+                case "ova":
                     $validatedData["anime_type"] = "أوفا";
                     break;
-                case "ONA":
+                case "ona":
                     $validatedData["anime_type"] = "أونا";
                     break;
-                case "Special":
+                case "special":
                     $validatedData["anime_type"] = "خاصة";
                     break;
-                case "Music":
+                case "music":
                     $validatedData["anime_type"] = "موسيقى";
                     break;
                 default:
@@ -237,44 +240,44 @@ class AnimeController extends BaseController
 
         // Translate status of the anime (default: Null)
         if ($validatedData->has('status')) {
-            switch ($validatedData->status) {
+            switch (strtolower($validatedData->status)) {
                 case 'currently':
-                    $validatedData->status = "مستمر";
+                    $validatedData["status"] = "مستمر";
                     break;
-                case 'Finished Airing':
-                    $validatedData->status = "منتهي";
+                case 'finished airing':
+                    $validatedData["status"] = "منتهي";
                     break;
                 case 'upcoming':
-                    $validatedData->status = "لم يعرض بعد";
+                    $validatedData["status"] = "لم يعرض بعد";
                     break;
                 default:
-                    $validatedData->status = NULL;
+                    $validatedData["status"] = Null;
             }
         }
 
         // Set the rating (age) of the anime (default: Null)
         if ($validatedData->has('rating')) {
-            switch ($validatedData->rating) {
-                case 0:
-                    $validatedData->rating = "غير محدد";
+            switch (strtolower($validatedData->rating)) {
+                case "unknown":
+                    $validatedData["rating"] = "غير محدد";
                     break;
-                case 1:
-                    $validatedData->rating = "G - كل الأعمار";
+                case "g - all ages":
+                    $validatedData["rating"] = "G - كل الأعمار";
                     break;
-                case 2:
-                    $validatedData->rating = "PG - أطفال";
+                case "pg - children":
+                    $validatedData["rating"] = "PG - أطفال";
                     break;
-                case "PG-13 - Teens 13 or older":
-                    $validatedData->rating = "PG-13 - مراهقين 13+";
+                case "pg-13 - teens 13 or older":
+                    $validatedData["rating"] = "PG-13 - مراهقين 13+";
                     break;
-                case 4:
-                    $validatedData->rating = "R - 17+ (violence & profanity)";
+                case "r - 17+ (violence & profanity)":
+                    $validatedData["rating"] = "R - 17+ (العنف والألفاظ النابية)";
                     break;
-                case 5:
-                    $validatedData->rating = "R+ - Mild Nudity";
+                case "R+ - Mild Nudity":
+                    $validatedData["rating"] = "R+ - Mild Nudity";
                     break;
                 default:
-                    $validatedData->rating = NULL;
+                    $validatedData["rating"] = $validatedData["rating"];
             }
         }
 
@@ -290,15 +293,58 @@ class AnimeController extends BaseController
                 "Thursdays"     => "أيام الخميس",
                 "Fridays"       => "أيام الجمعة",
                 "at"            => "في",
-                "JST"           => "بتوقيت اليابان المحلي JST"
+                "JST"           => "بتوقيت اليابان المحلي JST",
+                "Unknown"       => "غير معروف"
             );
 
-            $validatedData->broadcast = str_replace(
+            $validatedData["broadcast"] = str_replace(
                 array_keys($translateWords), 
                 array_values($translateWords), 
                 $validatedData->broadcast
             );
         }
+
+        if ($validatedData->has('premiered')) {
+            // The words that will be translates
+            $translateWords = array(
+                "Summer"     => "صيف",
+                "Winter"       => "شتاء",
+                "Fall"       => "خريف",
+                "Spring"      => "ربيع",
+                "Unknown"       => "غير معروف"
+            );
+
+            $validatedData["premiered"] = str_replace(
+                array_keys($translateWords), 
+                array_values($translateWords), 
+                $validatedData->premiered
+            );
+        }
+
+        if ($validatedData->has('duration')) {
+            // The words that will be translates
+            $translateWords = array(
+                "per ep"     => "لكل حلقة",
+                "min"       => "دقيقة",
+                "hour"       => "ساعة",
+                "Unknown"       => "غير معروف"
+            );
+
+            $validatedData["duration"] = str_replace(
+                array_keys($translateWords), 
+                array_values($translateWords), 
+                $validatedData->duration
+            );
+        }
+
+        if ($validatedData['background'] == "None") {
+            $validatedData["background"] = Null;
+        }
+
+        if ($validatedData->has('arabic_synopsis')) {
+            $validatedData["arabic_synopsis"] = $validatedData->arabic_synopsis;
+        }
+        
 
         // Split OSTs into arrays and remove duplicated ones
         // splited by new line (\r\n, \r, \n)
