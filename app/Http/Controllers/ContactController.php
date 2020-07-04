@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Contact;
 use Illuminate\Http\Request;
+// use Illuminate\Notifications\Notification;
+use Illuminate\Notifications\Messages\SlackMessage;
+use App\User;
 
 class ContactController extends Controller
 {
@@ -49,6 +52,10 @@ class ContactController extends Controller
         $msg->previous_url = $validatedData['previous_url'];
         $msg->message = $validatedData['message'];
         $msg->save();
+        \Slack::to('#welcome')->send('A new message created succesfully by '.$validatedData['name']);
+        // $s = new SlackMessage;
+        // $s->success()->content('One of your invoices has been paid!');
+        // Notification::send(User::first(), new ContactMessageCompleted());
 
         $title = 'تم إرسال الرسالة بنجاح';
         return view('/legal/thanks', compact('title'));
