@@ -2,7 +2,6 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="utf-8">
-    {{-- <meta name="viewport" content="width=device-width, initial-scale=1"> --}}
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -11,9 +10,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="{{ isset($description) ? $description . ' - شاهد الآلاف من مسلسلات وأفلام الأنمي مجانًا وبروابط مباشرة وبدون إعلانات مزعجة.' : 'شاهد الآلاف من مسلسلات وأفلام الأنمي مجانًا وبروابط مباشرة وبدون إعلانات مزعجة.' }}">
     <meta name="keywords" content="{{ isset($keywords) ? $keywords : 'أنمي مترجم, أنمي أونلاين, أنمي أون لاين, رويال أنمي, أنمي رويال, موقع رويال أنمي, رويال أنمي أكبر موقع أنمي' }}">
+    
     @isset($canonical)
         <link rel="canonical" href="{{ $canonical ?? '' }}" />
     @endisset
+    
     <meta name="author" content="Sameh Elalfi">
 
     @isset($full_title)
@@ -82,12 +83,23 @@
         }
     </style>
 
-    @hasSection ('style')
+    @hasSection('style')
         <style>
             \@yield('style')
         </style>
     @endif
     <script type="application/ld+json">{"@context":"http://schema.org","@type":"Organization","name":"Royal Anime","url":"http://www.royalanime.com/","address":"sameh.elalfi.mail@gmail.com","sameAs":["https://www.facebook.com/RoyalAnimeOfficial/","https://twitter.com/RoyalAnimeCom"]}</script>
+    
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-164705179-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'UA-164705179-1');
+    </script>
+    
 </head>
 <body>
 
@@ -153,34 +165,10 @@
         });
     </script>
 
-    {{-- <!-- Search Button and Search Field -->
-    <script>
-        function classToggle() {
-            document.querySelector('#searchfield').classList.toggle('d-lg-none');
-            document.querySelector('#searchbtn').classList.toggle('d-lg-block');
-        }
-        document.querySelector('#searchfield').addEventListener('focusout', classToggle);
-        document.querySelector('#searchbtn').addEventListener('click', classToggle);
-    </script> --}}
-    
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-164705179-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-164705179-1');
-</script>
-
     @hasSection ('scripts')
         <script>
             @yield('scripts')
         </script>
     @endif
-    
-    <script>
-        console.log($("#server-google").attr('src'));
-    </script>
 </body>
 </html>

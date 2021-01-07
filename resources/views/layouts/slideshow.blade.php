@@ -7,11 +7,15 @@
                 <li data-target="#carousel_example" data-slide-to="1"></li>
             </ol>
             <div class="carousel-inner">
+
                 @foreach ($images as $image)
                     <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
-                        <a href="{{$image['link'] ?? ''}}"><img class="img-fluid sm lazy" data-src="{{cdn($image['src']) ?? ''}}" alt="{{$image['alt'] ?? ''}}"></a>
+                        <a href="{{ $image['link'] ?? '' }}">
+                            <img class="img-fluid sm lazy" data-src="{{ $image['src'] ?? '' }}" alt="{{ $image['alt'] ?? '' }}">
+                        </a>
                     </div>
                 @endforeach
+
             </div>
             <span class="cursor-pointer carousel-control-prev h1" href="#carousel_example" role="button" data-slide="prev">
                 <span class="text-dark fa fa-angle-right carousel-control-next-icon" aria-hidden="true"></span>

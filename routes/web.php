@@ -10,16 +10,6 @@ Route::get('/', 'WelcomeController@index')->name('homepage');
 // Route::get('/roles', 'RoleController@index');
 // Route::get('/test', 'WelcomeController@test');
 
-// Route::get('/req', function () {
-//     $response = Http::asForm()->post('https://www.animesilver.com/watch/getQAServer', [
-//         'auth' => 'getQAServer',
-//         'ep' => 'الحلقة 06',
-//         'id' => '2242',
-//         'server' => 'Premieum',
-//         'c' => '1',
-//     ]);
-//     return $response;
-// });
 Route::group(['prefix' => 'filemanager', 'middleware' => ['web', 'auth', 'can:add posts']], function () {
     \UniSharp\LaravelFilemanager\Lfm::routes();
 });
@@ -61,6 +51,7 @@ Route::get('/{page}', 'PageController')->name('page')->where('page', 'about|term
 Route::get('/search-google', 'SearchController@google_search')->name('google-search');
 Route::get('/search', 'SearchController@search')->name('search');
 Route::get('/random', 'AnimeController@random')->name('random-anime');
+Route::get('/blog', 'PostController@index');
 Route::post('/blog', 'PostController@store');
 
 

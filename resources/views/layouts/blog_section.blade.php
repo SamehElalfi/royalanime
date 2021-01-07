@@ -1,4 +1,5 @@
-{{-- <!-- Blog Posts Slide Show -->
+@isset ($posts)
+<!-- Blog Posts Slide Show -->
 <section class="section section-lg">
 
     <!-- Section Title and Description -->
@@ -74,8 +75,9 @@
     <div class="row row-grid justify-content-center p-5 mr-0">
         <div class="col-lg-8 text-center">
             <div class="btn-wrapper">
-                <a href="#" class="btn btn-default btn-lg">كل المقالات المدونة</a>
+                <a href="#" class="btn btn-default btn-lg">كل المقالات</a>
             </div>
         </div>
     </div>
-</section> --}}
+</section>
+@endif

@@ -1,5 +1,5 @@
 <div class="text-center my-5 floating-sm">
-    <span class="col col-12 col-md-4">{{ $title ?? '' }}</span>
+    <span class="col col-12 col-md-4">{{ $title ?? 'شارك هذه الصفحة' }}</span>
     <div class="my-3 mx-3">
         <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{ url()->current() }}&amp;src=sdkpreparse" class="btn btn-primary btn-icon-only rounded-circle" rel="external nofollow">
             <i class="fa fa-facebook"></i>
