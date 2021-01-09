@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Anime;
 
 class IndexController extends Controller
 {
@@ -16,7 +17,7 @@ class IndexController extends Controller
         // TODO: Add latest episodes in the home page
 
         // Display best animes
-        $animes = \App\Anime::find(4)->orderBy('score', 'desc')
+        $animes = Anime::find(4)->orderBy('score', 'desc')
             ->take(4)
             ->get();
 

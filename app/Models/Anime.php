@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -36,7 +36,8 @@ class Anime extends Model
     /**
      * Return the anime episodes of an anime
      */
-    public function episodesList() {
-        return $this->hasMany('App\Episode');
+    public function episodesList()
+    {
+        return $this->hasMany('App\Models\Episode');
     }
 }

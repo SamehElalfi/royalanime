@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -12,21 +12,24 @@ class Episode extends Model
     /**
      * Return all streaimg links Watching (Streaming) of an episode
      */
-    public function streamLinks() {
-        return $this->hasOne('App\StreamLink')->select(['links']);
+    public function streamLinks()
+    {
+        return $this->hasOne('App\Models\StreamLink')->select(['links']);
     }
 
     /**
      * Return all streaimg links (watching and downloading) of an episode
      */
-    public function downloadLinks() {
-        return $this->hasOne('App\DownloadLink')->select(['links']);
+    public function downloadLinks()
+    {
+        return $this->hasOne('App\Models\DownloadLink')->select(['links']);
     }
 
     /**
      * Return the anime episodes of an anime
      */
-    public function anime() {
-        return $this->belongsTo('App\Anime');
+    public function anime()
+    {
+        return $this->belongsTo('App\Models\Anime');
     }
 }

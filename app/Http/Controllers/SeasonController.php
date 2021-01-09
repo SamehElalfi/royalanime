@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Anime;
 
 class SeasonController extends Controller
 {
-    public function __construct() {
+    public function __construct()
+    {
         // Cache the final page  as html file in /public/page-cache/
         $this->middleware('page-cache', ['only' => ['index', 'show']]);
     }
@@ -21,7 +23,7 @@ class SeasonController extends Controller
         $primary_nav = true;
         $title = 'كل مواسم الأنمي';
         $description = 'كل مواسم الأنمي من موقع رويال أنمي';
-        $seasons = \App\Anime::whereNotNull('premiered')->groupBy('premiered')->pluck('premiered')->reverse();
+        $seasons = Anime::whereNotNull('premiered')->groupBy('premiered')->pluck('premiered')->reverse();
         // return $seasons;
         return view('season.index', compact('primary_nav', 'title', 'description', 'seasons'));
     }
@@ -71,20 +73,22 @@ class SeasonController extends Controller
 
         if ($sortBy == 'date') {
             // Display anime list
-            $paginator = \App\Anime::orderBy('aired_from', $order)->where('premiered','like', '%'.$id.'%')->paginate(10);
-            $paginator = $paginator->appends(['sortBy'=> 'date', 'order'=>$order]);
+            $paginator = Anime::orderBy('aired_from', $order)->where('premiered', 'like', '%' . $id . '%')->paginate(10);
+            $paginator = $paginator->appends(['sortBy' => 'date', 'order' => $order]);
         } else {
             // Display anime list
 
-            $paginator = \App\Anime::orderBy($sortBy, $order)->where('premiered','like', '%'.$id.'%')->paginate(10);
-            $paginator = $paginator->appends(['sortBy'=> $sortBy, 'order'=>$order]);
+            $paginator = Anime::orderBy($sortBy, $order)->where('premiered', 'like', '%' . $id . '%')->paginate(10);
+            $paginator = $paginator->appends(['sortBy' => $sortBy, 'order' => $order]);
         }
         // Return 404 error if there are no animes
-        if ($paginator == null){abort(404);}
-        
+        if ($paginator == null) {
+            abort(404);
+        }
+
         $primary_nav = true;
-        $title = 'موسم '. $id;
-        $description = 'كل أنميات ' .$id;
+        $title = 'موسم ' . $id;
+        $description = 'كل أنميات ' . $id;
         return view('season.show', compact('paginator', 'primary_nav', 'title', 'description', 'id', 'sortBy', 'order'));
     }
 

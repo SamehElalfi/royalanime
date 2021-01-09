@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use  App\Models\Anime;
 
 class StudioController extends Controller
 {
-    public function __construct() {
+    public function __construct()
+    {
         // Cache the final page  as html file in /public/page-cache/
         $this->middleware('page-cache', ['only' => ['index', 'show']]);
     }
@@ -54,14 +56,16 @@ class StudioController extends Controller
     public function show($id)
     {
         // Display anime list
-        $paginator = \App\Anime::orderBy('title')->where('genres','like', '%'.$id.'%')->paginate(10);
+        $paginator = Anime::orderBy('title')->where('genres', 'like', '%' . $id . '%')->paginate(10);
 
         // Return 404 error if there are no animes
-        if ($paginator == null){abort(404);}
-        
+        if ($paginator == null) {
+            abort(404);
+        }
+
         $primary_nav = true;
-        $title = 'أستديو '. $id;
-        $description = 'كل الأنميات من إنتاج ' .$id;
+        $title = 'أستديو ' . $id;
+        $description = 'كل الأنميات من إنتاج ' . $id;
         return view('studio.show', compact('paginator', 'primary_nav', 'title', 'description', 'id'));
     }
 

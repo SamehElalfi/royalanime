@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
+use App\Models\Post;
+
 class PostController extends Controller
 {
     /**
@@ -12,9 +14,27 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($request)
+    public function index(Request $request)
     {
-        return $request;
+        $paginator = post::latest()->paginate(3);
+
+        $primary_nav = true;
+
+        // Slideshow Images
+        $images = [
+            [
+                'src' => '/img/12.webp',
+                'link' => cdn('/img/12.webp'),
+                'alt' => cdn('/img/12.webp'),
+            ],
+            [
+                'src' => '/img/12.webp',
+                'link' => cdn('/img/12.webp'),
+                'alt' => cdn('/img/12.webp'),
+            ]
+        ];
+
+        return view('posts.index', compact('paginator', 'primary_nav', 'images'));
     }
 
     /**
@@ -45,31 +65,31 @@ class PostController extends Controller
             "cover" => "image|mimes:jpeg,png,jpg,gif,svg",
         ]);
 
-        $post = new \App\Post;
+        $post = new Post();
         $post->title = $request['title'];
         $post->content = $request['content'];
         $post->tags = $request['tags'];
         $post->summary = $request['summary'];
-        
-        if ($request['slug']){
+
+        if ($request['slug']) {
             $post->slug = Str::slug($request['slug']);
         } else {
             $post->slug = Str::slug($request['title']);
         }
-        
 
-        
+
+
         if ($request->has('cover')) {
-            $cover = time().'.'.request()->cover->getClientOriginalExtension();
+            $cover = time() . '.' . request()->cover->getClientOriginalExtension();
             request()->cover->move(public_path('images'), $cover);
-            $cover = cdn('images/'.$cover);
+            $cover = cdn('images/' . $cover);
         } else {
             $cover = Null;
         }
-        $post->feature_image = $cover   ;
+        $post->feature_image = $cover;
 
         $post->save();
-        return back()->with('main', __('dashboard.A new post added to database successfully') );
+        return back()->with('main', __('dashboard.A new post added to database successfully'));
     }
 
     /**
@@ -78,9 +98,9 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(post $post)
     {
-        //
+        return view('posts.show', compact('post'));
     }
 
     /**

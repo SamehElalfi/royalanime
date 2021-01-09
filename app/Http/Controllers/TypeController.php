@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Anime;
 
 class TypeController extends Controller
 {
-    public function __construct() {
+    public function __construct()
+    {
         // Cache the final page  as html file in /public/page-cache/
         $this->middleware('page-cache', ['only' => ['index', 'show']]);
     }
@@ -21,7 +23,7 @@ class TypeController extends Controller
         $primary_nav = true;
         $title = 'كل أنواع الأنمي';
         $description = 'كل أنواع الأنمي من موقع رويال أنمي';
-        $types = \App\Anime::whereNotNull('anime_type')->groupBy('anime_type')->pluck('anime_type')->reverse();
+        $types = Anime::whereNotNull('anime_type')->groupBy('anime_type')->pluck('anime_type')->reverse();
         // return $types;
         return view('type.index', compact('primary_nav', 'title', 'description', 'types'));
     }
@@ -70,21 +72,23 @@ class TypeController extends Controller
         // $sortBy = $sortBy == 'date' ?  : $sortBy;
 
         if ($sortBy == 'date') {
-        // Display anime list
-        $paginator = \App\Anime::orderBy('aired_from', $order)->where('anime_type','like', '%'.$id.'%')->paginate(10);
-        $paginator = $paginator->appends(['sortBy'=> 'date', 'order'=>$order]);
-    } else {
-        // Display anime list
-        $paginator = \App\Anime::orderBy($sortBy, $order)->where('anime_type','like', '%'.$id.'%')->paginate(10);
-        $paginator = $paginator->appends(['sortBy'=> $sortBy, 'order'=>$order]);
-    }
+            // Display anime list
+            $paginator = Anime::orderBy('aired_from', $order)->where('anime_type', 'like', '%' . $id . '%')->paginate(10);
+            $paginator = $paginator->appends(['sortBy' => 'date', 'order' => $order]);
+        } else {
+            // Display anime list
+            $paginator = Anime::orderBy($sortBy, $order)->where('anime_type', 'like', '%' . $id . '%')->paginate(10);
+            $paginator = $paginator->appends(['sortBy' => $sortBy, 'order' => $order]);
+        }
 
         // Return 404 error if there are no animes
-        if ($paginator == null){abort(404);}
-        
+        if ($paginator == null) {
+            abort(404);
+        }
+
         $primary_nav = true;
-        $title = 'أنميات من نوع '. $id;
-        $description = 'كل الأنميات من نوع ' .$id;
+        $title = 'أنميات من نوع ' . $id;
+        $description = 'كل الأنميات من نوع ' . $id;
         return view('type.show', compact('paginator', 'primary_nav', 'title', 'description', 'id', 'sortBy', 'order'));
     }
 

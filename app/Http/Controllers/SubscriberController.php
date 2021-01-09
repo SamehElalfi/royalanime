@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Subscriber;
+use App\Models\Subscriber;
 use Illuminate\Http\Request;
 
 class SubscriberController extends Controller
 {
-    public function __construct() {
+    public function __construct()
+    {
         // Cache the final page  as html file in /public/page-cache/
         $this->middleware('page-cache', ['only' => ['index', 'show']]);
     }
@@ -57,14 +58,14 @@ class SubscriberController extends Controller
             $subscriber->current_url = $validatedData['current_url'];
         }
         $subscriber->save();
-        
+
         return view('subscriber.thanks', compact('previous_url'));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\subscriber  $subscriber
+     * @param  \App\Models\subscriber  $subscriber
      * @return \Illuminate\Http\Response
      */
     public function show(subscriber $subscriber)
@@ -75,7 +76,7 @@ class SubscriberController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\subscriber  $subscriber
+     * @param  \App\Models\subscriber  $subscriber
      * @return \Illuminate\Http\Response
      */
     public function edit(subscriber $subscriber)
@@ -87,7 +88,7 @@ class SubscriberController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\subscriber  $subscriber
+     * @param  \App\Models\subscriber  $subscriber
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, subscriber $subscriber)
@@ -98,7 +99,7 @@ class SubscriberController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\subscriber  $subscriber
+     * @param  \App\Models\subscriber  $subscriber
      * @return \Illuminate\Http\Response
      */
     public function destroy(subscriber $subscriber)

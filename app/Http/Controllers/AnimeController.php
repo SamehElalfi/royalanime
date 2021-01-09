@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Anime;
+use App\Models\Anime;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Str;
@@ -11,7 +11,8 @@ use Illuminate\Support\Facades\Storage;
 
 class AnimeController extends Controller
 {
-    public function __construct() {
+    public function __construct()
+    {
         // Cache the final page  as html file in /public/page-cache/
         $this->middleware('page-cache', ['only' => ['show']]);
 
@@ -44,16 +45,18 @@ class AnimeController extends Controller
         if ($sortBy == 'date') {
             // Display anime list
             $paginator = Anime::orderBy('aired_from', $order)->paginate(10);
-            $paginator = $paginator->appends(['sortBy'=> 'date', 'order'=>$order]);
+            $paginator = $paginator->appends(['sortBy' => 'date', 'order' => $order]);
         } else {
             // Display anime list
             $paginator = Anime::orderBy($sortBy, $order)->paginate(10);
-            $paginator = $paginator->appends(['sortBy'=> $sortBy, 'order'=>$order]);
+            $paginator = $paginator->appends(['sortBy' => $sortBy, 'order' => $order]);
         }
 
         // Return 404 error if there are no animes
-        if ($paginator == null){abort(404);}
-        
+        if ($paginator == null) {
+            abort(404);
+        }
+
         $primary_nav = true;
         $title = 'قائمة الأنمي';
         $description = 'أكبر قائمة للأنمي على الأطلاق مقدمة حصريًأ من موقع رويال أنمي';
@@ -127,52 +130,52 @@ class AnimeController extends Controller
         $broadcast = $request['broadcast']; // translated into arabic
         $opening_themes = $request['opening_themes'];   // splited by new line (\r\n, \r, \n)
         $ending_themes = $request['ending_themes']; // splited by new line (\r\n, \r, \n)
-        
+
         if ($request->has('genres')) {
             $genres = $request['genres'];
-            $genres = str_replace('Action' , 'أكشن', $genres);
-            $genres = str_replace('Adventure' , 'مغامرات', $genres);
-            $genres = str_replace('Cars' , 'سيارات', $genres);
-            $genres = str_replace('Comedy' , 'كوميدي ', $genres);
-            $genres = str_replace('Dementia' , 'جنوني', $genres);
-            $genres = str_replace('Demons' , 'شياطين', $genres);
-            $genres = str_replace('Drama' , 'دراما', $genres);
-            $genres = str_replace('Ecchi' , 'إتشي', $genres);
-            $genres = str_replace('Fantasy' , 'فانتازيا', $genres);
-            $genres = str_replace('Game' , 'ألعاب', $genres);
-            $genres = str_replace('Harem' , 'حريم', $genres);
-            $genres = str_replace('Hentai' , 'هينتاي', $genres);
-            $genres = str_replace('Historical' , 'تاريخي', $genres);
-            $genres = str_replace('Horror' , 'رعب', $genres);
-            $genres = str_replace('Josei' , 'جوسي', $genres);
-            $genres = str_replace('Kids' , 'طفولي', $genres);
-            $genres = str_replace('Magic' , 'سحر', $genres);
-            $genres = str_replace('Martial Arts' , 'فنون', $genres);
-            $genres = str_replace('Mecha' , 'آلات', $genres);
-            $genres = str_replace('Military' , 'عسكري', $genres);
-            $genres = str_replace('Music' , 'موسيقي', $genres);
-            $genres = str_replace('Mystery' , 'غموض', $genres);
-            $genres = str_replace('Parody' , 'ساخر', $genres);
-            $genres = str_replace('Police' , 'بوليسي', $genres);
-            $genres = str_replace('Psychological' , 'نفسي', $genres);
-            $genres = str_replace('Romance' , 'رومانسي', $genres);
-            $genres = str_replace('Samurai' , 'ساموراي', $genres);
-            $genres = str_replace('School' , 'مدرسي', $genres);
-            $genres = str_replace('Sci-Fi' , 'خيال علمي', $genres);
-            $genres = str_replace('Seinen' , 'سينن', $genres);
-            $genres = str_replace('Shoujo Ai' , 'شوجو', $genres);
-            $genres = str_replace('Shoujo' , 'شوجو', $genres);
-            $genres = str_replace('Shounen Ai' , 'شونين', $genres);
-            $genres = str_replace('Shounen' , 'شونين', $genres);
-            $genres = str_replace('Slice of Life' , 'شريحة من الحباة', $genres);
-            $genres = str_replace('Space' , 'فضاء', $genres);
-            $genres = str_replace('Sports' , 'رياضي', $genres);
-            $genres = str_replace('Super Power' , 'قوى خارقة', $genres);
-            $genres = str_replace('Supernatural' , 'خارق للطبيعة', $genres);
-            $genres = str_replace('Thriller' , 'إثارة', $genres);
-            $genres = str_replace('Vampire' , 'مصاصي دماء', $genres);
-            $genres = str_replace('Yaoi' , 'يوي', $genres);
-            $genres = str_replace('Yuri' , 'يوري', $genres);
+            $genres = str_replace('Action', 'أكشن', $genres);
+            $genres = str_replace('Adventure', 'مغامرات', $genres);
+            $genres = str_replace('Cars', 'سيارات', $genres);
+            $genres = str_replace('Comedy', 'كوميدي ', $genres);
+            $genres = str_replace('Dementia', 'جنوني', $genres);
+            $genres = str_replace('Demons', 'شياطين', $genres);
+            $genres = str_replace('Drama', 'دراما', $genres);
+            $genres = str_replace('Ecchi', 'إتشي', $genres);
+            $genres = str_replace('Fantasy', 'فانتازيا', $genres);
+            $genres = str_replace('Game', 'ألعاب', $genres);
+            $genres = str_replace('Harem', 'حريم', $genres);
+            $genres = str_replace('Hentai', 'هينتاي', $genres);
+            $genres = str_replace('Historical', 'تاريخي', $genres);
+            $genres = str_replace('Horror', 'رعب', $genres);
+            $genres = str_replace('Josei', 'جوسي', $genres);
+            $genres = str_replace('Kids', 'طفولي', $genres);
+            $genres = str_replace('Magic', 'سحر', $genres);
+            $genres = str_replace('Martial Arts', 'فنون', $genres);
+            $genres = str_replace('Mecha', 'آلات', $genres);
+            $genres = str_replace('Military', 'عسكري', $genres);
+            $genres = str_replace('Music', 'موسيقي', $genres);
+            $genres = str_replace('Mystery', 'غموض', $genres);
+            $genres = str_replace('Parody', 'ساخر', $genres);
+            $genres = str_replace('Police', 'بوليسي', $genres);
+            $genres = str_replace('Psychological', 'نفسي', $genres);
+            $genres = str_replace('Romance', 'رومانسي', $genres);
+            $genres = str_replace('Samurai', 'ساموراي', $genres);
+            $genres = str_replace('School', 'مدرسي', $genres);
+            $genres = str_replace('Sci-Fi', 'خيال علمي', $genres);
+            $genres = str_replace('Seinen', 'سينن', $genres);
+            $genres = str_replace('Shoujo Ai', 'شوجو', $genres);
+            $genres = str_replace('Shoujo', 'شوجو', $genres);
+            $genres = str_replace('Shounen Ai', 'شونين', $genres);
+            $genres = str_replace('Shounen', 'شونين', $genres);
+            $genres = str_replace('Slice of Life', 'شريحة من الحباة', $genres);
+            $genres = str_replace('Space', 'فضاء', $genres);
+            $genres = str_replace('Sports', 'رياضي', $genres);
+            $genres = str_replace('Super Power', 'قوى خارقة', $genres);
+            $genres = str_replace('Supernatural', 'خارق للطبيعة', $genres);
+            $genres = str_replace('Thriller', 'إثارة', $genres);
+            $genres = str_replace('Vampire', 'مصاصي دماء', $genres);
+            $genres = str_replace('Yaoi', 'يوي', $genres);
+            $genres = str_replace('Yuri', 'يوري', $genres);
             $genres = json_encode(array_unique(array_filter(explode(',', $genres))), JSON_UNESCAPED_UNICODE);
         }
         if ($request->has('title_synonyms')) {
@@ -252,7 +255,7 @@ class AnimeController extends Controller
                 case 15:
                     $source = "Radio";
                     break;
-               default:
+                default:
                     $source = NULL;
             }
         }
@@ -327,9 +330,9 @@ class AnimeController extends Controller
         $episodes = $request['episodes'];
 
         if ($request->has('cover')) {
-            $cover = time().'.'.request()->cover->getClientOriginalExtension();
+            $cover = time() . '.' . request()->cover->getClientOriginalExtension();
             request()->cover->move(public_path('images'), $cover);
-            $cover = cdn('images/'.$cover);
+            $cover = cdn('images/' . $cover);
         } else {
             $cover = Null;
         }
@@ -378,13 +381,13 @@ class AnimeController extends Controller
         $anime->url = $url;
         $anime->save();
         // return $anime;
-        return back()->with('main', __('dashboard.A new anime added to database successfully') );
+        return back()->with('main', __('dashboard.A new anime added to database successfully'));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\anime  $anime
+     * @param  \App\Models\Anime  $anime
      * @return \Illuminate\Http\Response
      */
     public function show(anime $anime)
@@ -396,9 +399,9 @@ class AnimeController extends Controller
 
         // Creating a list of tags depinding on anime name
         $keywords = $anime->title .
-        ' أنمي, ' . $anime->title .', ' .
-        $anime->title . ' مترجم, '. 
-        $anime->title_english . '  مترجم أون لاين, ';
+            ' أنمي, ' . $anime->title . ', ' .
+            $anime->title . ' مترجم, ' .
+            $anime->title_english . '  مترجم أون لاين, ';
 
         // Adding anime synonyms to tags
         if (!json_decode($anime->synonyms) == []) {
@@ -416,8 +419,8 @@ class AnimeController extends Controller
             }
         }
 
-        $canonical = url(route('animes.show', ['anime'=>$anime->id, 'slug'=>Str::slug($anime->title)] ));
-        // return $canonical;   
+        $canonical = url(route('animes.show', ['anime' => $anime->id, 'slug' => Str::slug($anime->title)]));
+        // return $canonical;
         // anime variable is passd to this function
         return view('anime.show', compact('anime', 'title', 'description', 'keywords', 'canonical'));
     }
@@ -425,7 +428,7 @@ class AnimeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\anime  $anime
+     * @param  \App\Models\anime  $anime
      * @return \Illuminate\Http\Response
      */
     public function edit(anime $anime)
@@ -437,7 +440,7 @@ class AnimeController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\anime  $anime
+     * @param  \App\Models\anime  $anime
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, anime $anime)
@@ -448,7 +451,7 @@ class AnimeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\anime  $anime
+     * @param  \App\Models\anime  $anime
      * @return \Illuminate\Http\Response
      */
     public function destroy(anime $anime)
@@ -459,12 +462,12 @@ class AnimeController extends Controller
     /**
      * Redirect to random resource .
      *
-     * @param  \App\anime  $anime
+     * @param  \App\Models\anime  $anime
      * @return \Illuminate\Http\Response
      */
     public function random()
     {
         $anime = Anime::inRandomOrder()->first();
-        return redirect(route('animes.show', ['anime'=>$anime->id]));
+        return redirect(route('animes.show', ['anime' => $anime->id]));
     }
 }

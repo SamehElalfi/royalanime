@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App;
-use App\Anime;
-use App\Episode;
+use \App;
+use App\Models\Anime;
+use App\Models\Episode;
 use Str;
 use URL;
 use Carbon\Carbon;
@@ -17,9 +17,10 @@ class SitemapController extends Controller
     /**
      * Generate the main sitemap index /sitemap.xml
      */
-    public function index() {
+    public function index()
+    {
         $sitemap = App::make('sitemap');
-        
+
         // Get all sitemaps from sitemap dir
         $path = public_path('sitemap');
         $files = File::allfiles($path);
@@ -27,7 +28,7 @@ class SitemapController extends Controller
         foreach ($files as $file) {
             if ($file->getExtension() == 'xml') {
                 // Add the file to the main sitemap
-                $sitemap->addSitemap(secure_url('sitemap/'.$file->getFileName()));
+                $sitemap->addSitemap(secure_url('sitemap/' . $file->getFileName()));
             }
         }
 
@@ -63,7 +64,7 @@ class SitemapController extends Controller
                 // count generated sitemap
                 $sitemapCounter++;
             }
-            $url = route('animes.episodes.show', ['anime'=>$p->anime_id, 'episode'=>$p->episode_number]);
+            $url = route('animes.episodes.show', ['anime' => $p->anime_id, 'episode' => $p->episode_number]);
             $sitemap->add($url, Carbon::now()->toAtomString(), '0.8', 'weekly');
             $counter++;
         }
@@ -77,24 +78,23 @@ class SitemapController extends Controller
             // reset items array
             $sitemap->model->resetItems();
         }
-
     }
 
     /**
      * Generate sitemap for animes
      * The generated sitemap saved in /sitemap/ directory
      */
-    public function animes() {
+    public function animes()
+    {
         // create sitemap for animes
         $sitemap = App::make("sitemap");
         $animes = Anime::chunk(10000, function ($animes) use ($sitemap) {
-            foreach ($animes as $anime)
-            {
-                $url = route('animes.show', ['anime'=>$anime->id.'/'.Str::slug($anime->title)]);
+            foreach ($animes as $anime) {
+                $url = route('animes.show', ['anime' => $anime->id . '/' . Str::slug($anime->title)]);
                 $sitemap->add($url, $anime->updated_at, '0.9', 'weekly');
             }
         });
-        $sitemap->store('xml','sitemap/sitemap-animes');
+        $sitemap->store('xml', 'sitemap/sitemap-animes');
     }
 
 
@@ -102,7 +102,8 @@ class SitemapController extends Controller
      * Generate sitemap for main pages
      * The generated sitemap saved in /sitemap/ directory
      */
-    public function main() {
+    public function main()
+    {
         // create sitemap for main pages
         $sitemap = App::make("sitemap");
         $sitemap->add(route('homepage'), Carbon::now()->toAtomString(), '1.0', 'Monthly');
@@ -110,32 +111,35 @@ class SitemapController extends Controller
         $sitemap->add(route('animes'), Carbon::now()->toAtomString(), '0.7', 'daily');
         $sitemap->add(route('about'), Carbon::now()->toAtomString(), '0.2', 'daily');
         $sitemap->add(route('dmca'), Carbon::now()->toAtomString(), '0.2', 'daily');
-        $sitemap->store('xml','sitemap/sitemap-main');
+        $sitemap->store('xml', 'sitemap/sitemap-main');
     }
 
     /**
      * Generate sitemap for pages
      * The generated sitemap saved in /sitemap/ directory
      */
-    public function pages() {
-        // 
+    public function pages()
+    {
+        //
     }
 
     /**
      * Generate sitemap for animes
      * The generated sitemap saved in /sitemap/ directory
      */
-    public function posts() {
-        // 
+    public function posts()
+    {
+        //
     }
 
     /**
      * Generate sitemap for all other sitemaps
      * in sitemap directory
-     * 
+     *
      * The generated sitemap saved in /public directory
      */
-    public function all() {
+    public function all()
+    {
         $this->main();
         $this->animes();
         $this->episodes();

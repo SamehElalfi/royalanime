@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Anime;
-use App\Episode;
+use App\Models\Anime;
+use App\Models\Episode;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Http;
 
 class EpisodeController extends Controller
 {
-    public function __construct() {
+    public function __construct()
+    {
         // Cache the final page  as html file in /public/page-cache/
         $this->middleware('page-cache', ['only' => ['index', 'show']]);
     }
@@ -34,7 +35,7 @@ class EpisodeController extends Controller
         // $episodes = Episode::where('anime_id', $anime_id)
         // ->orderBy('episode_number')->get();
         // return $episodes;
-        
+
         // Return 404 Error if no episodes found
         // if (empty($episodes)) {abort(404);}
 
@@ -46,15 +47,16 @@ class EpisodeController extends Controller
             abort(404);
         }
 
-        
+
         // The Meta tags for this episode page
         $title = "جميع حلقات مسلسل " . $anime->title;
         $description = 'جميع حلقات مسلسل ' . $anime->title
-        . ' للمشاهدة والتحميل بروابط مباشرة من موقع رويال أنمي';
+            . ' للمشاهدة والتحميل بروابط مباشرة من موقع رويال أنمي';
 
-        $canonical = route('animes.episodes.index', ['anime'=>$anime_id]);
+        $canonical = route('animes.episodes.index', ['anime' => $anime_id]);
 
-        return view('episode.index',
+        return view(
+            'episode.index',
             compact('anime', 'title', 'description', 'canonical')
         );
     }
@@ -84,7 +86,7 @@ class EpisodeController extends Controller
      * Display the specified resource.
      *
      * The request will be like /animes/21/episodes/10/{slug?}
-     * 
+     *
      * @param  $anime_id and $episode_number
      * @return \Illuminate\Http\Response
      */
@@ -94,11 +96,13 @@ class EpisodeController extends Controller
         // The next block of code will return the episode id like:
         // {"episode_id":2}
         $episode = Episode::where('anime_id', $anime_id)
-        ->where('episode_number', $episode_number)->first();
+            ->where('episode_number', $episode_number)->first();
 
-        
+
         // Abort an ERROR message if no episode found
-        if (!$episode) {abort(404);}
+        if (!$episode) {
+            abort(404);
+        }
         $episode_id = $episode->id;
 
         if (!$episode->anime) {
@@ -111,28 +115,28 @@ class EpisodeController extends Controller
 
         // // Return 404 Error if no episodes found
         // if (empty($episode_details)) {abort(404);}
-        
+
         // Get the anime details which used in "Next ep"
         // and "Prev ep" buttons and Main page heading
         // $anime = Anime::where('id', $anime_id)->first();
-        
-        
+
+
         // The Meta tags for this episode page
         $title = "الحلقة رقم " . $episode_number
-        . ' من ' . $episode->anime->title;
+            . ' من ' . $episode->anime->title;
         $description = "مشاهدة وتحميل الحلقة " . $episode_number
-        . ' من ' . $episode->anime->title . ' بروابط مباشرة وبدون إعلانات مزعجة';
+            . ' من ' . $episode->anime->title . ' بروابط مباشرة وبدون إعلانات مزعجة';
         $keywords = 'حلقة ' . $episode_number
-        . ', '. $episode->anime->title;
-        
-        $canonical = route('animes.episodes.show', ['anime'=>$anime_id, 'episode'=>$episode_number]);
-        
+            . ', ' . $episode->anime->title;
+
+        $canonical = route('animes.episodes.show', ['anime' => $anime_id, 'episode' => $episode_number]);
+
         // Watching (Streaming) servers whiche used in iframe source
         // The Structure is like the following
         // episodes.episode_id (int)
         // -> episode_link.link_id (int)
         // -> links.links (text (json))
-        // 
+        //
         // If there is no links an error message will be handled by the view
 
         if (isset($episode->streamLinks['links'])) {
@@ -145,23 +149,30 @@ class EpisodeController extends Controller
 
 
         // Downloading servers
-        // 
+        //
         // If there is no links an error message will be handled by the view
         // $download_links = $episode->link->where('type', '=', 'download');
         $download_links = json_decode(
             $episode->downloadLinks['links']
         );
 
-        return view('episode.show', compact(
-            'title', 'episode',
-            'description', 'watch_links', 'download_links', 'canonical')
+        return view(
+            'episode.show',
+            compact(
+                'title',
+                'episode',
+                'description',
+                'watch_links',
+                'download_links',
+                'canonical'
+            )
         );
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\episode  $episode
+     * @param  \App\Models\Episode  $episode
      * @return \Illuminate\Http\Response
      */
     public function edit(episode $episode)
@@ -173,7 +184,7 @@ class EpisodeController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\episode  $episode
+     * @param  \App\Models\Episode  $episode
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, episode $episode)
@@ -184,7 +195,7 @@ class EpisodeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\episode  $episode
+     * @param  \App\Models\Episode  $episode
      * @return \Illuminate\Http\Response
      */
     public function destroy(episode $episode)
@@ -195,10 +206,10 @@ class EpisodeController extends Controller
     /**
      * Get download links for an episode.
      * all links are available for 24 hours
-     * 
+     *
      * this method makes a new http request for another servers
      *
-     * @param  \App\episode  $episode
+     * @param  \App\Models\Episode  $episode
      * @return \Illuminate\Http\Response
      */
     public function download_links()
@@ -210,7 +221,7 @@ class EpisodeController extends Controller
             'server' => 'Oserver',
             'c' => '1',
         ]);
-        
+
         // $episode = Episode::where('anime_id', '2')
         // ->where('episode_number', '1')->first();
         // return 'as';
@@ -219,7 +230,7 @@ class EpisodeController extends Controller
 
     /**
      * Display a pagination of latest episodes from all animes
-     * 
+     *
      * @return \Illuminate\Http\Response
      */
     public function episode_list()
@@ -228,7 +239,9 @@ class EpisodeController extends Controller
         $paginator = Episode::latest()->paginate(52);
 
         // Return 404 error if there are no episodes
-        if ($paginator == null){abort(404);}
+        if ($paginator == null) {
+            abort(404);
+        }
 
         $primary_nav = true;
         $title = 'قائمة الحلقات';

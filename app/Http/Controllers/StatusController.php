@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Anime;
 
 class StatusController extends Controller
 {
-    public function __construct() {
+    public function __construct()
+    {
         // Cache the final page  as html file in /public/page-cache/
         $this->middleware('page-cache', ['only' => ['index', 'show']]);
     }
@@ -67,22 +69,24 @@ class StatusController extends Controller
         // $sortBy = $sortBy == 'date' ?  : $sortBy;
 
         if ($sortBy == 'date') {
-        // return $id;
-        // Display anime list
-        $paginator = \App\Anime::orderBy('aired_from', $order)->where('status','like', '%'.$id.'%')->paginate(10);
-        $paginator = $paginator->appends(['sortBy'=> 'date', 'order'=>$order]);
-    } else {
-        // Display anime list
-        $paginator = \App\Anime::orderBy($sortBy, $order)->where('status','like', '%'.$id.'%')->paginate(10);
-        $paginator = $paginator->appends(['sortBy'=> $sortBy, 'order'=>$order]);
-    }
+            // return $id;
+            // Display anime list
+            $paginator = Anime::orderBy('aired_from', $order)->where('status', 'like', '%' . $id . '%')->paginate(10);
+            $paginator = $paginator->appends(['sortBy' => 'date', 'order' => $order]);
+        } else {
+            // Display anime list
+            $paginator = Anime::orderBy($sortBy, $order)->where('status', 'like', '%' . $id . '%')->paginate(10);
+            $paginator = $paginator->appends(['sortBy' => $sortBy, 'order' => $order]);
+        }
 
         // Return 404 error if there are no animes
-        if ($paginator == null){abort(404);}
-        
+        if ($paginator == null) {
+            abort(404);
+        }
+
         $primary_nav = true;
-        $title = 'أنمي '. $id;
-        $description = 'كل الأنميات ' .$id;
+        $title = 'أنمي ' . $id;
+        $description = 'كل الأنميات ' . $id;
         // $tag = $id;
         return view('tag.show', compact('paginator', 'primary_nav', 'title', 'description', 'id', 'sortBy', 'order'));
     }

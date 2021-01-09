@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Contact;
+use App\Models\Contact;
 use Illuminate\Http\Request;
 // use Illuminate\Notifications\Notification;
 use Illuminate\Notifications\Messages\SlackMessage;
-use App\User;
+use App\Models\User;
 
 class ContactController extends Controller
 {
@@ -52,7 +52,7 @@ class ContactController extends Controller
         $msg->previous_url = $validatedData['previous_url'];
         $msg->message = $validatedData['message'];
         $msg->save();
-        \Slack::to('#welcome')->send('A new message created succesfully by '.$validatedData['name']);
+        \Slack::to('#welcome')->send('A new message created succesfully by ' . $validatedData['name']);
         // $s = new SlackMessage;
         // $s->success()->content('One of your invoices has been paid!');
         // Notification::send(User::first(), new ContactMessageCompleted());
@@ -64,7 +64,7 @@ class ContactController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\contact  $contact
+     * @param  \App\Models\contact  $contact
      * @return \Illuminate\Http\Response
      */
     public function show(contact $contact)
@@ -75,7 +75,7 @@ class ContactController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\contact  $contact
+     * @param  \App\Models\contact  $contact
      * @return \Illuminate\Http\Response
      */
     public function edit(contact $contact)
@@ -87,7 +87,7 @@ class ContactController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\contact  $contact
+     * @param  \App\Models\contact  $contact
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, contact $contact)
@@ -98,7 +98,7 @@ class ContactController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\contact  $contact
+     * @param  \App\Models\contact  $contact
      * @return \Illuminate\Http\Response
      */
     public function destroy(contact $contact)

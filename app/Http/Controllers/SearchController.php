@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use \App\Anime;
+use App\Models\Anime;
 
 class SearchController extends Controller
 {
-    
+
     /**
      * Display the search page
      *
@@ -20,7 +20,7 @@ class SearchController extends Controller
         $description = 'أبحث عن أي حلقة أو مسلسل أو فيلم و بأي لغة تريد';
         return view('search.google', compact('primary_nav', 'title', 'description'));
     }
-    
+
 
     /**
      * Display the search page
@@ -35,13 +35,12 @@ class SearchController extends Controller
 
         $query = $request->input('q');
         if ($query) {
-            $paginator = Anime::search($query, null, true)->paginate(10)->appends(['q'=> $query]);
+            $paginator = Anime::search($query, null, true)->paginate(10)->appends(['q' => $query]);
         } else {
             $paginator = [];
         }
         // return view('search', compact('primary_nav', 'title', 'description'));
-        
+
         return view('search.index', compact('paginator', 'primary_nav', 'title', 'description', 'query'));
     }
-    
 }
