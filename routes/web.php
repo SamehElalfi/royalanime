@@ -3,17 +3,14 @@
 // TODO: Split web.php into smaller files and import them here
 
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Http;
 
 // the home page of the project
-Route::get('/', 'WelcomeController@index')->name('homepage');
-// Route::get('/roles', 'RoleController@index');
-// Route::get('/test', 'WelcomeController@test');
+Route::get('/', 'IndexController@index')->name('homepage');
 
 Route::group(['prefix' => 'filemanager', 'middleware' => ['web', 'auth', 'can:add posts']], function () {
     \UniSharp\LaravelFilemanager\Lfm::routes();
 });
-    
+
 Route::resources([
     'animes.episodes' => 'EpisodeController',   // All Episodes of an Anime. This route has another route for slug
     'animes' => 'AnimeController',              // All Anime Details From MyAnimeList. This route has another route for slug
@@ -33,18 +30,20 @@ Route::resources([
  * all slugs for anime names and episodes
  */
 Route::get('episodes', 'EpisodeController@episode_list')->name('episodes');   // All episodes for all animes
-Route::get('animes/{anime}/{slug?}', ['as'=>'animes.show', 'uses'=>'AnimeController@show']);
-Route::get('animes/{anime}/episodes/{episode}/{slug?}', ['as'=>'animes.episodes.show', 'uses'=>'EpisodeController@show']);
-Route::get('tags/{tag}/{slug?}', ['as'=>'tags.show', 'uses'=>'TagController@show']);
-Route::get('blog/posts/{post}/{slug?}', ['as'=>'posts.show', 'uses'=>'PostController@show']);
+Route::get('animes/{anime}/{slug?}', ['as' => 'animes.show', 'uses' => 'AnimeController@show']);
+Route::get('animes/{anime}/episodes/{episode}/{slug?}', ['as' => 'animes.episodes.show', 'uses' => 'EpisodeController@show']);
+Route::get('tags/{tag}/{slug?}', ['as' => 'tags.show', 'uses' => 'TagController@show']);
+Route::get('blog/posts/{post}/{slug?}', ['as' => 'posts.show', 'uses' => 'PostController@show']);
 
 Route::get('royalembed/{url}', 'EmbedController@show')->where('url', '(.*)');
-Route::get('royalembed', function(){return redirect('/');});
+Route::get('royalembed', function () {
+    return redirect('/');
+});
 
 
 /**
  * Main Support Pages
- * 
+ *
  * need views
  */
 Route::get('/{page}', 'PageController')->name('page')->where('page', 'about|terms');
@@ -60,7 +59,7 @@ Route::post('/blog', 'PostController@store');
  */
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
-// Route::get('/dashboard', 'WelcomeController@dashboard');
+// Route::get('/dashboard', 'IndexController@dashboard');
 
 Route::group(['middleware' => 'auth'], function () {
     Route::resource('user', 'UserController', ['except' => ['show']]);
@@ -70,40 +69,40 @@ Route::group(['middleware' => 'auth'], function () {
 
     // Settings Pages
 
-    
+
     // Animes Management
     Route::get('settings',              ['as' => 'settings.index',              'uses' => 'SettingController@index']);
     Route::get('settings/animes/list',  ['as' => 'settings.animes.list',        'uses' => 'SettingController@animes_list']);
     Route::get('settings/animes',       ['as' => 'settings.animes',             'uses' => 'SettingController@animes']);
     Route::put('settings/animes',       ['as' => 'settings.animes.update',      'uses' => 'SettingController@update_animes']);
-    
+
     // Episodes Management
-    Route::get('settings/episodes/create',['as' => 'settings.episodes.create',   'uses' => 'SettingController@create_episode']);
-    Route::get('settings/episodes/list',['as' => 'settings.episodes.list',       'uses' => 'SettingController@episodes_list']);
+    Route::get('settings/episodes/create', ['as' => 'settings.episodes.create',   'uses' => 'SettingController@create_episode']);
+    Route::get('settings/episodes/list', ['as' => 'settings.episodes.list',       'uses' => 'SettingController@episodes_list']);
     Route::get('settings/episodes',     ['as' => 'settings.episodes',            'uses' => 'SettingController@episodes']);
     Route::put('settings/episodes',     ['as' => 'settings.episodes.update',     'uses' => 'SettingController@update_episodes']);
-    
+
     Route::get('settings/blog',         ['as' => 'settings.blog',               'uses' => 'SettingController@blog']);
     Route::put('settings/blog',         ['as' => 'settings.blog.update',        'uses' => 'SettingController@update_blog']);
-    
+
     Route::get('settings/comments',     ['as' => 'settings.comments',           'uses' => 'SettingController@comments']);
     Route::put('settings/comments',     ['as' => 'settings.comments.update',    'uses' => 'SettingController@update_comments']);
-    
+
     Route::get('settings/frontend',     ['as' => 'settings.frontend',           'uses' => 'SettingController@frontend']);
     Route::put('settings/frontend',     ['as' => 'settings.frontend.update',    'uses' => 'SettingController@update_frontend']);
-    
+
     Route::get('settings/social',       ['as' => 'settings.social',             'uses' => 'SettingController@social']);
     Route::put('settings/social',       ['as' => 'settings.social.update',      'uses' => 'SettingController@update_social']);
-    
+
     Route::get('settings/backup',       ['as' => 'settings.backup',             'uses' => 'SettingController@backup']);
     Route::put('settings/backup',       ['as' => 'settings.backup.update',      'uses' => 'SettingController@update_backup']);
-    
+
     Route::get('settings/users',        ['as' => 'settings.users',              'uses' => 'SettingController@users']);
     Route::put('settings/users',        ['as' => 'settings.users.update',       'uses' => 'SettingController@update_users']);
-    
+
     Route::get('settings/advanced',     ['as' => 'settings.advanced',           'uses' => 'SettingController@advanced']);
     Route::put('settings/advanced',     ['as' => 'settings.advanced.update',    'uses' => 'SettingController@update_advanced']);
-    
+
     // Blog Posts Management
     Route::get('settings/posts/list',  ['as' => 'settings.posts.list',        'uses' => 'PostController@posts_list']);
 });
