@@ -10,7 +10,7 @@ class Episode extends Model
     use SoftDeletes;
 
     /**
-     * Return all streaimg links Watching (Streaming) of an episode
+     * Return all streaming links Watching (Streaming) of an episode
      */
     public function streamLinks()
     {
@@ -18,7 +18,7 @@ class Episode extends Model
     }
 
     /**
-     * Return all streaimg links (watching and downloading) of an episode
+     * Return all streaming links (watching and downloading) of an episode
      */
     public function downloadLinks()
     {

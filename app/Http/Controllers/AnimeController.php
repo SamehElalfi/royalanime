@@ -30,17 +30,10 @@ class AnimeController extends Controller
     public function index(Request $request)
     {
         $sortBy = $request->input('sortBy');
+        $sortBy = in_array($sortBy, ['title', 'score', 'date']) ? $sortBy : 'title';
+
         $order = $request->input('order');
-
-        if (!in_array($order, ['DESC', 'ASC'])) {
-            $order = 'ASC';
-        }
-
-        if (!in_array($sortBy, ['title', 'score', 'date'])) {
-            $sortBy = 'title';
-        }
-
-        // $sortBy = $sortBy == 'date' ?  : $sortBy;
+        $order = in_array($order, ['DESC', 'ASC']) ? $order : 'ASC';
 
         if ($sortBy == 'date') {
             // Display anime list
@@ -53,13 +46,11 @@ class AnimeController extends Controller
         }
 
         // Return 404 error if there are no animes
-        if ($paginator == null) {
-            abort(404);
-        }
+        $paginator == null ? abort(404) : null;
 
         $primary_nav = true;
         $title = 'قائمة الأنمي';
-        $description = 'أكبر قائمة للأنمي على الأطلاق مقدمة حصريًأ من موقع رويال أنمي';
+        $description = 'أكبر قائمة الأنمي على الأطلاق مقدمة حصريًا من موقع رويال أنمي';
         return view('anime.index', compact('paginator', 'primary_nav', 'title', 'description', 'sortBy', 'order'));
     }
 
