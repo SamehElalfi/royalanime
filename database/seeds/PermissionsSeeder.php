@@ -17,7 +17,7 @@ class PermissionsSeeder extends Seeder
         // Reset cached roles and permissions
         app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
 
-        
+
         // Main roles are listed here
         // Note: the most powerfull role is Super Admin
 
@@ -25,7 +25,7 @@ class PermissionsSeeder extends Seeder
         // he can Add, Edit and Delete anything
         // Edit Laravel Files
         // Run artisan commands
-        // Use phpmyadmin with root permissions        
+        // Use phpmyadmin with root permissions
         $role = Role::create(['name' => 'super admin']);
 
         // Add, Edit and Delete anything
@@ -64,21 +64,21 @@ class PermissionsSeeder extends Seeder
 
         // Here are all permissions for all roles above
         // The Super Admin user has all permission. So, he can do anything
-        
+
         // The next couple of permissions created for Super Admin only
         // Edit Laravel source Files with online text editor
         $permission = Permission::create(['name' => 'edit laravel files']);
         // Run artisan commands directly from the web browser
         $permission = Permission::create(['name' => 'run artisan commands']);
-        
+
         // Execut basic sql queries WITHOUT root permissions
         $permission = Permission::create(['name' => 'use mysql']);
         // Use mysql with root permissions
         $permission = Permission::create(['name' => 'use mysql as root']);
         $permission = Permission::create(['name' => 'change settings']);
         $admin->syncPermissions(['use mysql', 'use mysql as root', 'change settings']);
-        
-        
+
+
         // Add, Edit, Activate and Delete animes
         // including story, episodes number, MAL id ... etc
         $permission = Permission::create(['name' => 'edit animes']);
@@ -87,9 +87,9 @@ class PermissionsSeeder extends Seeder
         $permission = Permission::create(['name' => 'activate animes']);
         $anime_manager->syncPermissions(
             [
-                'edit animes', 
-                'add animes', 
-                'delete animes', 
+                'edit animes',
+                'add animes',
+                'delete animes',
                 'activate animes'
             ]
         );
@@ -104,15 +104,15 @@ class PermissionsSeeder extends Seeder
         $permission = Permission::create(['name' => 'edit servers']);
         $episodes_manager->syncPermissions(
             [
-                'edit servers', 
-                'edit episodes', 
-                'add episodes', 
-                'delete episodes', 
+                'edit servers',
+                'edit episodes',
+                'add episodes',
+                'delete episodes',
                 'activate episodes'
             ]
         );
-        
-        
+
+
         // Permissons for the blog
         // Add, Update and Delete his blog posts
         $permission = Permission::create(['name' => 'write posts']);
@@ -122,22 +122,22 @@ class PermissionsSeeder extends Seeder
         $permission = Permission::create(['name' => 'activate posts']);
         $blogger->syncPermissions(
             [
-                'write posts', 
-                'edit posts', 
-                'delete posts', 
+                'write posts',
+                'edit posts',
+                'delete posts',
                 'activate posts'
             ]
         );
-        
-        
+
+
         // View Status of the website like:
         // shortlinks status, count of subscripers ... etc
         $permission = Permission::create(['name' => 'view status']);
         // View google analytics details directly from the dashboard
         $permission = Permission::create(['name' => 'view google analytics']);
         $analyzer->syncPermissions(['view status', 'view google analytics']);
-        
-        
+
+
         // Add, Edit, Delete and Activate users
         $permission = Permission::create(['name' => 'add users']);
         $permission = Permission::create(['name' => 'edit users']);
@@ -145,8 +145,8 @@ class PermissionsSeeder extends Seeder
         $permission = Permission::create(['name' => 'activate users']);
         $user_manager->syncPermissions(
             [
-                'add users', 
-                'edit users', 
+                'add users',
+                'edit users',
                 'delete users',
                 'activate users'
             ]
@@ -155,7 +155,7 @@ class PermissionsSeeder extends Seeder
         // view, delete comments on animes and episodes
         $permission = Permission::create(['name' => 'delete comments']);
         $comments_manager->syncPermissions(['delete comments']);
-        
+
 
         // Can add, edit and remove social media icons and links
         $permission = Permission::create(['name' => 'add social links']);
@@ -166,21 +166,21 @@ class PermissionsSeeder extends Seeder
         $permission = Permission::create(['name' => 'add social widgets']);
         $permission = Permission::create(['name' => 'edit social widgets']);
         $permission = Permission::create(['name' => 'delete social widgets']);
-        $social_media_manager->syncPermissions([
-            'add social links', 
-            'edit social links', 
-            'delete social links', 
-            'add social widgets', 
-            'edit social widgets', 
-            'delete social widgets'
+        $social_media_manager->syncPermissions(
+            [
+                'add social links',
+                'edit social links',
+                'delete social links',
+                'add social widgets',
+                'edit social widgets',
+                'delete social widgets'
             ]
         );
-       
+
 
         // ----------------------------------------------------------
-        
-        $user = \App\User::find(1);
-        $user->assignRole('super admin');
 
+        $user = \App\Models\User::find(1);
+        $user->assignRole('super admin');
     }
 }
