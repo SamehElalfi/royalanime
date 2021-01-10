@@ -58,7 +58,7 @@
                     <div class="dropdown-menu dropdown-menu-xl">
                         <div class="dropdown-menu-inner">
 
-                            <a href="{{ route('episodes') }}" class="media d-flex align-items-center">
+                            <a href="{{ route('animes.episodes.list') }}" class="media d-flex align-items-center">
                                 <div class="icon icon-shape bg-gradient-primary rounded-circle text-white">
                                     <i class="fa fa-film"></i>
                                 </div>

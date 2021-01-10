@@ -11,7 +11,6 @@ class ContactController extends Controller
 {
     public function __construct()
     {
-        // $this->middleware('auth', ['only' => ['index']]);
         $this->middleware(['auth', 'role:super admin|admin'], ['only' => ['index', 'destroy', 'show']]);
     }
 

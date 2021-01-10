@@ -15,7 +15,7 @@ class AnimeController extends Controller
         // Cache the final page  as html file in /public/page-cache/
         $this->middleware('page-cache', ['only' => ['show']]);
 
-        $this->middleware('auth', ['only' => ['create', 'edit', 'store']]);
+        $this->middleware('auth', ['only' => ['edit', 'update', 'create', 'store']]);
         $this->middleware('can:add animes', ['only' => ['create']]);
         $this->middleware('can:edit animes', ['only' => ['edit', 'update']]);
         $this->middleware('can:delete animes', ['only' => ['destroy']]);
