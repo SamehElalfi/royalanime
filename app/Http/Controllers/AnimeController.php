@@ -220,6 +220,7 @@ class AnimeController extends Controller
      */
     public function edit(anime $anime)
     {
+        // TODO Create Edit page
         return 'edit';
     }
 
@@ -232,7 +233,7 @@ class AnimeController extends Controller
      */
     public function update(Request $request, anime $anime)
     {
-        //
+        // TODO Create Update Page
     }
 
     /**
@@ -243,7 +244,7 @@ class AnimeController extends Controller
      */
     public function destroy(anime $anime)
     {
-        //
+        return $anime->delete();
     }
 
     /**
