@@ -14,8 +14,6 @@ Route::resources([
     'rating' => 'RatingController',             // Anime Rating (e.g. PG - Children, G - All Ages ...)
     'types' => 'TypeController',                // Anime Rating (e.g. PG - Children, G - All Ages ...)
     'status' => 'StatusController',             // Anime List of status (e.g. finished, airing ...)
-    'blog/posts' => 'PostController',           // Posts in the Blog
-    'pages' => 'PageController',                // Pages for every popular anime (e.g. Death Note, One Piece ...)
     'subscriber' => 'SubscriberController'      // Subscript to newsletter Page
 ]);
 
@@ -29,22 +27,14 @@ Route::get('episodes', 'EpisodeController@list')->name('animes.episodes.list'); 
 Route::get('animes/{anime}/{slug?}', ['as' => 'animes.show.slug', 'uses' => 'AnimeController@show']);
 Route::get('animes/{anime}/episodes/{episode}/{slug?}', ['as' => 'animes.episodes.show.slug', 'uses' => 'EpisodeController@show']);
 Route::get('tags/{tag}/{slug?}', ['as' => 'tags.show.slug', 'uses' => 'TagController@show']);
-Route::get('blog/posts/{post}/{slug?}', ['as' => 'posts.show.slug', 'uses' => 'PostController@show']);
 
 Route::get('royalembed/{url}', 'EmbedController@show')->where('url', '(.*)');
-// Route::get('royalembed', function () {
-//     return redirect('/');
-// });
-
 
 /**
  * Main Support Pages
  *
  * need views
  */
-Route::get('/{page}', 'PageController')->name('page')->where('page', 'about|terms');
 Route::get('/search-google', 'SearchController@google_search')->name('google-search');
 Route::get('/search', 'SearchController@search')->name('search');
 Route::get('/random', 'AnimeController@random')->name('random-anime');
-Route::get('/blog', 'PostController@index');
-Route::post('/blog', 'PostController@store');
