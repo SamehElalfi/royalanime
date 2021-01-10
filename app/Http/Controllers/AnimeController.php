@@ -348,6 +348,13 @@ class AnimeController extends Controller
         return json_encode(array_unique(array_filter(explode(',', $string))), JSON_UNESCAPED_UNICODE);
     }
 
+    /**
+     * Convert a line separated string to json code
+     *
+     * @param string $string
+     *
+     * @return string
+     */
     protected function jsonifyThemes(String $themes)
     {
         return json_encode(array_unique(array_filter(preg_split("/\r\n|\n|\r/", $themes))));

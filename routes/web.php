@@ -16,10 +16,10 @@ Route::resources([
     'status' => 'StatusController',             // Anime List of status (e.g. finished, airing ...)
     'blog/posts' => 'PostController',           // Posts in the Blog
     'pages' => 'PageController',                // Pages for every popular anime (e.g. Death Note, One Piece ...)
-    'contact' => 'ContactController',           // Contact Page
     'subscriber' => 'SubscriberController'      // Subscript to newsletter Page
 ]);
-
+// Contact Page
+Route::resource('contact', 'ContactController')->except(['edit', 'update']);
 /**
  * all slugs for anime names and episodes
  */

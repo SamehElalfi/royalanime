@@ -8,8 +8,12 @@
 
         <!-- Hamberger Menu -->
         <!-- Brand on Phones ONLY -->
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 30 30" style="width: 30px;"><path stroke="rgba(255, 255, 255, 1)" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"></path></svg>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_global"
+            aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 30 30" style="width: 30px;">
+                <path stroke="rgba(255, 255, 255, 1)" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10"
+                    d="M4 7h22M4 15h22M4 23h22"></path>
+            </svg>
         </button>
 
         <!-- Navbar Pages -->
@@ -30,7 +34,8 @@
                     <!-- Close Button X on Phones -->
                     <!-- Note: This is not visible on Desktop -->
                     <div class="col-6 collapse-close">
-                        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
+                        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar_global"
+                            aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
                             <span></span>
                             <span></span>
                         </button>
@@ -59,7 +64,8 @@
                                 </div>
                                 <div class="media-body ml-3">
                                     <h6 class="heading text-primary mb-md-1">جديد الحلقات</h6>
-                                    <p class="description description-content d-none d-md-inline-block mb-0">تابع أحدث حلقات الأنميات الجديدة، عشرات الحلقات الجديدة كل يوم.</p>
+                                    <p class="description description-content d-none d-md-inline-block mb-0">تابع أحدث
+                                        حلقات الأنميات الجديدة، عشرات الحلقات الجديدة كل يوم.</p>
                                 </div>
                             </a>
 
@@ -69,7 +75,8 @@
                                 </div>
                                 <div class="media-body ml-3">
                                     <h6 class="heading text-success mb-md-1">قائمة الأنمي</h6>
-                                    <p class="description description-content d-none d-md-inline-block mb-0">تريد أن تشاهد مسلسل آخر. أبحث في قائمة الأنمي بين مئات المسلسلات الممتعة.</p>
+                                    <p class="description description-content d-none d-md-inline-block mb-0">تريد أن
+                                        تشاهد مسلسل آخر. أبحث في قائمة الأنمي بين مئات المسلسلات الممتعة.</p>
                                 </div>
                             </a>
 
@@ -79,7 +86,8 @@
                                 </div>
                                 <div class="media-body ml-3">
                                     <h5 class="heading text-warning mb-md-1">أطلب أنمي</h5>
-                                    <p class="description description-content d-none d-md-inline-block mb-0">أطلب أي أنمي تريده، وسوف نقوم بترجمته ورفعه على سيرفراتنا للمشاهدة والتحميل مجانًا.</p>
+                                    <p class="description description-content d-none d-md-inline-block mb-0">أطلب أي
+                                        أنمي تريده، وسوف نقوم بترجمته ورفعه على سيرفراتنا للمشاهدة والتحميل مجانًا.</p>
                                 </div>
                             </a>
 
@@ -89,38 +97,14 @@
                                 </div>
                                 <div class="media-body ml-3">
                                     <h6 class="heading text-primary mb-md-1">تصنيفات الأنمي</h6>
-                                    <p class="description description-content d-none d-md-inline-block mb-0">شاهد وحمل الأنميات بحسب تصنيفها. أكثر من 30 تصنيف مختلف.</p>
+                                    <p class="description description-content d-none d-md-inline-block mb-0">شاهد وحمل
+                                        الأنميات بحسب تصنيفها. أكثر من 30 تصنيف مختلف.</p>
                                 </div>
                             </a>
 
                         </div>
                     </div>
                 </li>
-
-                {{-- <li class="nav-item dropdown">
-
-                    <!-- Page Name -->
-                    <a href="#" class="nav-link" data-toggle="dropdown" role="button">
-                        <i class="ni ni-collection d-lg-none"></i>
-                        <span class="nav-link-inner--text">أفلام</span>
-                    </a>
-
-                    <!-- Page Content -->
-                    <div class="dropdown-menu">
-                        <a href="examples/profile.html" class="dropdown-item description-content">أحدث الأفلام</a>
-                        <a href="examples/landing.html" class="dropdown-item description-content">قائمة الأفلام</a>
-                        <a href="examples/login.html" class="dropdown-item description-content">التصنيفات</a>
-                    </div>
-                </li> --}}
-
-                {{-- <li class="nav-item">
-                    <!-- Page Name -->
-                    <a href="/animes" class="nav-link" role="button">
-                        <i class="ni ni-collection d-lg-none"></i>
-                        <span class="nav-link-inner--text">أنمي</span>
-                    </a>
-                </li> --}}
-
                 <li class="nav-item">
                     <!-- Page Name -->
                     <a href="{{ route('random-anime') }}" class="nav-link" role="button" rel="nofollow">
@@ -132,7 +116,7 @@
 
                 <li class="nav-item">
                     <!-- Page Name -->
-                    <a href="/contact" class="nav-link" role="button">
+                    <a href="{{ route('contact.create') }}" class="nav-link" role="button">
                         <i class="fa fa-life-ring"></i>
                         <span class="nav-link-inner--text">تواصل معنا</span>
                     </a>
@@ -143,19 +127,22 @@
             <!-- Social Media Page and Search Button -->
             <ul class="navbar-nav align-items-lg-center ml-lg-auto">
                 <li class="nav-item">
-                    <a class="nav-link nav-link-icon" href="https://www.facebook.com/RoyalAnimeOfficial" target="_blank" data-toggle="tooltip" title="Like us on Facebook" rel="nofollow">
+                    <a class="nav-link nav-link-icon" href="https://www.facebook.com/RoyalAnimeOfficial" target="_blank"
+                        data-toggle="tooltip" title="Like us on Facebook" rel="nofollow">
                         <i class="fa fa-facebook-square"></i>
                         <span class="nav-link-inner--text d-lg-none">Facebook</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link nav-link-icon" href="https://www.pinterest.com/RoyalAnimeOfficial" target="_blank" data-toggle="tooltip" title="Follow us on Pirnterest" rel="nofollow">
+                    <a class="nav-link nav-link-icon" href="https://www.pinterest.com/RoyalAnimeOfficial"
+                        target="_blank" data-toggle="tooltip" title="Follow us on Pirnterest" rel="nofollow">
                         <i class="fa fa-pinterest"></i>
                         <span class="nav-link-inner--text d-lg-none">Pinterest</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link nav-link-icon" href="https://twitter.com/RoyalAnimeCom" target="_blank" data-toggle="tooltip" title="Follow us on Twitter" rel="nofollow">
+                    <a class="nav-link nav-link-icon" href="https://twitter.com/RoyalAnimeCom" target="_blank"
+                        data-toggle="tooltip" title="Follow us on Twitter" rel="nofollow">
                         <i class="fa fa-twitter-square"></i>
                         <span class="nav-link-inner--text d-lg-none">Twitter</span>
                     </a>
@@ -172,7 +159,7 @@
                         <span class="nav-link-inner--text">بحث</span>
                     </a>
                 </li>
-{{-- 
+                {{--
                 <!-- Search Field -->
                 <!-- NOTE: This field will be hidden till a user clicks on SEARCH BUTTON -->
                 <!-- If the user clicks outside the field, SEARCH FIELD will return hidden -->
