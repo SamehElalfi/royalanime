@@ -181,36 +181,34 @@ class AnimeController extends Controller
      */
     public function show(anime $anime)
     {
-        // dd($anime->episodesList);
         // the meta tag of anime page
         $title = "مشاهدة وتحميل " . $anime->title;
         $description = $anime->arabic_synopsis;
 
-        // Creating a list of tags depinding on anime name
+        // Creating a list of keywords depending on anime name
         $keywords = $anime->title .
             ' أنمي, ' . $anime->title . ', ' .
             $anime->title . ' مترجم, ' .
             $anime->title_english . '  مترجم أون لاين, ';
 
-        // Adding anime synonyms to tags
-        if (!json_decode($anime->synonyms) == []) {
-            foreach (json_decode($anime->synonyms) as $synonym) {
-                $keywords = $keywords . 'أنمي ' . $synonym . 'مترجم';
+        // Adding anime synonyms to keywords
+        if (!json_decode($anime->title_synonyms) == []) {
+            foreach (json_decode($anime->title_synonyms) as $synonym) {
+                $keywords .= 'أنمي ' . $synonym . ' مترجم,';
             }
         }
 
-        // Adding all anime genres to meta tags
-        if ($anime->genres) {
-            if (!json_decode($anime->genres)) {
-                foreach (json_decode($anime->genres) as $tag) {
-                    $keywords = $keywords . 'أنمي ' . $tag . 'مترجم';
-                }
+        // Adding all anime genres to meta keywords
+        if (!json_decode($anime->genres) == []) {
+            foreach (json_decode($anime->genres) as $tag) {
+                $keywords .= 'أنمي ' . $tag . ' مترجم,';
             }
         }
 
+        // Canonical link element that helps webmasters prevent
+        // duplicate content issues in SEO
         $canonical = url(route('animes.show', ['anime' => $anime->id, 'slug' => Str::slug($anime->title)]));
-        // return $canonical;
-        // anime variable is passd to this function
+
         return view('anime.show', compact('anime', 'title', 'description', 'keywords', 'canonical'));
     }
 
