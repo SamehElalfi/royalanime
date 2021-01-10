@@ -18,21 +18,23 @@ Route::resources([
     'pages' => 'PageController',                // Pages for every popular anime (e.g. Death Note, One Piece ...)
     'subscriber' => 'SubscriberController'      // Subscript to newsletter Page
 ]);
+
 // Contact Page
 Route::resource('contact', 'ContactController')->except(['edit', 'update']);
+
 /**
  * all slugs for anime names and episodes
  */
-Route::get('episodes', 'EpisodeController@episode_list')->name('episodes');   // All episodes for all animes
-Route::get('animes/{anime}/{slug?}', ['as' => 'animes.show', 'uses' => 'AnimeController@show']);
-Route::get('animes/{anime}/episodes/{episode}/{slug?}', ['as' => 'animes.episodes.show', 'uses' => 'EpisodeController@show']);
-Route::get('tags/{tag}/{slug?}', ['as' => 'tags.show', 'uses' => 'TagController@show']);
-Route::get('blog/posts/{post}/{slug?}', ['as' => 'posts.show', 'uses' => 'PostController@show']);
+Route::get('episodes', 'EpisodeController@list')->name('animes.episodes.list');   // All episodes for all animes
+Route::get('animes/{anime}/{slug?}', ['as' => 'animes.show.slug', 'uses' => 'AnimeController@show']);
+Route::get('animes/{anime}/episodes/{episode}/{slug?}', ['as' => 'animes.episodes.show.slug', 'uses' => 'EpisodeController@show']);
+Route::get('tags/{tag}/{slug?}', ['as' => 'tags.show.slug', 'uses' => 'TagController@show']);
+Route::get('blog/posts/{post}/{slug?}', ['as' => 'posts.show.slug', 'uses' => 'PostController@show']);
 
 Route::get('royalembed/{url}', 'EmbedController@show')->where('url', '(.*)');
-Route::get('royalembed', function () {
-    return redirect('/');
-});
+// Route::get('royalembed', function () {
+//     return redirect('/');
+// });
 
 
 /**

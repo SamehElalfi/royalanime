@@ -14,13 +14,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
 
 Route::post('login', "API\AuthController@login");
 
-Route::resource('animes', 'API\AnimeController');
-Route::resource('episodes', 'API\EpisodeController');
+// Route::resource('animes', 'API\AnimeController');
+// Route::resource('episodes', 'API\EpisodeController');
 
 Route::post('add_server', "API\ServerController@add");
